@@ -3,11 +3,12 @@ import Navitem from "./Navitem.astro";
 import {stagger} from "../../scripts/stagger.ts";
 import Navslash from "./Navslash.astro";
 
-const LINKS = ["A", "B", "C", "D", "E", "F"]
+const LINKS = ["Home", "About", "Projects"]
+
 
 ---
 
-<nav class="row-start-2 col-span-full md:col-start-2 md:col-end-10 flex justify-around items-center sm:flex-wrap border-y border-black">
+<nav class="col-span-full md:col-start-2 md:col-end-12 flex justify-around items-center sm:flex-wrap">
 
     {stagger(LINKS.map(link => <Navitem>{link}</Navitem>), <Navslash/>)}
 
