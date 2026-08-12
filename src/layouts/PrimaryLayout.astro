@@ -1,5 +1,8 @@
 ---
 import "../styles/global.css";
+import Navbar from "../components/Navbar.astro";
+
+import { ClientRouter } from "astro:transitions";
 ---
 
 <!doctype html>
@@ -13,8 +16,10 @@ import "../styles/global.css";
 		<title>EG - Site</title>
 	</head>
 	<body class="grid grid-cols-12 grid-rows-12 h-full">
+    <Navbar />
 		<slot />
 	</body>
+  <ClientRouter/>
 </html>
 
 <style>

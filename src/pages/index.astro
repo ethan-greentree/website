@@ -1,6 +1,5 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Navbar from "../components/Navigation/Navbar.astro";
+import PrimaryLayout from '../layouts/PrimaryLayout.astro';
 
 ---
 
@@ -10,12 +9,15 @@ import Navbar from "../components/Navigation/Navbar.astro";
 
 </style>
 
-<Layout>
+<PrimaryLayout>
 
     <h1 class="col-span-full grid items-center justify-center text-5xl font-glyphic">Ethan Greentree</h1>
 
-    <Navbar/>
 
-    <main><slot /></main>
+    <main class="row-span-11 col-span-full items-center justify-center text-5xl font-glyphic">
 
-</Layout>
+      <h1>Welcome to my side of the internet.</h1>
+    
+    </main>
+
+</PrimaryLayout>
