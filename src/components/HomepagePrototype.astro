@@ -1,0 +1,512 @@
+﻿---
+// Throwaway, DEV-only: identical content, A broad foundation / B side structure.
+const articles = [
+  [
+    "Publishing",
+    "A simpler way to publish a personal site",
+    "A sample article about moving from an idea to an updateable home on the web.",
+  ],
+  [
+    "Learning",
+    "Understanding something by taking it apart",
+    "A sample learning note: the question, the investigation, and what finally clicked.",
+  ],
+  [
+    "Notes",
+    "Small discoveries worth writing down",
+    "A sample shorter entry to compare how different title lengths sit together.",
+  ],
+];
+---
+
+<!doctype html>
+<html lang="en" data-variant="A">
+  <head>
+    <meta charset="utf-8" /><meta
+      name="viewport"
+      content="width=device-width, initial-scale=1"
+    />
+    <meta name="robots" content="noindex" /><title>
+      Ethan Greentree — layout studies
+    </title>
+    <script is:inline>
+      document.documentElement.dataset.variant =
+        new URLSearchParams(location.search).get("variant") === "B" ? "B" : "A";
+    </script>
+  </head>
+  <body>
+    <a class="skip" href="#content">Skip to content</a>
+    <div class="page">
+      <header>
+        <a class="wordmark" href="/">Ethan Greentree.</a><nav
+          aria-label="Main navigation"
+        >
+          <a href="#writing">Writing</a><a href="#about">About</a><a
+            href="/contact">Contact ↗</a>
+        </nav>
+      </header>
+      <main id="content">
+        <div class="composition">
+          <section class="intro" aria-labelledby="name">
+            <p class="eyebrow">A personal site / Technology & curiosity</p>
+            <h1 id="name">Ethan<br />Greentree.</h1>
+            <div class="intro-copy">
+              <p class="lead">IT by trade.<br />Curious by default.</p><p>
+                I enjoy figuring out how things work and sharing what I learn
+                along the way.
+              </p><a class="primary" href="#writing"
+                >Start with the writing ↓</a>
+            </div>
+          </section>
+          <section class="writing" id="writing" aria-labelledby="writing-title">
+            <div class="section-head">
+              <h2 id="writing-title">Writing</h2><span class="eyebrow"
+                >Ideas, investigations & notes</span>
+            </div>
+            <p class="specimen">
+              Layout specimens — sample titles, not published articles.
+            </p>
+            {
+              articles.map(([topic, title, summary], index) => (
+                <article>
+                  <>
+                    <div class="meta">
+                      <>
+                        <span>{topic}</span>
+                        <span>Sample 0{index + 1}</span>
+                      </>
+                    </div>
+                    <h3>{title}</h3>
+                    <p>{summary}</p>
+                  </>
+                </article>
+              ))
+            }
+          </section>
+        </div>
+        <section class="about" id="about" aria-labelledby="about-title">
+          <h2 id="about-title">A little<br />about me.</h2><div>
+            <p class="lead">Happiest when something finally clicks.</p><p>
+              I've worked at KES for five years, with a few more years of
+              tinkering on and off. I'm taking that learning more seriously now.
+            </p><p>
+              I believe in teaching as practice. If I find something
+              interesting, I want others to know about it too.
+            </p>
+          </div>
+        </section>
+      </main>
+      <footer>
+        <p>Ethan Greentree<span>Always something to figure out.</span></p><a
+          href="/contact">Get in touch ↗</a>
+      </footer>
+    </div>
+    <aside class="switcher" aria-label="Design study controls">
+      <button type="button" data-cycle aria-label="Previous layout">←</button
+      ><div>
+        <small>Prototype · same content / different composition</small><output
+          aria-live="polite">A — Broad foundation</output>
+      </div><button type="button" data-cycle aria-label="Next layout">→</button>
+    </aside>
+    <script>
+      const labels = ["A — Broad foundation", "B — Side structure"];
+      function sync() {
+        const index =
+          new URLSearchParams(location.search).get("variant") === "B" ? 1 : 0;
+        document.documentElement.dataset.variant = index ? "B" : "A";
+        document.querySelector("output")!.textContent = labels[index];
+      }
+      function cycle() {
+        const url = new URL(location.href);
+        url.searchParams.set(
+          "variant",
+          document.documentElement.dataset.variant === "B" ? "A" : "B",
+        );
+        history.pushState({}, "", url);
+        sync();
+      }
+      document
+        .querySelectorAll("[data-cycle]")
+        .forEach((button) => button.addEventListener("click", cycle));
+      window.addEventListener("popstate", sync);
+      window.addEventListener("keydown", (event) => {
+        if (
+          event.target instanceof Element &&
+          event.target.closest(
+            "input, textarea, select, [contenteditable], button, a",
+          )
+        )
+          return;
+        if (event.key === "ArrowLeft" || event.key === "ArrowRight") {
+          event.preventDefault();
+          cycle();
+        }
+      });
+      sync();
+    </script>
+  </body>
+</html>
+<style>
+  :global(*) {
+    box-sizing: border-box;
+  }
+  :global(html) {
+    background: #f1eadc;
+    color: #20291e;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  :global(body) {
+    margin: 0;
+    padding-bottom: 110px;
+  }
+  :global(a) {
+    color: inherit;
+    text-underline-offset: 0.2em;
+  }
+  :global(a:focus-visible),
+  :global(button:focus-visible) {
+    outline: 3px solid #344b31;
+    outline-offset: 5px;
+  }
+  .page {
+    max-width: 1440px;
+    margin: auto;
+    padding: 0 clamp(20px, 4vw, 64px);
+  }
+  header {
+    min-height: 112px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    border-bottom: 3px solid;
+  }
+  .wordmark {
+    font-size: 23px;
+    font-weight: 900;
+    text-decoration: none;
+    letter-spacing: -0.7px;
+  }
+  nav {
+    display: flex;
+    gap: 32px;
+    font-size: 15px;
+    font-weight: 700;
+  }
+  nav a {
+    text-decoration: none;
+  }
+  nav a:hover {
+    text-decoration: underline;
+  }
+  .composition {
+    padding-top: 40px;
+  }
+  .intro {
+    background: #c3d39a;
+    border: 3px solid;
+    border-radius: 3px;
+    padding: clamp(32px, 4.5vw, 64px);
+    display: grid;
+    grid-template-columns: 1.15fr 1fr;
+    gap: 28px 64px;
+  }
+  .eyebrow {
+    font:
+      12px/1.5 ui-monospace,
+      monospace;
+    letter-spacing: 0.025em;
+  }
+  .intro > .eyebrow {
+    grid-column: 1/-1;
+    margin: 0;
+  }
+  h1 {
+    font-size: clamp(64px, 7.5vw, 108px);
+    line-height: 0.98;
+    letter-spacing: -0.065em;
+    font-weight: 900;
+    margin: 0;
+  }
+  .intro-copy {
+    align-self: end;
+    max-width: 40ch;
+  }
+  p {
+    font-size: 18px;
+    line-height: 1.65;
+    margin: 0 0 20px;
+  }
+  .lead {
+    font-size: clamp(23px, 2.2vw, 30px);
+    line-height: 1.3;
+    font-weight: 700;
+    letter-spacing: -0.025em;
+  }
+  .primary {
+    display: inline-block;
+    background: #f1eadc;
+    border: 3px solid;
+    border-radius: 3px;
+    box-shadow: 4px 4px 0;
+    padding: 14px 18px;
+    font-size: 15px;
+    font-weight: 700;
+    text-decoration: none;
+    margin-top: 8px;
+    transition:
+      transform 120ms,
+      box-shadow 120ms;
+  }
+  .primary:hover {
+    transform: translate(-1px, -1px);
+    box-shadow: 5px 5px 0;
+  }
+  .primary:active {
+    transform: translate(4px, 4px);
+    box-shadow: none;
+  }
+  .writing {
+    margin-top: 80px;
+    scroll-margin-top: 24px;
+  }
+  .section-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 24px;
+    padding-bottom: 24px;
+    border-bottom: 5px solid;
+  }
+  h2 {
+    margin: 0;
+    font-size: clamp(36px, 4vw, 56px);
+    line-height: 1.05;
+    letter-spacing: -0.045em;
+    font-weight: 900;
+  }
+  .specimen {
+    font-size: 13px;
+    color: #545c4e;
+    margin: 18px 0 0;
+  }
+  article {
+    padding: 36px 0;
+    border-bottom: 2px solid;
+  }
+  .meta {
+    display: flex;
+    justify-content: space-between;
+    font:
+      12px/1.5 ui-monospace,
+      monospace;
+    color: #545c4e;
+    margin-bottom: 16px;
+  }
+  h3 {
+    max-width: 30ch;
+    font-size: clamp(25px, 2.6vw, 36px);
+    line-height: 1.15;
+    letter-spacing: -0.035em;
+    margin: 0 0 16px;
+  }
+  article p {
+    max-width: 58ch;
+    margin: 0;
+    color: #545c4e;
+  }
+  .about {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 64px;
+    padding: 80px 0;
+    border-bottom: 3px solid;
+    scroll-margin-top: 32px;
+  }
+  .about > div {
+    max-width: 60ch;
+  }
+  .about p:last-child {
+    margin-bottom: 0;
+  }
+  footer {
+    display: flex;
+    justify-content: space-between;
+    gap: 24px;
+    padding: 32px 0;
+  }
+  footer p,
+  footer a {
+    font-size: 14px;
+    font-weight: 700;
+  }
+  footer span {
+    display: block;
+    font-weight: 400;
+    color: #545c4e;
+    margin-top: 6px;
+  }
+  .switcher {
+    position: fixed;
+    bottom: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: #20291e;
+    color: #f1eadc;
+    border: 2px solid #f1eadc;
+    padding: 10px 12px;
+    max-width: calc(100% - 24px);
+    z-index: 10;
+  }
+  .switcher button {
+    min-width: 44px;
+    min-height: 44px;
+    border: 1px solid #f1eadc;
+    background: transparent;
+    color: inherit;
+    font-size: 22px;
+    cursor: pointer;
+  }
+  .switcher small {
+    display: block;
+    font-size: 10px;
+    margin-bottom: 5px;
+  }
+  output {
+    display: block;
+    font-size: 14px;
+    font-weight: 700;
+  }
+  .skip {
+    position: absolute;
+    top: -100px;
+    left: 20px;
+    background: #f1eadc;
+    padding: 12px;
+    z-index: 20;
+  }
+  .skip:focus {
+    top: 8px;
+  }
+  :global(html[data-variant="B"]) .composition {
+    display: grid;
+    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.5fr);
+    gap: 56px;
+    padding-top: 48px;
+  }
+  :global(html[data-variant="B"]) .intro {
+    display: flex;
+    flex-direction: column;
+    padding: 40px 32px;
+    gap: 48px;
+    align-self: start;
+  }
+  :global(html[data-variant="B"]) h1 {
+    font-size: clamp(52px, 5.4vw, 80px);
+  }
+  :global(html[data-variant="B"]) .intro-copy {
+    align-self: auto;
+  }
+  :global(html[data-variant="B"]) .writing {
+    margin-top: 0;
+  }
+  :global(html[data-variant="B"]) .section-head {
+    align-items: start;
+    flex-direction: column;
+    gap: 12px;
+  }
+  @media (max-width: 1000px) {
+    :global(html[data-variant="B"]) .composition {
+      gap: 32px;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr);
+    }
+    :global(html[data-variant="B"]) .intro {
+      padding: 32px 24px;
+    }
+    :global(html[data-variant="B"]) h1 {
+      font-size: clamp(42px, 5.8vw, 58px);
+    }
+  }
+  @media (max-width: 700px) {
+    header {
+      min-height: 120px;
+      align-items: start;
+      justify-content: center;
+      flex-direction: column;
+      gap: 20px;
+      padding: 24px 0;
+    }
+    nav {
+      gap: 24px;
+    }
+    .composition {
+      padding-top: 24px;
+    }
+    .intro {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+      padding: 32px 24px;
+    }
+    h1,
+    :global(html[data-variant="B"]) h1 {
+      font-size: clamp(42px, 11.4vw, 72px);
+    }
+    .intro-copy {
+      align-self: auto;
+    }
+    .primary {
+      padding: 14px 12px;
+      font-size: 14px;
+    }
+    .writing {
+      margin-top: 56px;
+    }
+    .section-head {
+      flex-direction: column;
+      align-items: start;
+      gap: 12px;
+    }
+    article {
+      padding: 32px 0;
+    }
+    .about {
+      grid-template-columns: 1fr;
+      gap: 32px;
+      padding: 56px 0;
+    }
+    footer {
+      flex-direction: column;
+      gap: 4px;
+    }
+    :global(html[data-variant="B"]) .composition {
+      display: block;
+      padding-top: 24px;
+    }
+    :global(html[data-variant="B"]) .intro {
+      gap: 32px;
+    }
+    :global(html[data-variant="B"]) .writing {
+      margin-top: 56px;
+    }
+    .switcher {
+      gap: 10px;
+      width: max-content;
+    }
+    .switcher small {
+      max-width: 190px;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .primary {
+      transition: none;
+    }
+    .primary:hover,
+    .primary:active {
+      transform: none;
+    }
+  }
+</style>

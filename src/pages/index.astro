@@ -1,5 +1,6 @@
 ---
 import PrimaryLayout from '../layouts/PrimaryLayout.astro';
+import HomepagePrototype from '../components/HomepagePrototype.astro';
 
 ---
 
@@ -9,7 +10,7 @@ import PrimaryLayout from '../layouts/PrimaryLayout.astro';
 
 </style>
 
-<PrimaryLayout>
+{import.meta.env.DEV ? <HomepagePrototype /> : <PrimaryLayout>
 
     <h1 class="col-span-full grid items-center justify-center text-5xl font-glyphic">Ethan Greentree, Professional Tinkerer</h1>
 
@@ -65,4 +66,4 @@ import PrimaryLayout from '../layouts/PrimaryLayout.astro';
 
     
 
-</PrimaryLayout>
+</PrimaryLayout>}

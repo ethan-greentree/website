@@ -1,0 +1,440 @@
+{
+  "date": "2026-10-11",
+  "method": "Chrome CDP screenshots; first viewport visually reviewed; not a popularity ranking",
+  "references": [
+    {
+      "id": 1,
+      "name": "Gumroad",
+      "source": "https://gumroad.com",
+      "classification": "neo / graphic neo",
+      "localCapture": ".research/neo-research/01-gumroad-com.jpg",
+      "captureUrl": "https://gumroad.com/",
+      "viewport": {
+        "width": 1440,
+        "height": 1050
+      },
+      "declaredHeadingFonts": ["\"ABC Favorit\""],
+      "limitations": ""
+    },
+    {
+      "id": 2,
+      "name": "Panda CSS",
+      "source": "https://panda-css.com",
+      "classification": "neo / graphic neo",
+      "localCapture": ".research/neo-research/02-panda-css-com.jpg",
+      "captureUrl": "https://panda-css.com/",
+      "viewport": {
+        "width": 1440,
+        "height": 1050
+      },
+      "declaredHeadingFonts": ["Onest, \"Onest Fallback\", sans-serif"],
+      "limitations": ""
+    },
+    {
+      "id": 3,
+      "name": "Neobrutalism components",
+      "source": "https://www.neobrutalism.dev",
+      "classification": "neo / graphic neo",
+      "localCapture": ".research/neo-research/03-www-neobrutalism-dev.jpg",
+      "captureUrl": "https://www.neobrutalism.dev/",
+      "viewport": {
+        "width": 1440,
+        "height": 1050
+      },
+      "declaredHeadingFonts": ["\"DM Sans\", sans-serif"],
+      "limitations": ""
+    },
+    {
+      "id": 4,
+      "name": "NeoBrutalism",
+      "source": "https://neobrutalism.com",
+      "classification": "neo / graphic neo",
+      "localCapture": ".research/neo-research/04-neobrutalism-com.jpg",
+      "captureUrl": "https://neobrutalism.com/",
+      "viewport": {
+        "width": 1440,
+        "height": 1050
+      },
+      "declaredHeadingFonts": ["\"Space Grotesk\", \"Space Grotesk Fallback\""],
+      "limitations": ""
+    },
+    {
+      "id": 5,
+      "name": "Tony’s Chocolonely US",
+      "source": "https://us.tonyschocolonely.com",
+      "classification": "neo / graphic neo",
+      "localCapture": ".research/neo-research/05-us-tonyschocolonely-com.jpg",
+      "captureUrl": "https://us.tonyschocolonely.com/",
+      "viewport": {
+        "width": 1440,
+        "height": 1050
+      },
+      "declaredHeadingFonts": ["\"American typewriter\", sans-serif"],
+      "limitations": "initial overlay; lower-page follow-up attempted"
+    },
+    {
+      "id": 6,
+      "name": "Gitingest",
+      "source": "https://gitingest.com",
+      "classification": "neo / graphic neo",
+      "localCapture": ".research/neo-research/06-gitingest-com.jpg",
+      "captureUrl": "https://gitingest.com/",
+      "viewport": {
+        "width": 1440,
+        "height": 1050
+      },
+      "declaredHeadingFonts": [
+        "ui-sans-serif, system-ui, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\""
+      ],
+      "limitations": ""
+    },
+    {
+      "id": 7,
+      "name": "Cyan Banister",
+      "source": "https://cyanbanister.com",
+      "classification": "retro / neo hybrid",
+      "localCapture": ".research/neo-research/07-cyanbanister-com.jpg",
+      "captureUrl": "https://cyanbanister.com/",
+      "viewport": {
+        "width": 1440,
+        "height": 1050
+      },
+      "declaredHeadingFonts": [],
+      "limitations": ""
+    },
+    {
+      "id": 8,
+      "name": "CAH 99% Off Sale",
+      "source": "https://www.99percentoffsale.com",
+      "classification": "neo / graphic neo",
+      "localCapture": ".research/neo-research/08-www-99percentoffsale-com.jpg",
+      "captureUrl": "https://www.99percentoffsale.com/",
+      "viewport": {
+        "width": 1440,
+        "height": 1050
+      },
+      "declaredHeadingFonts": [
+        "\"Helvetica Neue LT Pro Cond-798d0b48fa7b0746\", \"Helvetica Neue LT Pro Cond-798d0b48fa7b0746 fallback: Arial\", sans-serif, \"Helvetica Neue Condensed\", sans-serif"
+      ],
+      "limitations": ""
+    },
+    {
+      "id": 9,
+      "name": "Feastables",
+      "source": "https://feastables.com",
+      "classification": "neo / graphic neo",
+      "localCapture": ".research/neo-research/09-feastables-com.jpg",
+      "captureUrl": "https://feastables.com/",
+      "viewport": {
+        "width": 1440,
+        "height": 1050
+      },
+      "declaredHeadingFonts": ["Kanit, sans-serif"],
+      "limitations": "initial overlay; lower-page follow-up attempted"
+    },
+    {
+      "id": 10,
+      "name": "GT Maru",
+      "source": "https://gt-maru.com",
+      "classification": "neo / graphic neo",
+      "localCapture": ".research/neo-research/10-gt-maru-com.jpg",
+      "captureUrl": "https://gt-maru.com/",
+      "viewport": {
+        "width": 1440,
+        "height": 1050
+      },
+      "declaredHeadingFonts": ["\"GT Maru\""],
+      "limitations": "loading indicator remains; incomplete initial state"
+    },
+    {
+      "id": 11,
+      "name": "FlowFest",
+      "source": "https://www.flowfest.co.uk",
+      "classification": "neo / graphic neo",
+      "localCapture": ".research/neo-research/12-www-flowfest-co-uk.jpg",
+      "captureUrl": "https://www.flowfest.co.uk/",
+      "viewport": {
+        "width": 1440,
+        "height": 1050
+      },
+      "declaredHeadingFonts": ["\"Sugar Peachy\", Arial, sans-serif"],
+      "limitations": ""
+    },
+    {
+      "id": 12,
+      "name": "Sui Overflow",
+      "source": "https://overflow.sui.io",
+      "classification": "neo / graphic neo",
+      "localCapture": ".research/neo-research/13-overflow-sui-io.jpg",
+      "captureUrl": "https://overflow.sui.io/",
+      "viewport": {
+        "width": 1440,
+        "height": 1050
+      },
+      "declaredHeadingFonts": ["\"TWK Everett\", Arial, sans-serif"],
+      "limitations": ""
+    },
+    {
+      "id": 13,
+      "name": "Roze Bunker",
+      "source": "https://rozebunker.nl",
+      "classification": "neo / graphic neo",
+      "localCapture": ".research/neo-research/14-rozebunker-nl.jpg",
+      "captureUrl": "https://rozebunker.nl/",
+      "viewport": {
+        "width": 1440,
+        "height": 1050
+      },
+      "declaredHeadingFonts": ["rozebunker, sans-serif"],
+      "limitations": "initial overlay; lower-page follow-up attempted"
+    },
+    {
+      "id": 14,
+      "name": "Code in Public",
+      "source": "https://codeinpublic.com",
+      "classification": "neo / graphic neo",
+      "localCapture": ".research/neo-research/22-codeinpublic-com.jpg",
+      "captureUrl": "https://codeinpublic.com/",
+      "viewport": {
+        "width": 1440,
+        "height": 1050
+      },
+      "declaredHeadingFonts": [
+        "ui-sans-serif, system-ui, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\""
+      ],
+      "limitations": ""
+    },
+    {
+      "id": 15,
+      "name": "Pouf Chat",
+      "source": "https://pouf.chat",
+      "classification": "neo / graphic neo",
+      "localCapture": ".research/neo-research/24-pouf-chat.jpg",
+      "captureUrl": "https://pouf.chat/",
+      "viewport": {
+        "width": 1440,
+        "height": 1050
+      },
+      "declaredHeadingFonts": ["Fraunces, sans-serif"],
+      "limitations": ""
+    },
+    {
+      "id": 16,
+      "name": "Kristi Digital",
+      "source": "https://kristi.digital",
+      "classification": "neo / graphic neo",
+      "localCapture": ".research/neo-research/extra-01.jpg",
+      "captureUrl": "https://kristi.digital",
+      "viewport": {
+        "width": 1440,
+        "height": 1050
+      },
+      "declaredHeadingFonts": [],
+      "limitations": ""
+    },
+    {
+      "id": 17,
+      "name": "Studio Job",
+      "source": "https://www.studio-job.com",
+      "classification": "neo / graphic neo",
+      "localCapture": ".research/neo-research/extra-02.jpg",
+      "captureUrl": "https://www.studio-job.com",
+      "viewport": {
+        "width": 1440,
+        "height": 1050
+      },
+      "declaredHeadingFonts": [],
+      "limitations": ""
+    },
+    {
+      "id": 18,
+      "name": "Seen Advertising",
+      "source": "https://seenadvertising.agency",
+      "classification": "neo / graphic neo",
+      "localCapture": ".research/neo-more/07-seenadvertising-agency.jpg",
+      "captureUrl": "https://seenadvertising.agency/",
+      "viewport": {
+        "width": 1440,
+        "height": 1050
+      },
+      "declaredHeadingFonts": ["custom_80344", "custom_80343"],
+      "limitations": ""
+    },
+    {
+      "id": 19,
+      "name": "DesignThinkers",
+      "source": "https://www.designthinkers.com",
+      "classification": "neo / graphic neo",
+      "localCapture": ".research/neo-more/08-www-designthinkers-com.jpg",
+      "captureUrl": "https://www.designthinkers.com/",
+      "viewport": {
+        "width": 1440,
+        "height": 1050
+      },
+      "declaredHeadingFonts": ["\"Times New Roman\""],
+      "limitations": ""
+    },
+    {
+      "id": 20,
+      "name": "Techgroove",
+      "source": "https://www.techgroove.it",
+      "classification": "neo / graphic neo",
+      "localCapture": ".research/neo-more/10-www-techgroove-it.jpg",
+      "captureUrl": "https://www.techgroove.it/",
+      "viewport": {
+        "width": 1440,
+        "height": 1050
+      },
+      "declaredHeadingFonts": ["Urbanist, sans-serif"],
+      "limitations": ""
+    },
+    {
+      "id": 21,
+      "name": "UGLYCASH",
+      "source": "https://ugly.cash",
+      "classification": "neo / graphic neo",
+      "localCapture": ".research/neo-more/11-ugly-cash.jpg",
+      "captureUrl": "https://ugly.cash/",
+      "viewport": {
+        "width": 1440,
+        "height": 1050
+      },
+      "declaredHeadingFonts": [
+        "\"Helvetica Now Display Cn Bold\", \"Helvetica Now Display Cn Bold Placeholder\", sans-serif"
+      ],
+      "limitations": ""
+    },
+    {
+      "id": 22,
+      "name": "Neubrutalism guide",
+      "source": "https://neubrutalism.com",
+      "classification": "neo / graphic neo",
+      "localCapture": ".research/neo-more/12-neubrutalism-com.jpg",
+      "captureUrl": "https://neubrutalism.com/",
+      "viewport": {
+        "width": 1440,
+        "height": 1050
+      },
+      "declaredHeadingFonts": [
+        "Syne, sans-serif",
+        "\"Space Grotesk\", sans-serif"
+      ],
+      "limitations": ""
+    },
+    {
+      "id": 23,
+      "name": "Curry Cafe",
+      "source": "https://curry.cafe",
+      "classification": "neo / graphic neo",
+      "localCapture": ".research/neo-more/13-curry-cafe.jpg",
+      "captureUrl": "https://curry.cafe/",
+      "viewport": {
+        "width": 1440,
+        "height": 1050
+      },
+      "declaredHeadingFonts": [
+        "archiveMono, monospace",
+        "geometriaExtraBold, sans-serif"
+      ],
+      "limitations": ""
+    },
+    {
+      "name": "Finder",
+      "source": "https://www.finder.com.au/",
+      "classification": "neo",
+      "localCapture": ".research/neo-extra-c2/02-www-finder-com-au.jpg",
+      "captureUrl": "https://www.finder.com.au/",
+      "viewport": {
+        "width": 1440,
+        "height": 1050
+      },
+      "declaredHeadingFonts": [],
+      "limitations": "",
+      "id": 24
+    },
+    {
+      "name": "BuilderMode",
+      "source": "https://www.buildermode.app/",
+      "classification": "neo",
+      "localCapture": ".research/neo-extra-c/03-www-buildermode-app.jpg",
+      "captureUrl": "https://www.buildermode.app/",
+      "viewport": {
+        "width": 1440,
+        "height": 1050
+      },
+      "declaredHeadingFonts": [],
+      "limitations": "",
+      "id": 25
+    },
+    {
+      "name": "Taufiq Fharhan",
+      "source": "https://www.taufiqfharhan.com/",
+      "classification": "neo",
+      "localCapture": ".research/neo-extra-c/08-www-taufiqfharhan-com.jpg",
+      "captureUrl": "https://www.taufiqfharhan.com/",
+      "viewport": {
+        "width": 1440,
+        "height": 1050
+      },
+      "declaredHeadingFonts": [],
+      "limitations": "Portrait not loaded in captured state.",
+      "id": 26
+    },
+    {
+      "name": "creme332",
+      "source": "https://creme332.vercel.app/",
+      "classification": "neo",
+      "localCapture": ".research/neo-extra-c3/01-creme332-vercel-app.jpg",
+      "captureUrl": "https://creme332.vercel.app/",
+      "viewport": {
+        "width": 1440,
+        "height": 1050
+      },
+      "declaredHeadingFonts": [],
+      "limitations": "",
+      "id": 27
+    },
+    {
+      "name": "Wunderbar",
+      "source": "https://wearewunderbar.webflow.io/",
+      "classification": "neo",
+      "localCapture": ".research/neo-extra-c3/02-wearewunderbar-webflow-io.jpg",
+      "captureUrl": "https://wearewunderbar.webflow.io/",
+      "viewport": {
+        "width": 1440,
+        "height": 1050
+      },
+      "declaredHeadingFonts": [],
+      "limitations": "",
+      "id": 28
+    },
+    {
+      "name": "Super Hello — historical 2023",
+      "source": "https://onepagelove.com/super-hello",
+      "classification": "historical neo",
+      "localCapture": ".research/neo-history/01-assets-onepagelove-com.jpg",
+      "captureUrl": "https://onepagelove.com/super-hello",
+      "viewport": {
+        "width": 1440,
+        "height": 1050
+      },
+      "declaredHeadingFonts": [],
+      "limitations": "Gallery-preserved screenshot; current site and interactions not reviewed.",
+      "id": 29
+    },
+    {
+      "name": "My Design Buddy — historical 2022",
+      "source": "https://onepagelove.com/my-design-buddy",
+      "classification": "historical neo",
+      "localCapture": ".research/neo-history/02-assets-onepagelove-com.jpg",
+      "captureUrl": "https://onepagelove.com/my-design-buddy",
+      "viewport": {
+        "width": 1440,
+        "height": 1050
+      },
+      "declaredHeadingFonts": [],
+      "limitations": "Gallery-preserved screenshot; current site and interactions not reviewed.",
+      "id": 30
+    }
+  ]
+}

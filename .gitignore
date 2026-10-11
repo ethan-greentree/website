@@ -4,6 +4,9 @@ dist/
 # generated types
 .astro/
 
+# temporary design research captures and browser helpers
+.research/
+
 # dependencies
 node_modules/
 
