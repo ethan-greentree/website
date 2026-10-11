@@ -1,7 +1,11 @@
-
-@import url('https://fonts.googleapis.com/css2?family=Faculty+Glyphic&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Faculty+Glyphic&display=swap");
 @import "tailwindcss";
 
 @theme {
-    --font-glyphic: Faculty Glyphic, sans-serif;
+  --font-glyphic: Faculty Glyphic, sans-serif;
+  --color-light: #ece8e5;
+  --color-secondary: #d5c9bb;
+  --color-accent: #97a58e;
+  --color-primary: #3d4e46;
+  --color-onyx: #242424;
 }
