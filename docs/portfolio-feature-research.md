@@ -1,6 +1,6 @@
 # An IT portfolio that shows how Ethan works
 
-Research date: 2026-10-10. Companion to [site-research.md](site-research.md) and [design-wishlist.md](design-wishlist.md). This is a research proposal, not an implementation specification. No application code, infrastructure, or GitHub settings were changed.
+Research date: 2026-10-10. Companion to [site-research.md](site-research.md) and [the current design direction](../DESIGN.md). This is a research proposal, not an implementation specification. No application code, infrastructure, or GitHub settings were changed.
 
 ## Follow-up from Ethan
 

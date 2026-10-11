@@ -1,8 +1,8 @@
-﻿# Ethan Greentree — design system
+# Ethan Greentree — design system
 
 Status: direction confirmed in the interview, 2026-10-11. Composition and exact fonts/colors await visual comparison. This supersedes the earlier red/dither proposal; neither prototype is approved for production.
 
-See the [30-site reference study](docs/research/neobrutalist-websites.md). Earlier design briefs remain historical alternatives. These interview decisions take precedence.
+See the [30-site reference study](docs/research/neobrutalist-websites.md). These interview decisions take precedence over earlier research proposals. Superseded briefs are available in Git history.
 
 ## Direction
 

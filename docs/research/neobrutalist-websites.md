@@ -2,6 +2,8 @@
 
 Researched 2026-10-11. Output: [proposed design system](../../DESIGN.md).
 
+This report preserves the reference evidence. Its original red/dither and sticky-heading proposals and open questions are superseded by the interview decisions in DESIGN.md.
+
 ## Scope and evidence
 
 The request was for 30 of the most popular neo-brutalist websites. There is no substantiated popularity ranking in the sources examined. This report therefore uses recognizable brands, award/gallery recognition, and explicit designer attribution as discovery signals, **not traffic estimates**. Smaller community references are labeled as such. It does not claim these are the world's top 30 sites.
@@ -118,6 +120,6 @@ The compact [evidence manifest](evidence/manifest.json) maps the thirty referenc
 - [References 21–30](evidence/references-21-30.jpg)
 - [Six mobile samples](evidence/mobile-samples.jpg)
 
-Original full-resolution captures and temporary browser helpers are temporary local research artifacts in the ignored `.research/` directory. The manifest records which were used; their absence in a fresh clone does not remove the saved contact sheets. Initial agent notes are retained as [batch A](neobrutalism-batch-a.md), [batch B](neobrutalism-batch-b.md), and [batch C](neobrutalism-batch-c.md); those deliberately provisional source-reading notes are superseded by this rendered comparison where they differ.
+Original full-resolution captures and temporary browser helpers are temporary local research artifacts in the ignored `.research/` directory. The manifest records which were used; their absence in a fresh clone does not remove the saved contact sheets. Superseded provisional batch notes are available in Git history; this report consolidates their findings with the rendered comparison.
 
 Open questions for a subsequent proof: whether Ethan prefers red/paper or an earthy green version; whether a serif alternative has more of the desired dungeon-synth atmosphere than a chunky grotesk; which specific licensed image should anchor the identity. These do not prevent writing a concrete proposed system, but a document alone cannot establish that the final composition feels right.

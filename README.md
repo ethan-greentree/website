@@ -1,46 +1,27 @@
-# Astro Starter Kit: Basics
+# Ethan Greentree's personal website
 
-```sh
-pnpm create astro@latest -- --template basics
-```
+Built with Astro and Tailwind CSS. Requires Node.js 22.12 or newer and pnpm.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Local development
 
-## 🚀 Project Structure
+Run `pnpm install`, then use these commands from the repository root:
 
-Inside of your Astro project, you'll see the following folders and files:
+| Command | Purpose |
+| --- | --- |
+| `pnpm run dev` | Start the development server at `http://localhost:4321` |
+| `pnpm design` | Start the server and open the homepage design study |
+| `pnpm build` | Build the production site into `dist/` |
+| `pnpm preview` | Preview the production build locally |
 
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
-```
+Both development commands replace an existing Astro server for this project.
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+The homepage design studies are development-only. Compare `/?variant=A` (broad foundation) and `/?variant=B` (side structure). Production builds use the existing homepage rather than the prototype.
 
-## 🧞 Commands
+## Documentation
 
-All commands are run from the root of the project, from a terminal:
+- [Design direction and component rules](DESIGN.md)
+- [Reference study and visual evidence](docs/research/neobrutalist-websites.md)
+- [Publishing and deployment research](docs/site-research.md)
+- [Future portfolio feature ideas](docs/portfolio-feature-research.md)
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `pnpm install`             | Installs dependencies                            |
-| `pnpm dev`             | Starts local dev server at `localhost:4321`      |
-| `pnpm build`           | Build your production site to `./dist/`          |
-| `pnpm preview`         | Preview your build locally, before deploying     |
-| `pnpm astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `pnpm astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+Track future work in [GitHub Issues](https://github.com/ethan-greentree/website/issues). Research documents contain proposals, not implemented features. DESIGN.md takes precedence for visual decisions.

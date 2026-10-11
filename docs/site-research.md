@@ -2,6 +2,8 @@
 
 Research date: **2026-10-10**. Prepared for Ethan to review later. This is a proposal, not an approved implementation specification. No application code, deployment configuration, server settings, or GitHub settings were changed.
 
+Retained for publishing and deployment research. The visual proposals below are superseded by [DESIGN.md](../DESIGN.md), including its decision to use ordinary section headings rather than sticky labels.
+
 ## Recommended direction
 
 Build a static Astro portfolio with an earthy, chunky visual identity and a quieter article layout. Author Markdown in a dedicated Obsidian publishing vault or folder. Start with standard Markdown links and an optional Astro Composer authoring plugin; evaluate build-time wikilinks against a small fixture before committing to that extra dependency. Build on GitHub Actions after pushes to `main`, then deploy finished files over SSH to the existing Vultr VPS.
