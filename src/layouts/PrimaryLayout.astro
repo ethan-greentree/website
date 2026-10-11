@@ -2,32 +2,38 @@
 import "../styles/global.css";
 import Navbar from "../components/Navbar.astro";
 
-import { ClientRouter } from "astro:transitions";
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = "Ethan Greentree — IT & curiosity",
+  description = "IT by trade. Curious by default. Ethan Greentree's personal home for technology, investigations, and things learned along the way.",
+} = Astro.props;
 ---
 
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="generator" content={Astro.generator} />
-		<title>EG - Site</title>
-	</head>
-	<body class="grid grid-cols-12 grid-rows-12 h-full bg-neutral-200">
-    <Navbar />
-		<slot />
-	</body>
-  <ClientRouter/>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="description" content={description} />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body>
+    <a class="skip" href="#content">Skip to content</a>
+    <div class="page">
+      <Navbar />
+      <main id="content" tabindex="-1">
+        <slot />
+      </main>
+      <footer class="site-footer">
+        <p>Ethan Greentree<span>Always something to figure out.</span></p>
+        <a href="/contact/">Get in touch ↗</a>
+      </footer>
+    </div>
+  </body>
 </html>
-
-<style>
-	html,
-	body {
-		margin: 0;
-		box-sizing: border-box;
-		width: 100%;
-		height: 100%;
-	}
-</style>

@@ -1,12 +1,20 @@
 ---
-
 import PrimaryLayout from "../layouts/PrimaryLayout.astro";
-
-
+import AboutCopy from "../components/AboutCopy.astro";
 ---
 
-<PrimaryLayout>
-
-  Hey there
-
+<PrimaryLayout
+  title="About — Ethan Greentree"
+  description="A little about Ethan Greentree: IT by trade, curious by default, and happiest when something finally clicks."
+>
+  <section class="inner-page" aria-labelledby="about-title">
+    <div class="page-heading">
+      <p class="eyebrow">IT by trade / Curious by default</p>
+      <h1 id="about-title">A little<br />about me.</h1>
+    </div>
+    <div class="prose page-copy">
+      <AboutCopy />
+      <a class="primary" href="/contact/">Get in touch ↗</a>
+    </div>
+  </section>
 </PrimaryLayout>

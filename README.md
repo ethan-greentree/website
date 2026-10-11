@@ -9,13 +9,13 @@ Run `pnpm install`, then use these commands from the repository root:
 | Command | Purpose |
 | --- | --- |
 | `pnpm run dev` | Start the development server at `http://localhost:4321` |
-| `pnpm design` | Start the server and open the homepage design study |
+| `pnpm design` | Start the server and open the homepage |
 | `pnpm build` | Build the production site into `dist/` |
 | `pnpm preview` | Preview the production build locally |
 
 Both development commands replace an existing Astro server for this project.
 
-The homepage design studies are development-only. Compare `/?variant=A` (broad foundation) and `/?variant=B` (side structure). Production builds use the existing homepage rather than the prototype.
+The selected layout A is the real homepage in both development and production. Home, Writing (`/blog/`), About, and Contact share the same design. Writing has a coming-soon state until real posts are ready; the résumé remains a future task. Earlier composition studies are available in Git history.
 
 ## Documentation
 

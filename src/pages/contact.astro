@@ -1,14 +1,48 @@
 ---
-
 import PrimaryLayout from "../layouts/PrimaryLayout.astro";
-
-
 ---
 
-
-
-<PrimaryLayout>
-
-
-
+<PrimaryLayout
+  title="Contact — Ethan Greentree"
+  description="Get in touch with Ethan Greentree by email, connect on LinkedIn, or explore his GitHub."
+>
+  <section class="inner-page" aria-labelledby="contact-title">
+    <div class="page-heading">
+      <p class="eyebrow">Say hello</p>
+      <h1 id="contact-title">Get in touch.</h1>
+    </div>
+    <div class="page-copy prose">
+      <p class="lead">Always something to figure out.</p>
+      <p>
+        Have a question, something to share, or an idea to talk through? Send me
+        an email or connect on LinkedIn.
+      </p>
+    </div>
+    <dl class="contact-links">
+      <div>
+        <dt class="eyebrow">Email</dt>
+        <dd>
+          <a href="mailto:ethangreentree@gmail.com"
+            >ethangreentree@gmail.com <span aria-hidden="true">↗</span></a
+          >
+        </dd>
+      </div>
+      <div>
+        <dt class="eyebrow">GitHub</dt>
+        <dd>
+          <a href="https://github.com/ethan-greentree"
+            >ethan-greentree on GitHub <span aria-hidden="true">↗</span></a
+          >
+        </dd>
+      </div>
+      <div>
+        <dt class="eyebrow">LinkedIn</dt>
+        <dd>
+          <a href="https://www.linkedin.com/in/ethan-greentree"
+            >Ethan Greentree on LinkedIn <span aria-hidden="true">↗</span></a
+          >
+        </dd>
+      </div>
+    </dl>
+  </section>
 </PrimaryLayout>

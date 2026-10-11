@@ -1,69 +1,33 @@
 ---
-import PrimaryLayout from '../layouts/PrimaryLayout.astro';
-import HomepagePrototype from '../components/HomepagePrototype.astro';
-
+import PrimaryLayout from "../layouts/PrimaryLayout.astro";
+import AboutCopy from "../components/AboutCopy.astro";
+import WritingEmpty from "../components/WritingEmpty.astro";
 ---
 
-<style>
-
-
-
-</style>
-
-{import.meta.env.DEV ? <HomepagePrototype /> : <PrimaryLayout>
-
-    <h1 class="col-span-full grid items-center justify-center text-5xl font-glyphic">Ethan Greentree, Professional Tinkerer</h1>
-
-
-    <main class="row-span-11 col-span-full items-center justify-center text-5xl font-glyphic">
-
-      <h2>I wanted to know how it works. So I built one</h2>
-
-      <p>Hey, I'm Ethan, a programmer, professional tinkerer, and facilitator who enjoys figuring out how things work and turning curiosity into action.</p>
-
-
-    </main>
-
-    <section>
-
-      <h2>I have a lot of questions</h2>
-
-      <p>How does this work? Why does it work that way? Can we make it easier? What happens if...?</p>
-
+<PrimaryLayout>
+  <div class="composition">
+    <section class="home-intro" aria-labelledby="name">
+      <p class="eyebrow">A personal site / Technology & curiosity</p>
+      <h1 id="name">Ethan<br />Greentree</h1>
+      <div class="intro-copy">
+        <p class="lead">IT by trade.<br />Curious by default.</p>
+        <p>
+          I enjoy figuring out how things work and sharing what I learn along
+          the way.
+        </p>
+        <a class="primary" href="#writing">Explore the writing ↓</a>
+      </div>
     </section>
-
-    <section>
-
-      <h2>How I work</h2>
-
-      <p>I like technology as a means rather than an end. Sometimes the answer might be Laravel, other times, it might be PowerShell. 
-        Sometimes it's a spreadsheet or diagram that outlines the process and steps to explore the problem differently.</p>
-
+    <section class="writing" id="writing" aria-labelledby="writing-title">
+      <div class="section-head">
+        <h2 id="writing-title">Writing</h2>
+        <span class="eyebrow">Ideas, investigations & notes</span>
+      </div>
+      <WritingEmpty heading="h3" />
     </section>
-
-    <section>
-
-      <h2>A little about me</h2>
-
-      <p>I'm curious by default. I've spent the last 5 years working in the depths of programming, 
-        IT administration, server creation, virtual machine managing, data restoring and otherwise solving problems.</p>
-
-      <p>
-        I like understanding complicated things, breaking them into pieces and assembling them into a solution for a project. Personally a firm beliver in teaching as practice, if I find something interesting, I want others to know about it to!
-      </p>
-
-    </section>
-
-    <section>
-
-      <!-- Misc -->
-      Happiest when something finally clicks
-
-      Comfortable figuring things out
-
-
-    </section>
-
-    
-
-</PrimaryLayout>}
+  </div>
+  <section class="about-section" id="about" aria-labelledby="about-title">
+    <h2 id="about-title">A little<br />about me.</h2>
+    <div class="prose"><AboutCopy /></div>
+  </section>
+</PrimaryLayout>

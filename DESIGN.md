@@ -1,6 +1,6 @@
 # Ethan Greentree — design system
 
-Status: direction confirmed in the interview, 2026-10-11. Composition and exact fonts/colors await visual comparison. This supersedes the earlier red/dither proposal; neither prototype is approved for production.
+Status: layout A approved as the real site in the interview, 2026-10-11. Keep the current palette and system typography for this first version. This supersedes the earlier red/dither proposal and development-only composition studies.
 
 See the [30-site reference study](docs/research/neobrutalist-websites.md). These interview decisions take precedence over earlier research proposals. Superseded briefs are available in Git history.
 
@@ -14,7 +14,7 @@ Chunkiness comes from broad rectangular regions, aligned edges, strong horizonta
 
 - Sandy paper, near-black, and substantial green areas. Exact shades remain candidates.
 - Mostly square shapes with small corner rounding.
-- Heavy, characterful sans headings and comfortable body text. Compare actual heading fonts after choosing composition.
+- Heavy sans headings and comfortable body text. Keep the current system stack for now; a custom heading face can be explored later.
 - Short introduction, prominent writing section, about, contact. Projects are optional for now.
 - Spacious ruled article rows: prominent title, summary, quieter date/topic. Images optional.
 - Ordinary section headings, **never sticky**. Restrained motion.
@@ -32,7 +32,7 @@ Chunkiness comes from broad rectangular regions, aligned edges, strong horizonta
 
 These are design inferences, not copied brand specifications or claims about hiring outcomes. The interview replaces the earlier sticky-heading and nocturnal/dither directions.
 
-## Candidate tokens
+## Current tokens
 
 ```css
 :root {
@@ -57,7 +57,7 @@ Paper is the reading field, ink carries information, green occupies one substant
 
 ## Typography
 
-Heavy characterful sans headings paired with quiet body text. The composition studies use a local system stack to avoid font-download dependencies. Later compare two actual heading faces on identical content; Bricolage Grotesque is one candidate. Retain licenses for vendored fonts.
+Heavy sans headings paired with quiet body text. The site uses Arial/Helvetica with a sans-serif fallback to avoid font-download dependencies. A custom heading face is a later refinement. Retain licenses for any vendored fonts.
 
 | Role            | Candidate size    | Treatment                                 |
 | --------------- | ----------------- | ----------------------------------------- |
@@ -70,15 +70,15 @@ Heavy characterful sans headings paired with quiet body text. The composition st
 
 The name is the identity. Avoid giant generic persona slogans. Let long article titles wrap naturally.
 
-## Two composition studies
+## Selected composition
 
-Both use identical copy, specimens, typography, palette and controls. Only composition changes. Development-only on the existing homepage, switchable through `/?variant=A` and `/?variant=B`. Run `pnpm design`.
+Layout A is rendered in both development and production. Run `pnpm design` to open the real homepage. The layout switcher, query-parameter variants, and sample article titles have been removed.
 
 **A — Broad foundation:** a horizontal header, wide green introduction, then a full-width paper writing region. About and contact below.
 
-**B — Side structure:** a horizontal header, substantial green identity column beside a sandy writing region on desktop. The column is in normal flow, not sticky. Introduction then articles on mobile. About and contact follow.
+The former B side-column alternative remains in Git history.
 
-Question: which arrangement feels substantial and spacious while making articles easy to find? Choose composition before refining font and color.
+Writing, About, and Contact have dedicated routes using the same header, footer, palette, controls, and responsive rules. Navigation uses real page destinations and marks the current page.
 
 ## Component contracts
 
@@ -97,7 +97,7 @@ Question: which arrangement feels substantial and spacious while making articles
 
 Confirmed: IT by trade, five years at KES, additional intermittent tinkering, sharing broader technology learning. Do not infer duties, seniority, certifications, outcomes or completed projects.
 
-Writing is the focus. Hide empty project areas. Prototype article titles are explicitly labeled specimens, not published work, and have no dead article links.
+Writing is the focus. Hide empty project areas. Home and Writing show an honest “Writing coming soon” state until genuine posts exist. Keep the approved introduction and KES biography. Contact offers email, GitHub, and LinkedIn; a résumé link is deferred until Ethan refines the content (GitHub issue #1).
 
 Images are optional and explain their subject: photographs, diagrams, screenshots, actual artifacts. Keep technical evidence readable. No dither in the first studies. Never use generated imagery as evidence of work. Record source, creator, exact license, attribution and modifications for published assets; research screenshots are not reusable portfolio assets.
 
@@ -113,4 +113,4 @@ Use native landmarks, one h1, logical headings, skip link, visible keyboard focu
 
 ## Next decisions
 
-Choose composition from the two proofs, compare heading faces, refine sand/green, then test a real article. Change one major axis per iteration. Explain decisions in terms of spaciousness, identity and access to writing.
+Add genuine writing and its publishing workflow, refine the résumé, then revisit typography and color if needed. Article layouts and Markdown publishing remain future work. Change one major axis per iteration. Explain decisions in terms of spaciousness, identity and access to writing.

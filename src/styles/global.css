@@ -1,11 +1,354 @@
-@import url("https://fonts.googleapis.com/css2?family=Faculty+Glyphic&display=swap");
 @import "tailwindcss";
 
-@theme {
-  --font-glyphic: Faculty Glyphic, sans-serif;
-  --color-light: #ece8e5;
-  --color-secondary: #d5c9bb;
-  --color-accent: #97a58e;
-  --color-primary: #3d4e46;
-  --color-onyx: #242424;
+:root {
+  --paper: #f1eadc;
+  --ink: #20291e;
+  --muted: #545c4e;
+  --green: #c3d39a;
+  --green-deep: #344b31;
+  --rule: 3px solid var(--ink);
+  --radius: 3px;
+}
+
+* {
+  box-sizing: border-box;
+}
+html {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: Arial, Helvetica, sans-serif;
+}
+body {
+  margin: 0;
+}
+a {
+  color: inherit;
+  text-underline-offset: 0.2em;
+}
+a:focus-visible,
+button:focus-visible {
+  outline: 3px solid var(--green-deep);
+  outline-offset: 5px;
+}
+.page {
+  max-width: 1440px;
+  margin: auto;
+  padding: 0 clamp(20px, 4vw, 64px);
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+}
+main {
+  flex: 1;
+  min-width: 0;
+}
+.site-header {
+  min-height: 112px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  border-bottom: var(--rule);
+}
+.wordmark {
+  font-size: 23px;
+  font-weight: 900;
+  text-decoration: none;
+  letter-spacing: -0.7px;
+}
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 32px;
+  font-size: 15px;
+  font-weight: 700;
+}
+nav a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  text-decoration: none;
+}
+nav a:hover,
+nav a[aria-current="page"] {
+  text-decoration: underline;
+}
+.composition {
+  padding-top: 40px;
+}
+.home-intro {
+  background: var(--green);
+  border: var(--rule);
+  border-radius: var(--radius);
+  padding: clamp(32px, 4.5vw, 64px);
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  gap: 28px 64px;
+}
+.eyebrow {
+  font:
+    12px/1.5 ui-monospace,
+    monospace;
+  letter-spacing: 0.025em;
+}
+.home-intro > .eyebrow {
+  grid-column: 1/-1;
+  margin: 0;
+}
+h1 {
+  font-size: clamp(64px, 7.5vw, 108px);
+  line-height: 0.98;
+  letter-spacing: -0.065em;
+  font-weight: 900;
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+.intro-copy {
+  align-self: end;
+  max-width: 40ch;
+}
+p {
+  font-size: 18px;
+  line-height: 1.65;
+  margin: 0 0 20px;
+}
+.lead {
+  font-size: clamp(23px, 2.2vw, 30px);
+  line-height: 1.3;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+}
+.primary {
+  display: inline-block;
+  background: var(--paper);
+  border: var(--rule);
+  border-radius: var(--radius);
+  box-shadow: 4px 4px 0 var(--ink);
+  padding: 14px 18px;
+  font-size: 15px;
+  font-weight: 700;
+  text-decoration: none;
+  margin-top: 8px;
+  transition:
+    transform 120ms,
+    box-shadow 120ms;
+}
+.primary:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 5px 5px 0 var(--ink);
+}
+.primary:active {
+  transform: translate(4px, 4px);
+  box-shadow: none;
+}
+.writing {
+  margin-top: 80px;
+  scroll-margin-top: 24px;
+}
+.section-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 24px;
+  padding-bottom: 24px;
+  border-bottom: 5px solid var(--ink);
+}
+h2 {
+  margin: 0;
+  font-size: clamp(36px, 4vw, 56px);
+  line-height: 1.05;
+  letter-spacing: -0.045em;
+  font-weight: 900;
+}
+h3,
+.empty-title {
+  max-width: 30ch;
+  font-size: clamp(25px, 2.6vw, 36px);
+  line-height: 1.15;
+  letter-spacing: -0.035em;
+  margin: 0 0 16px;
+  font-weight: 700;
+}
+.writing-empty {
+  padding: 36px 0;
+  border-bottom: 2px solid var(--ink);
+}
+.writing-empty p {
+  max-width: 58ch;
+  margin: 0;
+  color: var(--muted);
+}
+.about-section {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr);
+  gap: 64px;
+  padding: 80px 0;
+  scroll-margin-top: 32px;
+}
+.prose {
+  max-width: 65ch;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.prose p:last-child {
+  margin-bottom: 0;
+}
+.inner-page {
+  padding: 40px 0 80px;
+}
+.page-heading {
+  background: var(--green);
+  border: var(--rule);
+  border-radius: var(--radius);
+  padding: clamp(32px, 4.5vw, 64px);
+}
+.page-heading h1 {
+  font-size: clamp(48px, 6vw, 88px);
+}
+.page-heading .eyebrow {
+  margin-bottom: 28px;
+}
+.page-copy {
+  margin-top: 48px;
+}
+.inner-page .writing-empty {
+  margin-top: 12px;
+}
+.contact-links {
+  margin: 40px 0 0;
+}
+.contact-links > div {
+  display: grid;
+  grid-template-columns: minmax(80px, 0.3fr) minmax(0, 1fr);
+  gap: 24px;
+  padding: 28px 0;
+  border-top: 2px solid var(--ink);
+  align-items: baseline;
+}
+.contact-links dd {
+  margin: 0;
+  font-size: clamp(18px, 2.5vw, 30px);
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+.contact-links a {
+  display: inline-block;
+  padding: 8px 0;
+}
+.contact-links a:hover {
+  text-decoration-thickness: 3px;
+}
+.site-footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 32px 0;
+  border-top: var(--rule);
+}
+.site-footer p,
+.site-footer a {
+  font-size: 14px;
+  font-weight: 700;
+}
+.site-footer p {
+  margin: 0;
+}
+.site-footer a {
+  align-self: start;
+  padding: 8px 0;
+}
+.site-footer span {
+  display: block;
+  font-weight: 400;
+  color: var(--muted);
+  margin-top: 6px;
+}
+.skip {
+  position: absolute;
+  top: -100px;
+  left: 20px;
+  background: var(--paper);
+  padding: 12px;
+  z-index: 20;
+}
+.skip:focus {
+  top: 8px;
+}
+
+@media (max-width: 700px) {
+  .site-header {
+    min-height: 120px;
+    align-items: start;
+    justify-content: center;
+    flex-direction: column;
+    gap: 12px;
+    padding: 24px 0;
+  }
+  nav {
+    gap: 12px 24px;
+  }
+  .composition {
+    padding-top: 24px;
+  }
+  .home-intro {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    padding: 32px 24px;
+  }
+  h1 {
+    font-size: clamp(42px, 11.4vw, 72px);
+  }
+  .intro-copy {
+    align-self: auto;
+  }
+  .primary {
+    padding: 14px 12px;
+    font-size: 14px;
+  }
+  .writing {
+    margin-top: 56px;
+  }
+  .section-head {
+    flex-direction: column;
+    align-items: start;
+    gap: 12px;
+  }
+  .writing-empty {
+    padding: 32px 0;
+  }
+  .about-section {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    padding: 56px 0;
+  }
+  .site-footer {
+    flex-direction: column;
+    gap: 12px;
+  }
+  .inner-page {
+    padding: 24px 0 56px;
+  }
+  .page-heading {
+    padding: 32px 24px;
+  }
+  .page-heading h1 {
+    font-size: clamp(42px, 11vw, 72px);
+  }
+  .page-copy {
+    margin-top: 32px;
+  }
+  .contact-links > div {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .primary {
+    transition: none;
+  }
+  .primary:hover,
+  .primary:active {
+    transform: none;
+  }
 }

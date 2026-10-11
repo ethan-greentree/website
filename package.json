@@ -6,7 +6,7 @@
     "node": ">=22.12.0"
   },
   "scripts": {
-    "design": "astro dev --force --open /?variant=A",
+    "design": "astro dev --force --open /",
     "dev": "astro dev --force",
     "build": "astro build",
     "preview": "astro preview",

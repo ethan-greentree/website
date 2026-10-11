@@ -1,10 +1,17 @@
 ---
+import PrimaryLayout from "../../layouts/PrimaryLayout.astro";
+import WritingEmpty from "../../components/WritingEmpty.astro";
+---
 
-import PrimaryLayout from "../../layouts/PrimaryLayout.astro";---
-
-
-<PrimaryLayout>
-
-  THis is the blog spot
-
+<PrimaryLayout
+  title="Writing — Ethan Greentree"
+  description="Ideas, investigations, and notes on technology from Ethan Greentree. Writing coming soon."
+>
+  <section class="inner-page" aria-labelledby="writing-title">
+    <div class="page-heading">
+      <p class="eyebrow">Ideas, investigations & notes</p>
+      <h1 id="writing-title">Writing.</h1>
+    </div>
+    <WritingEmpty />
+  </section>
 </PrimaryLayout>
