@@ -18,6 +18,15 @@ const {
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script is:inline>
+      try {
+        if (localStorage.getItem("theme") === "dark") {
+          document.documentElement.dataset.theme = "dark";
+        }
+      } catch {
+        // Keep the default light palette when browser storage is unavailable.
+      }
+    </script>
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <meta name="description" content={description} />
     <meta name="generator" content={Astro.generator} />

@@ -113,4 +113,18 @@ Use native landmarks, one h1, logical headings, skip link, visible keyboard focu
 
 ## Next decisions
 
+### Dark-mode exploration (issue #5)
+
+Branch `explore/dark-mode` adds an optional header toggle. Light mode remains the
+default. Dark mode uses warm charcoal (`#232720`), cream text (`#eee8da`), muted
+sage text (`#b7bcae`), and a forest-green introduction (`#364632`). The same
+layout, typography, and shared color tokens apply across all five routes.
+
+The selection persists in browser storage and is applied before the page paints.
+If storage is unavailable, toggling still works on the current page. The button
+has a visible action label and exposes the dark-mode state to assistive technology;
+without JavaScript, the site remains light and the inactive button stays hidden.
+This is a color exploration for review, superseding the light-only direction on
+this branch without changing the approved composition.
+
 Add genuine writing and its publishing workflow, refine the résumé, then revisit typography and color if needed. Article layouts and Markdown publishing remain future work. Change one major axis per iteration. Explain decisions in terms of spaciousness, identity and access to writing.

@@ -1,6 +1,7 @@
 @import "tailwindcss";
 
 :root {
+  color-scheme: light;
   --paper: #f1eadc;
   --ink: #20291e;
   --muted: #545c4e;
@@ -8,6 +9,15 @@
   --green-deep: #344b31;
   --rule: 3px solid var(--ink);
   --radius: 3px;
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --paper: #232720;
+  --ink: #eee8da;
+  --muted: #b7bcae;
+  --green: #364632;
+  --green-deep: #c3d39a;
 }
 
 * {
@@ -73,6 +83,46 @@ nav a {
 nav a:hover,
 nav a[aria-current="page"] {
   text-decoration: underline;
+}
+.header-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px 32px;
+}
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 8px 12px;
+  border: 2px solid var(--ink);
+  border-radius: var(--radius);
+  background: var(--paper);
+  color: var(--ink);
+  font:
+    700 14px Arial,
+    Helvetica,
+    sans-serif;
+  cursor: pointer;
+}
+.theme-toggle[hidden] {
+  display: none;
+}
+.theme-toggle:hover {
+  background: var(--green);
+}
+.theme-toggle svg {
+  width: 18px;
+  height: 18px;
+}
+.theme-sun,
+[data-theme="dark"] .theme-moon {
+  display: none;
+}
+[data-theme="dark"] .theme-sun {
+  display: block;
 }
 .composition {
   padding-top: 40px;
