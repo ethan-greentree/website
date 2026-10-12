@@ -1,0 +1,11 @@
+.git
+.agents
+.codex
+.aws
+.research
+node_modules
+dist
+.astro
+.env
+.env.*
+*.log
