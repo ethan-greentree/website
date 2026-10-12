@@ -115,7 +115,7 @@ Set these at the **repository** level for the build workflow:
 | Kind | Name | Value |
 | --- | --- | --- |
 | Variable | `DOCKERHUB_IMAGE` | Docker Hub namespace/repository, such as `yourname/website` |
-| Variable | `DOCKERHUB_USERNAME` | Docker Hub account allowed to push to that repository |
+| Secret | `DOCKERHUB_USERNAME` | Docker Hub account allowed to push to that repository |
 | Secret | `DOCKERHUB_TOKEN` | Docker Hub personal access token with Read & Write access |
 
 Use an access token rather than your account password. Do not grant Delete
