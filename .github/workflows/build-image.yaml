@@ -35,4 +35,4 @@ jobs:
           platforms: linux/amd64
           pull: true
           push: true
-          tags: docker.io/${{ vars.DOCKERHUB_IMAGE }}:latest
+          tags: docker.io/${{ secrets.DOCKERHUB_IMAGE }}:latest

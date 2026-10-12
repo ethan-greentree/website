@@ -33,7 +33,7 @@ token, then builds and pushes the image. It refreshes the base images.
 After publication succeeds, the deployment workflow updates the VPS.
 
 Create a **public** Docker Hub repository before the first publish. Configure the
-repository variables and secret listed below. Confirm an unauthenticated pull
+repository secrets listed below. Confirm an unauthenticated pull
 works before deploying; the VPS will not need registry credentials. GitHub
 Actions still runs the workflows; Docker Hub stores the published image.
 
@@ -79,7 +79,7 @@ deployment account and its SSH key accordingly.
 Use the existing website Compose file in `/opt/ethan-website` on the VPS.
 The version-controlled production configuration is `docker-compose.yaml`.
 Install it there as `compose.yaml`. It pulls and starts `atomeus/portfolio-website:latest`;
-set the GitHub repository variable `DOCKERHUB_IMAGE` to `atomeus/portfolio-website` so the
+set the GitHub repository secret `DOCKERHUB_IMAGE` to `atomeus/portfolio-website` so the
 build workflow publishes the same image. No `.env` file is needed.
 
 The production service can use this configuration:
@@ -114,7 +114,7 @@ Set these at the **repository** level for the build workflow:
 
 | Kind | Name | Value |
 | --- | --- | --- |
-| Variable | `DOCKERHUB_IMAGE` | Docker Hub namespace/repository, such as `yourname/website` |
+| Secret | `DOCKERHUB_IMAGE` | Docker Hub namespace/repository, such as `atomeus/portfolio-website` |
 | Secret | `DOCKERHUB_USERNAME` | Docker Hub account allowed to push to that repository |
 | Secret | `DOCKERHUB_TOKEN` | Docker Hub personal access token with Read & Write access |
 
@@ -122,15 +122,17 @@ Use an access token rather than your account password. Do not grant Delete
 access for publishing. The token is used by the registry login action and is
 not passed into the Docker build or installed on the VPS.
 
-Create a `production` environment restricted to `main`, with these settings:
+Set these deployment secrets at the repository level too. The deploy job uses
+the `production` environment, which can be restricted to `main`; repository
+secrets remain available to that job.
 
 Leave required reviewers disabled if deployments should run without approval.
 
 | Kind | Name | Value |
 | --- | --- | --- |
-| Variable | `DEPLOY_HOST` | VPS hostname or IPv4 address |
-| Variable | `DEPLOY_USER` | Dedicated SSH account |
-| Variable | `DEPLOY_PORT` | SSH port, default `22` |
+| Secret | `DEPLOY_HOST` | VPS hostname or IPv4 address |
+| Secret | `DEPLOY_USER` | Dedicated SSH account |
+| Secret | `DEPLOY_PORT` | Optional SSH port, defaults to `22` when absent |
 | Secret | `DEPLOY_SSH_KEY` | Private key for that account |
 | Secret | `DEPLOY_KNOWN_HOSTS` | Verified host-key entries for the VPS |
 
