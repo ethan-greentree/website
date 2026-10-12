@@ -1,0 +1,35 @@
+---
+import type { MarkdownInstance } from "astro";
+import { articleDate, type ArticleFrontmatter } from "../lib/articles";
+import WritingEmpty from "./WritingEmpty.astro";
+
+const articles = Object.values(
+  import.meta.glob<MarkdownInstance<ArticleFrontmatter>>("../pages/blog/*.md", {
+    eager: true,
+  }),
+).sort((a, b) => b.frontmatter.date.localeCompare(a.frontmatter.date));
+
+interface Props {
+  heading?: "h2" | "h3";
+}
+const { heading: Heading = "h2" } = Astro.props;
+---
+
+{
+  articles.length ? (
+    <ul class="article-list">
+      {articles.map(({ frontmatter, url }) => (
+        <li>
+          <Heading>
+            <a href={url}>{frontmatter.title}</a>
+          </Heading>
+          <time datetime={frontmatter.date}>
+            {articleDate(frontmatter.date)}
+          </time>
+        </li>
+      ))}
+    </ul>
+  ) : (
+    <WritingEmpty heading={Heading} />
+  )
+}

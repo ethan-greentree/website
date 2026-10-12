@@ -1,7 +1,7 @@
 ---
 import PrimaryLayout from "../layouts/PrimaryLayout.astro";
 import AboutCopy from "../components/AboutCopy.astro";
-import WritingEmpty from "../components/WritingEmpty.astro";
+import ArticleList from "../components/ArticleList.astro";
 ---
 
 <PrimaryLayout>
@@ -15,15 +15,15 @@ import WritingEmpty from "../components/WritingEmpty.astro";
           I enjoy figuring out how things work and sharing what I learn along
           the way.
         </p>
-        <a class="primary" href="#writing">Explore the writing ↓</a>
+        <a class="primary" href="#writing">Explore the articles ↓</a>
       </div>
     </section>
     <section class="writing" id="writing" aria-labelledby="writing-title">
       <div class="section-head">
-        <h2 id="writing-title">Writing</h2>
+        <h2 id="writing-title">Articles</h2>
         <span class="eyebrow">Ideas, investigations & notes</span>
       </div>
-      <WritingEmpty heading="h3" />
+      <ArticleList heading="h3" />
     </section>
   </div>
   <section class="about-section" id="about" aria-labelledby="about-title">

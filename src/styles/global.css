@@ -262,6 +262,107 @@ h3,
 .page-copy {
   margin-top: 48px;
 }
+.article-date {
+  margin: 24px 0 0;
+  font:
+    14px/1.5 ui-monospace,
+    monospace;
+}
+.article-list {
+  list-style: none;
+  margin: 12px 0 0;
+  padding: 0;
+}
+.article-list li {
+  padding: 32px 0;
+  border-bottom: 2px solid var(--ink);
+}
+.article-list h2,
+.article-list h3 {
+  max-width: 40ch;
+  font-size: clamp(25px, 2.6vw, 36px);
+  line-height: 1.15;
+  margin: 0 0 12px;
+  overflow-wrap: anywhere;
+}
+.article-list time {
+  color: var(--muted);
+  font:
+    14px/1.5 ui-monospace,
+    monospace;
+}
+.article-body {
+  font-size: 18px;
+  line-height: 1.65;
+}
+.article-body :is(h2, h3, h4, h5, h6) {
+  margin: 40px 0 20px;
+  line-height: 1.2;
+  letter-spacing: -0.025em;
+  font-weight: 700;
+}
+.article-body h2 {
+  font-size: clamp(28px, 3vw, 40px);
+}
+.article-body h3 {
+  font-size: clamp(23px, 2.5vw, 30px);
+}
+.article-body :is(ul, ol) {
+  padding-left: 1.5em;
+  margin: 0 0 24px;
+}
+.article-body ul {
+  list-style: disc;
+}
+.article-body ol {
+  list-style: decimal;
+}
+.article-body li + li {
+  margin-top: 8px;
+}
+.article-body blockquote {
+  border-left: 4px solid var(--green-deep);
+  margin: 24px 0;
+  padding: 8px 0 8px 24px;
+}
+.article-body pre {
+  max-width: 100%;
+  overflow-x: auto;
+  padding: 20px;
+  margin: 24px 0;
+  border: 2px solid var(--ink);
+  border-radius: var(--radius);
+  font-size: 15px;
+  overflow-wrap: normal;
+}
+.article-body :not(pre) > code {
+  background: var(--green);
+  padding: 2px 4px;
+  font-size: 0.9em;
+}
+.article-body table {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  border-collapse: collapse;
+  margin: 24px 0;
+}
+.article-body :is(th, td) {
+  border: 1px solid var(--ink);
+  padding: 12px;
+  text-align: left;
+}
+.article-body img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 24px 0;
+}
+.article-body hr {
+  border: 0;
+  border-top: 2px solid var(--ink);
+  margin: 32px 0;
+}
 .inner-page .writing-empty {
   margin-top: 12px;
 }

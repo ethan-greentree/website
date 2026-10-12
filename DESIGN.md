@@ -103,7 +103,7 @@ Images are optional and explain their subject: photographs, diagrams, screenshot
 
 ## Reading and maintenance
 
-Article pages use back link, title, real metadata, optional summary and readable body. Support headings, lists, captions, blockquotes, tables and code. Wide code/tables scroll locally. Authors provide Markdown rather than CSS or custom layouts; publishing a new post should not require a design pass. Publishing features remain proposals until implemented.
+Article pages use a back link and the shared green banner for the title and publication date, followed by a readable Markdown body. Headings, lists, images, blockquotes, tables and code are supported; wide code and tables scroll locally. The Articles index and homepage list titles and dates newest first. The section is called Articles and retains `/blog/` URLs. The minimal title/date presentation supersedes the earlier summary/topic row proposal for this version. See [the authoring guide](docs/articles.md) and [blank Obsidian template](docs/templates/article.md).
 
 ## Interaction and verification
 
@@ -127,4 +127,4 @@ without JavaScript, the site remains light and the inactive button stays hidden.
 This is a color exploration for review, superseding the light-only direction on
 this branch without changing the approved composition.
 
-Add genuine writing and its publishing workflow, refine the résumé, then revisit typography and color if needed. Article layouts and Markdown publishing remain future work. Change one major axis per iteration. Explain decisions in terms of spaciousness, identity and access to writing.
+Add genuine articles using the Markdown publishing workflow, refine the résumé, then revisit typography and color if needed. Obsidian wikilink support is deferred; use standard Markdown links. Change one major axis per iteration. Explain decisions in terms of spaciousness, identity and access to writing.

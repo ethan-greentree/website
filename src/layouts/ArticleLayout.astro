@@ -1,0 +1,28 @@
+---
+import type { MarkdownLayoutProps } from "astro";
+import PrimaryLayout from "./PrimaryLayout.astro";
+import { articleDate, type ArticleFrontmatter } from "../lib/articles";
+
+type Props = MarkdownLayoutProps<ArticleFrontmatter>;
+const { frontmatter } = Astro.props;
+if (typeof frontmatter.title !== "string" || !frontmatter.title.trim()) {
+  throw new Error("Articles require a non-empty title in frontmatter.");
+}
+const date = articleDate(frontmatter.date);
+---
+
+<PrimaryLayout
+  title={`${frontmatter.title} — Ethan Greentree`}
+  description={frontmatter.title}
+>
+  <article class="inner-page" aria-labelledby="article-title">
+    <header class="page-heading">
+      <p class="eyebrow"><a href="/blog/">← All articles</a></p>
+      <h1 id="article-title">{frontmatter.title}</h1>
+      <p class="article-date">
+        <time datetime={frontmatter.date}>{date}</time>
+      </p>
+    </header>
+    <div class="article-body prose page-copy"><slot /></div>
+  </article>
+</PrimaryLayout>
