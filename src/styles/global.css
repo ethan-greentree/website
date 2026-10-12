@@ -302,6 +302,7 @@ h3,
     monospace;
 }
 .article-body {
+  max-width: none;
   font-size: 18px;
   line-height: 1.65;
 }
