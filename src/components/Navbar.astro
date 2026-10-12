@@ -1,10 +1,11 @@
 ---
+import ThemeToggle from "./ThemeToggle.astro";
 const pathname = Astro.url.pathname.replace(/\/$/, "") || "/";
 const links = [
   { href: "/blog/", label: "Articles" },
   { href: "/projects/", label: "Projects" },
   { href: "/about/", label: "About" },
-  { href: "/contact/", label: "Contact ↗" },
+  { href: "/contact/", label: "Contact" },
 ];
 ---
 
@@ -29,62 +30,6 @@ const links = [
         ))
       }
     </nav>
-    <button
-      class="theme-toggle"
-      type="button"
-      aria-label="Dark mode"
-      aria-pressed="false"
-      hidden
-    >
-      <svg
-        class="theme-moon"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="2"
-        aria-hidden="true"
-        ><path d="M20.5 13A8.5 8.5 0 0 1 11 3.5 8.5 8.5 0 1 0 20.5 13Z"
-        ></path></svg
-      >
-      <svg
-        class="theme-sun"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="2"
-        aria-hidden="true"
-        ><circle cx="12" cy="12" r="4"></circle><path
-          d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"
-        ></path></svg
-      >
-      <span data-theme-label>Dark mode</span>
-    </button>
+    <ThemeToggle />
   </div>
 </header>
-
-<script>
-  const toggle = document.querySelector<HTMLButtonElement>(".theme-toggle");
-  const label = toggle?.querySelector<HTMLElement>("[data-theme-label]");
-
-  function syncToggle() {
-    const dark = document.documentElement.dataset.theme === "dark";
-    toggle?.setAttribute("aria-pressed", String(dark));
-    if (label) label.textContent = dark ? "Light mode" : "Dark mode";
-  }
-
-  if (toggle) {
-    syncToggle();
-    toggle.hidden = false;
-    toggle.addEventListener("click", () => {
-      const theme =
-        document.documentElement.dataset.theme === "dark" ? "light" : "dark";
-      document.documentElement.dataset.theme = theme;
-      try {
-        localStorage.setItem("theme", theme);
-      } catch {
-        // The toggle still works when browser storage is unavailable.
-      }
-      syncToggle();
-    });
-  }
-</script>

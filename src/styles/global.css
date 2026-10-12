@@ -419,7 +419,10 @@ h3,
   align-self: start;
   padding: 8px 0;
 }
-.site-footer span {
+.footer-theme-toggle {
+  display: none;
+}
+.site-footer p span {
   display: block;
   font-weight: 400;
   color: var(--muted);
@@ -484,9 +487,21 @@ h3,
     gap: 32px;
     padding: 56px 0;
   }
+  .header-actions > .theme-toggle {
+    display: none;
+  }
   .site-footer {
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
     gap: 12px;
+  }
+  .footer-theme-toggle {
+    display: block;
+  }
+  .site-footer > a {
+    grid-column: 1 / -1;
+    justify-self: start;
   }
   .inner-page {
     padding: 24px 0 56px;

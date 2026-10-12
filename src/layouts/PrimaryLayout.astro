@@ -1,6 +1,7 @@
 ---
 import "../styles/global.css";
 import Navbar from "../components/Navbar.astro";
+import ThemeToggle from "../components/ThemeToggle.astro";
 
 interface Props {
   title?: string;
@@ -41,7 +42,8 @@ const {
       </main>
       <footer class="site-footer">
         <p>Ethan Greentree<span>Always something to figure out.</span></p>
-        <a href="/contact/">Get in touch ↗</a>
+        <div class="footer-theme-toggle"><ThemeToggle /></div>
+        <a href="/contact/">Get in touch</a>
       </footer>
     </div>
   </body>
