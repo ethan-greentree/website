@@ -5,7 +5,7 @@ on:
     branches: [main]
 
 # Cancel older builds when main changes so they do not overwrite latest later.
-# Publishing never starts a deployment.
+# A successful build triggers the deployment workflow.
 concurrency:
   group: website-image-${{ github.ref }}
   cancel-in-progress: true

@@ -1,0 +1,10 @@
+services:
+  website:
+    container_name: website
+    image: atomeus/portfolio-website:latest
+    restart: unless-stopped
+
+networks:
+  default:
+    external: true
+    name: nginxproxyman

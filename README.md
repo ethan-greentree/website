@@ -19,6 +19,7 @@ The selected layout A is the real homepage in both development and production. H
 
 ## Documentation
 
+- [Static Docker setup and deployment instructions](docs/deployment.md)
 - [Design direction and component rules](DESIGN.md)
 - [Reference study and visual evidence](docs/research/neobrutalist-websites.md)
 - [Publishing and deployment research](docs/site-research.md)
