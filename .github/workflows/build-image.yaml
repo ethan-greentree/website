@@ -1,0 +1,38 @@
+name: Build and publish website image
+
+on:
+  push:
+    branches: [main]
+
+# Cancel older builds when main changes so they do not overwrite latest later.
+# Publishing never starts a deployment.
+concurrency:
+  group: website-image-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Check out the source
+        uses: actions/checkout@v7
+
+      - name: Sign in to Docker Hub
+        uses: docker/login-action@v4
+        with:
+          registry: docker.io
+          username: ${{ vars.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Build and publish the image
+        uses: docker/build-push-action@v7
+        with:
+          context: .
+          platforms: linux/amd64
+          pull: true
+          push: true
+          tags: docker.io/${{ vars.DOCKERHUB_IMAGE }}:latest
