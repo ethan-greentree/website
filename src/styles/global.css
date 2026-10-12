@@ -36,6 +36,16 @@ a {
   color: inherit;
   text-underline-offset: 0.2em;
 }
+main a:not(.primary),
+.site-footer a {
+  color: var(--green-deep);
+  text-decoration-line: underline;
+  text-decoration-thickness: 1.5px;
+}
+main a:not(.primary):hover,
+.site-footer a:hover {
+  text-decoration-thickness: 3px;
+}
 a:focus-visible,
 button:focus-visible {
   outline: 3px solid var(--green-deep);
