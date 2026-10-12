@@ -1,0 +1,33 @@
+---
+import PrimaryLayout from "../../layouts/PrimaryLayout.astro";
+---
+
+<PrimaryLayout
+  title="Projects — Ethan Greentree"
+  description="Projects by Ethan Greentree, including Yahtz, playable in your browser."
+>
+  <section class="inner-page" aria-labelledby="projects-title">
+    <div class="page-heading">
+      <p class="eyebrow">Things I make</p>
+      <h1 id="projects-title">Projects.</h1>
+    </div>
+    <article class="game-feature" aria-labelledby="yahtz-title">
+      <h2 id="yahtz-title">Yahtz</h2>
+      <p>Play Yahtz right here in your browser.</p>
+      <a class="primary" href="/games/yahtz/index.html">Play Yahtz ↗</a>
+    </article>
+  </section>
+</PrimaryLayout>
+
+<style>
+  .game-feature {
+    margin-top: 48px;
+    padding-bottom: 40px;
+    border-bottom: var(--rule);
+  }
+
+  .game-feature p {
+    margin-top: 24px;
+    color: var(--muted);
+  }
+</style>

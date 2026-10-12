@@ -17,6 +17,14 @@ Both development commands replace an existing Astro server for this project.
 
 The selected layout A is the real homepage in both development and production. Home, Writing (`/blog/`), About, and Contact share the same design. Writing has a coming-soon state until real posts are ready; the résumé remains a future task. Earlier composition studies are available in Git history.
 
+## Projects
+
+The Projects page lives at `/projects/`. Yahtz is served at `/games/yahtz/index.html` from
+`public/games/yahtz/`. To update the game, replace its exported `index.html`,
+`usagi.js`, `usagi.wasm`, and `game.usagi` together. Keep the launcher title
+and viewport metadata when replacing `index.html`. Game files are copied into
+the production build and shipped in the existing Docker image.
+
 ## Documentation
 
 - [Static Docker setup and deployment instructions](docs/deployment.md)
