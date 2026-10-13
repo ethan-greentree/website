@@ -33,20 +33,20 @@ date: "2026-10-12"
 The original article below is preserved for comparison. This outline is an HTML comment so it does not appear on the published page.
 -->
 
-When I began hosting this site a few years ago, I found that updating it stalled my passion for updating the site. As embarassing as it is, automating it helped me with my procrastination around it!
+When I began hosting this site a few years ago, I found that updating it stalled my passion for updating the site. As embarrassing as it is, automating it helped me with my procrastination around it!
 
 ## Building ethangreentree.com
 
-First, we need to cover how [this website](https://github.com/ethan-greentree/website) was made. The first challenge was choosing a small tech stack for [ethangreentree.com](https://ethangreentree.com). I wanted something small and customizable, Astro fit that bill! I wanted to increase my exposure to docker containers and docker management so I went with Docker for the packaging method.
+First, we need to cover how [this website](https://github.com/ethan-greentree/website) was made. The first challenge was choosing a small tech stack for [ethangreentree.com](https://ethangreentree.com). I wanted something small and customizable, and Astro fit that bill! I wanted to increase my exposure to Docker containers and Docker management, so I went with Docker for the packaging method.
 
 ## Astro & Docker
 
-Because Astro can bundle into simple HTML pages, it was an easy choice to pair with NGINX to run the site. I chose Astro becuase it's simple and has great documentation around the site. Additionally, you can add components from frameworks like React and Vue, allowing you to experiment within the site more easily.
+Because Astro can bundle into simple HTML pages, it was an easy choice to pair with NGINX to run the site. I chose Astro because it's simple and has great documentation around the site. Additionally, you can add components from frameworks like React and Vue, allowing you to experiment within the site more easily.
 
-To automate the building of the site, an action is triggered when a push happens to main, automating that step for me.
+To automate the building of the site, an action is triggered when a push happens to `main`, automating that step for me.
 
 ## The Deployment
 
-After the image is built, another action takes over! It signs into my host machine and deploys that to the world! I'd like to explore this in the future as right now there is a small bit of downtime during deployments (restarting the container).
+After the image is built, another action takes over! It signs into my host machine and deploys that to the world! I'd like to explore this in the future, as right now there is a small bit of downtime during deployments (restarting the container).
 
-It's times like these that coding can feel like magic. I did a little fist pump when it worked the first (and second) time and it really fuels my drive for creating on the web. Here's to more projects!
+It's times like these that coding can feel like magic. I did a little fist pump when it worked the first (and second) time, and it really fuels my drive for creating on the web. Here's to more projects!
