@@ -25,3 +25,8 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# local software factory state and isolated checkouts
+/factory/jobs/*
+!/factory/jobs/.gitkeep
+/factory/worktrees/

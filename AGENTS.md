@@ -1,5 +1,11 @@
 ## Agent skills
 
+### Software factory
+
+For factory requests (start, next, resume, approve, or rework), read
+docs/agents/factory/README.md and follow docs/agents/factory/workflow.md.
+Codex entry point: .agents/skills/factory/SKILL.md (invoke with `$factory`).
+
 ### Issue tracker
 
 Track work in GitHub Issues for ethan-greentree/website.

@@ -21,6 +21,11 @@ My wife and I enjoy games, particularly board games. So when I'm not on a comput
 
 ## Running this website
 
+Development can follow the [agent-neutral software factory](docs/agents/factory/README.md):
+specification, implementation, four review passes, and an approval decision.
+In Codex, use `$factory start issue #123` or `$factory next` to invoke the
+repository skill. See the factory docs for resume, approval, and rework commands.
+
 Requires Node.js 22.12 or newer and pnpm. Run `pnpm install`, then:
 
 | Command        | Purpose                                                 |
