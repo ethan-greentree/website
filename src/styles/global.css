@@ -480,12 +480,15 @@ h3,
 .contact-links > div:hover a {
   text-decoration-thickness: 3px;
 }
+/* Full-width green stripe, matching the homepage opening ribbon. */
 .site-footer {
   display: flex;
+  align-items: center;
   justify-content: space-between;
   gap: 24px;
-  padding: 32px 0;
-  border-top: var(--rule);
+  /* 3px less on top offsets the name's line spacing so the text sits evenly. */
+  padding: 37px 0 40px;
+  border-image: conic-gradient(var(--green) 0 0) fill 0 / 0 / 0 100vmax;
 }
 .site-footer p,
 .site-footer a {
@@ -496,14 +499,12 @@ h3,
   margin: 0;
 }
 .site-footer a {
-  align-self: start;
   padding: 8px 0;
 }
 .footer-links {
   display: flex;
   flex-wrap: wrap;
   gap: 4px 24px;
-  align-self: start;
 }
 .footer-theme-toggle {
   display: none;
@@ -511,7 +512,8 @@ h3,
 .site-footer p span {
   display: block;
   font-weight: 400;
-  color: var(--muted);
+  /* --muted is below 4.5:1 on light green; ink keeps the tagline readable. */
+  color: var(--ink);
   margin-top: 6px;
 }
 .skip {
@@ -584,6 +586,8 @@ h3,
     grid-template-columns: minmax(0, 1fr) auto;
     align-items: center;
     gap: 12px;
+    /* The links row ends with 8px of tap padding; offset it so the stripe looks even. */
+    padding-bottom: 29px;
   }
   .footer-theme-toggle {
     display: block;

@@ -26,7 +26,7 @@ const opensGame = data.link?.href.startsWith("/games/");
   <article class="inner-page" aria-labelledby="project-title">
     <header class="page-heading">
       <div class="project-heading-top">
-        <p class="eyebrow"><a href="/projects/">← All projects</a></p>
+        <p class="eyebrow"><a href="/projects/">All projects</a></p>
         <ProjectStatus status={data.status} />
       </div>
       <h1 id="project-title">{data.title}</h1>
@@ -39,6 +39,7 @@ const opensGame = data.link?.href.startsWith("/games/");
             rel={opensGame ? "noopener noreferrer" : undefined}
           >
             {data.link.label}
+            {opensGame && <span class="sr-only"> (opens in a new tab)</span>}
           </a>
         )
       }

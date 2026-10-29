@@ -18,6 +18,8 @@ Chunkiness comes from broad rectangular regions, aligned edges, strong horizonta
 - Homepage story order: who I am (name), what I make (one featured project), where to go next (latest Articles, short about, contact). See [Homepage composition](#homepage-composition).
 - Spacious article rows: prominent title, summary, quieter date/topic. Images optional. Rows are separated by space, not rules, on the Articles index and the homepage.
 - Ordinary section headings, **never sticky**. Restrained motion; none on the homepage.
+- Link and button text never uses arrow glyphs (←, →, ↗). Invite the click with words instead; links that open a new tab say so in visually hidden text.
+- The site footer is a full-width green stripe, matching the homepage opening ribbon.
 - Introduction works without decorative imagery. **Little or no dither; none in the first studies.**
 
 ## Research translated into rules
@@ -89,22 +91,22 @@ The homepage is a scrolling story of tall, spacious sections, one idea each, in 
 4. **Latest writing:** the three newest Articles with title, date and summary, separated by space rather than rules, then a link to all Articles.
 5. **Ending (where to go next):** a short about drawn from the About copy and a primary "Say hello" link to Contact (the About link was removed in rework 5; About stays in the navigation).
 
-Sections are separated by space (96px desktop, 64px phone), not rules. The only strong shapes are the header and footer rules, the featured band and its screenshot, the status label and the primary buttons. There is no motion or scroll effect beyond the shared button press. Homepage links invite the click in plain first-person words ("See how Yahtz came together", "Read all my articles", "Get to know me", "Say hello") and do not use arrows.
+Sections are separated by space (96px desktop, 64px phone), not rules. The only strong shapes are the header rule, the green opening ribbon and footer stripe, the featured band and its screenshot, the status label and the primary buttons. There is no motion or scroll effect beyond the shared button press. Homepage links invite the click in plain first-person words ("See how Yahtz came together", "Read all my articles", "Get to know me", "Say hello") and do not use arrows.
 
 Inner pages keep Layout A's shape: the shared header and footer, a ruled green page heading, then paper. Articles, Projects, About and Contact have dedicated routes using the same palette, controls and responsive rules. Navigation uses real page destinations and marks the current page. The former B side-column alternative remains in Git history.
 
 ## Component contracts
 
-| Component       | Contract                                                                                         |
-| --------------- | ------------------------------------------------------------------------------------------------ |
-| Header          | Name/home, Articles, Projects, About, Contact; real destinations only                            |
-| Opening         | Name and confirmed tagline on paper; most of the first screen; no decorative image or scroll cue |
-| Section heading | In-flow h2; strong rule or space, never sticky                                                   |
-| Article row     | Real title, optional summary, date/topic, native text link; roomy padding, separated by space    |
-| Project feature | One featured Project on the homepage: screenshot, title, status, summary, project page link      |
-| Primary action  | Native anchor/button; outline, compact hard shadow, visible pressed state                        |
-| Reading surface | Open prose; notes and code get distinct treatment when warranted                                 |
-| Footer          | Concise contact/source links; RSS feed link (`/rss.xml`, implemented)                            |
+| Component       | Contract                                                                                      |
+| --------------- | --------------------------------------------------------------------------------------------- |
+| Header          | Name/home, Articles, Projects, About, Contact; real destinations only                         |
+| Opening         | Name and confirmed tagline on a full-width green ribbon; no decorative image or scroll cue    |
+| Section heading | In-flow h2; strong rule or space, never sticky                                                |
+| Article row     | Real title, optional summary, date/topic, native text link; roomy padding, separated by space |
+| Project feature | One featured Project on the homepage: screenshot, title, status, summary, project page link   |
+| Primary action  | Native anchor/button; outline, compact hard shadow, visible pressed state                     |
+| Reading surface | Open prose; notes and code get distinct treatment when warranted                              |
+| Footer          | Full-width green stripe, no top rule; concise contact links and RSS feed link (`/rss.xml`)    |
 
 ## Content and imagery
 
