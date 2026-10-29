@@ -225,12 +225,13 @@ h3,
 }
 /* Homepage: tall sections separated by space; green opening ribbon and featured band. */
 .home-opening {
-  min-height: calc(87svh - 112px);
+  min-height: calc(0.7 * (87svh - 112px));
   display: flex;
   flex-direction: column;
   justify-content: center;
   gap: 32px;
-  padding: 64px 0;
+  margin-top: 48px;
+  padding: 40px 0;
   /* Paint green to the viewport edges without widening the page. */
   border-image: conic-gradient(var(--green) 0 0) fill 0 / 0 / 0 100vmax;
 }
@@ -546,9 +547,10 @@ h3,
     font-size: clamp(42px, 11.4vw, 72px);
   }
   .home-opening {
-    min-height: calc(92svh - 150px);
+    min-height: calc(0.7 * (92svh - 150px));
     gap: 24px;
-    padding: 48px 0;
+    margin-top: 32px;
+    padding: 40px 0;
   }
   .home-opening h1 {
     font-size: clamp(48px, 16vw, 88px);
