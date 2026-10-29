@@ -150,20 +150,23 @@ const steps = [
     </ol>
   </div>
 
-  <div class="deploy-note">
-    <p>
-      <strong>The tradeoff:</strong> the old container stops before the new one starts,
-      so the site can be unavailable for a moment during each deployment. There are
-      no health checks or automatic rollback; to undo a release, I revert the change
-      and push again. That’s fine for a personal site, and smoother deployments are
-      something I’d like to explore.
-    </p>
-    <p>
-      For the story behind this setup, read <a href="/blog/website/"
-        >Making my website easier to manage</a
-      >.
-    </p>
-  </div>
+  <aside class="deploy-note" aria-labelledby="deploy-tradeoff-title">
+    <h3 id="deploy-tradeoff-title">The tradeoff</h3>
+    <div>
+      <p>
+        The old container stops before the new one starts, so the site can be
+        unavailable for a moment during each deployment. There are no health
+        checks or automatic rollback; to undo a release, I revert the change and
+        push again. That’s fine for a personal site, and smoother deployments are
+        something I’d like to explore.
+      </p>
+      <p>
+        For the story behind this setup, read <a href="/blog/website/"
+          >Making my website easier to manage</a
+        >.
+      </p>
+    </div>
+  </aside>
 </section>
 
 <style>
@@ -316,11 +319,18 @@ const steps = [
   }
 
   .deploy-note {
-    max-width: 65ch;
-    margin-top: 40px;
-    padding: 24px;
+    display: grid;
+    grid-template-columns: minmax(0, 360px) minmax(0, 65ch);
+    gap: 16px 64px;
+    margin-top: 56px;
+    padding: clamp(24px, 3vw, 40px);
     border: var(--rule);
     border-radius: var(--radius);
+  }
+
+  .deploy-note h3 {
+    margin: 0;
+    font-size: clamp(25px, 2.6vw, 36px);
   }
 
   .deploy-note p:last-child {
@@ -335,6 +345,10 @@ const steps = [
 
     .deploy-figure {
       max-width: 360px;
+    }
+
+    .deploy-note {
+      grid-template-columns: minmax(0, 1fr);
     }
   }
 
