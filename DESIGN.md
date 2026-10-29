@@ -16,7 +16,7 @@ Chunkiness comes from broad rectangular regions, aligned edges, strong horizonta
 - Mostly square shapes with small corner rounding.
 - Heavy sans headings and comfortable body text. Keep the current system stack for now; a custom heading face can be explored later.
 - Homepage story order: who I am (name), what I make (one featured project), where to go next (latest Articles, short about, contact). See [Homepage composition](#homepage-composition).
-- Spacious article rows: prominent title, summary, quieter date/topic. Images optional. The Articles index separates rows with rules; the homepage separates them with space.
+- Spacious article rows: prominent title, summary, quieter date/topic. Images optional. Rows are separated by space, not rules, on the Articles index and the homepage.
 - Ordinary section headings, **never sticky**. Restrained motion; none on the homepage.
 - Introduction works without decorative imagery. **Little or no dither; none in the first studies.**
 
@@ -100,7 +100,7 @@ Inner pages keep Layout A's shape: the shared header and footer, a ruled green p
 | Header          | Name/home, Articles, Projects, About, Contact; real destinations only                            |
 | Opening         | Name and confirmed tagline on paper; most of the first screen; no decorative image or scroll cue |
 | Section heading | In-flow h2; strong rule or space, never sticky                                                   |
-| Article row     | Real title, optional summary, date/topic, native text link; roomy padding and shared separators  |
+| Article row     | Real title, optional summary, date/topic, native text link; roomy padding, separated by space    |
 | Project feature | One featured Project on the homepage: screenshot, title, status, summary, project page link      |
 | Primary action  | Native anchor/button; outline, compact hard shadow, visible pressed state                        |
 | Reading surface | Open prose; notes and code get distinct treatment when warranted                                 |
