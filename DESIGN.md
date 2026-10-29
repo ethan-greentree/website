@@ -110,7 +110,7 @@ Every page shares one link preview image, `public/og-image.png` (1200×630, sour
 
 Images are optional and explain their subject: photographs, diagrams, screenshots, actual artifacts. Keep technical evidence readable. No dither in the first studies. Never use generated imagery as evidence of work. Record source, creator, exact license, attribution and modifications for published assets; research screenshots are not reusable portfolio assets.
 
-Images go through Astro's passthrough image service (`astro.config.mjs`): `astro:assets` images get hashed URLs and width/height attributes but are not resized or converted. Commit images at web-ready sizes and formats. This avoids the native `sharp` dependency, which would also have to work in the Docker build. If resizing is needed later, add `sharp` and verify it in the Docker build.
+Images are not resized or converted at build time, so commit every image at a web-ready size and format. Images imported through `astro:assets`, such as project screenshots in `src/assets/`, use the passthrough image service (`astro.config.mjs`): they get hashed URLs and width/height attributes, nothing more. Article images in `public/` are served as-is. This avoids the native `sharp` dependency, which would also have to work in the Docker build. If resizing is needed later, add `sharp`, allow its build script in `pnpm-workspace.yaml` (currently `sharp: false`), and verify it in the Docker build.
 
 ## Reading and maintenance
 
