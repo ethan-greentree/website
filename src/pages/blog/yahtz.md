@@ -24,7 +24,7 @@ For this game, I would enter "grilling" sessions where I would answer questions 
 
 ## The first playthrough
 
-My wife loved the game... However, some parts of the UI and the way certain things worked were unclear. With more iteration, we finally got to a place where we were content (what you can play in the [projects section](/games/yahtz/index.html)).
+My wife loved the game... However, some parts of the UI and the way certain things worked were unclear. With more iteration, we finally got to a place where we were content (what you can play in the [projects section](/projects/yahtz/)).
 
 One of the issues that was found early on was the difference between holding and placing dice. The game had some labels, but they were not very clear at all... Now, when placing dice, you can clearly differentiate between holding and placing them!
 

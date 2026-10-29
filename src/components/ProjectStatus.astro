@@ -1,0 +1,25 @@
+---
+interface Props {
+  status: "Live" | "Prototype" | "Retired";
+}
+const { status } = Astro.props;
+---
+
+<p class="project-status eyebrow"><span>Status:</span> {status}</p>
+
+<style>
+  .project-status {
+    display: inline-block;
+    margin: 0;
+    padding: 4px 10px;
+    border: 2px solid var(--ink);
+    border-radius: var(--radius);
+    background: var(--paper);
+    font-weight: 700;
+  }
+
+  .project-status span {
+    font-weight: 400;
+    color: var(--muted);
+  }
+</style>

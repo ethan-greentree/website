@@ -1,5 +1,5 @@
 // @ts-check
-import { defineConfig } from 'astro/config';
+import { defineConfig, passthroughImageService } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 
 import tailwindcss from '@tailwindcss/vite';
@@ -8,6 +8,8 @@ import tailwindcss from '@tailwindcss/vite';
 export default defineConfig({
   site: 'https://ethangreentree.com',
   integrations: [sitemap()],
+  // Screenshots are committed at web-ready sizes; this avoids a native image dependency.
+  image: { service: passthroughImageService() },
   vite: {
     plugins: [tailwindcss()]
   }

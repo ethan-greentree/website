@@ -1,0 +1,120 @@
+---
+import { Image } from "astro:assets";
+import { getCollection, render } from "astro:content";
+import PrimaryLayout from "../../layouts/PrimaryLayout.astro";
+import ProjectStatus from "../../components/ProjectStatus.astro";
+
+export async function getStaticPaths() {
+  const projects = await getCollection("projects");
+  return projects.map((project) => ({
+    params: { id: project.id },
+    props: { project },
+  }));
+}
+
+const { project } = Astro.props;
+const { data } = project;
+const { Content } = await render(project);
+const opensGame = data.link?.href.startsWith("/games/");
+---
+
+<PrimaryLayout
+  title={`${data.title} — Ethan Greentree`}
+  description={data.summary}
+>
+  <article class="inner-page" aria-labelledby="project-title">
+    <header class="page-heading">
+      <p class="eyebrow"><a href="/projects/">← All projects</a></p>
+      <h1 id="project-title">{data.title}</h1>
+      <div class="project-heading-status">
+        <ProjectStatus status={data.status} />
+      </div>
+    </header>
+    <Image
+      class="project-image"
+      src={data.image}
+      alt={data.imageAlt}
+      loading="eager"
+    />
+    <div class="project-body page-copy">
+      <div class="article-body prose"><Content /></div>
+      <aside aria-labelledby="tech-title">
+        <h2 id="tech-title" class="eyebrow">Tech used</h2>
+        <ul class="project-tech">
+          {data.tech.map((item) => <li>{item}</li>)}
+        </ul>
+        {
+          data.link && (
+            <a
+              class="primary"
+              href={data.link.href}
+              target={opensGame ? "_blank" : undefined}
+              rel={opensGame ? "noopener noreferrer" : undefined}
+            >
+              {data.link.label}
+            </a>
+          )
+        }
+      </aside>
+    </div>
+  </article>
+</PrimaryLayout>
+
+<style>
+  .project-heading-status {
+    margin-top: 28px;
+  }
+
+  .project-image {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin-top: 48px;
+    border: var(--rule);
+    border-radius: var(--radius);
+  }
+
+  .project-body {
+    display: grid;
+    grid-template-columns: minmax(0, 65ch) minmax(0, 320px);
+    justify-content: space-between;
+    gap: 48px 64px;
+  }
+
+  .project-body aside {
+    padding-top: 24px;
+    border-top: var(--rule);
+  }
+
+  .project-body aside h2 {
+    margin: 0 0 16px;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.025em;
+    color: var(--muted);
+  }
+
+  .project-tech {
+    list-style: none;
+    margin: 0 0 24px;
+    padding: 0;
+  }
+
+  .project-tech li {
+    padding: 10px 0;
+    border-bottom: 2px solid var(--ink);
+    font-size: 18px;
+    font-weight: 700;
+  }
+
+  @media (max-width: 700px) {
+    .project-image {
+      margin-top: 32px;
+    }
+
+    .project-body {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+  }
+</style>

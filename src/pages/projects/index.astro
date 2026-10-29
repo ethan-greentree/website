@@ -1,38 +1,84 @@
 ---
+import { Image } from "astro:assets";
+import { getCollection } from "astro:content";
 import PrimaryLayout from "../../layouts/PrimaryLayout.astro";
+import ProjectStatus from "../../components/ProjectStatus.astro";
+
+const projects = (await getCollection("projects")).sort(
+  (a, b) => a.data.order - b.data.order,
+);
 ---
 
 <PrimaryLayout
   title="Projects — Ethan Greentree"
-  description="Projects by Ethan Greentree, including Yahtz, playable in your browser."
+  description="Projects by Ethan Greentree, including Yahtz and the infrastructure behind this website."
 >
   <section class="inner-page" aria-labelledby="projects-title">
     <div class="page-heading">
       <p class="eyebrow">Things I make</p>
       <h1 id="projects-title">Projects.</h1>
     </div>
-    <article class="game-feature" aria-labelledby="yahtz-title">
-      <h2 id="yahtz-title">Yahtz</h2>
-      <p>Play Yahtz right here in your browser.</p>
-      <a
-        class="primary"
-        href="/games/yahtz/index.html"
-        target="_blank"
-        rel="noopener noreferrer">Play Yahtz ↗</a
-      >
-    </article>
+    <ul class="project-list">
+      {
+        projects.map(({ id, data }) => (
+          <li>
+            <Image src={data.image} alt={data.imageAlt} />
+            <div class="project-row-copy">
+              <h2>
+                <a href={`/projects/${id}/`}>{data.title}</a>
+              </h2>
+              <ProjectStatus status={data.status} />
+              <p>{data.summary}</p>
+            </div>
+          </li>
+        ))
+      }
+    </ul>
   </section>
 </PrimaryLayout>
 
 <style>
-  .game-feature {
-    margin-top: 48px;
-    padding-bottom: 40px;
-    border-bottom: var(--rule);
+  .project-list {
+    list-style: none;
+    margin: 12px 0 0;
+    padding: 0;
   }
 
-  .game-feature p {
-    margin-top: 24px;
+  .project-list li {
+    display: grid;
+    grid-template-columns: minmax(0, 400px) minmax(0, 1fr);
+    gap: 24px 48px;
+    align-items: start;
+    padding: 40px 0;
+    border-bottom: 2px solid var(--ink);
+  }
+
+  .project-list img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border: var(--rule);
+    border-radius: var(--radius);
+  }
+
+  .project-list h2 {
+    max-width: 30ch;
+    font-size: clamp(25px, 2.6vw, 36px);
+    line-height: 1.15;
+    margin: 0 0 16px;
+    overflow-wrap: anywhere;
+  }
+
+  .project-list p:not(.project-status) {
+    max-width: 58ch;
+    margin: 20px 0 0;
     color: var(--muted);
+  }
+
+  @media (max-width: 700px) {
+    .project-list li {
+      grid-template-columns: 1fr;
+      padding: 32px 0;
+    }
   }
 </style>
