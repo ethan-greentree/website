@@ -25,23 +25,23 @@ const opensGame = data.link?.href.startsWith("/games/");
 >
   <article class="inner-page" aria-labelledby="project-title">
     <header class="page-heading">
-      <p class="eyebrow"><a href="/projects/">← All projects</a></p>
-      <h1 id="project-title">{data.title}</h1>
-      <div class="project-heading-meta">
+      <div class="project-heading-top">
+        <p class="eyebrow"><a href="/projects/">← All projects</a></p>
         <ProjectStatus status={data.status} />
-        {
-          data.link && (
-            <a
-              class="primary"
-              href={data.link.href}
-              target={opensGame ? "_blank" : undefined}
-              rel={opensGame ? "noopener noreferrer" : undefined}
-            >
-              {data.link.label}
-            </a>
-          )
-        }
       </div>
+      <h1 id="project-title">{data.title}</h1>
+      {
+        data.link && (
+          <a
+            class="primary project-action"
+            href={data.link.href}
+            target={opensGame ? "_blank" : undefined}
+            rel={opensGame ? "noopener noreferrer" : undefined}
+          >
+            {data.link.label}
+          </a>
+        )
+      }
     </header>
     <Image
       class="project-image"
@@ -63,16 +63,21 @@ const opensGame = data.link?.href.startsWith("/games/");
 </PrimaryLayout>
 
 <style>
-  .project-heading-meta {
+  .project-heading-top {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
+    justify-content: space-between;
     gap: 16px 24px;
-    margin-top: 28px;
+    margin-bottom: 28px;
   }
 
-  .project-heading-meta .primary {
-    margin-top: 0;
+  .project-heading-top .eyebrow {
+    margin: 0;
+  }
+
+  .project-action {
+    margin-top: 28px;
   }
 
   .project-image {
