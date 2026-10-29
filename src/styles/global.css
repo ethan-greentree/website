@@ -445,6 +445,12 @@ h3,
   align-self: start;
   padding: 8px 0;
 }
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 24px;
+  align-self: start;
+}
 .footer-theme-toggle {
   display: none;
 }
@@ -525,7 +531,7 @@ h3,
   .footer-theme-toggle {
     display: block;
   }
-  .site-footer > a {
+  .footer-links {
     grid-column: 1 / -1;
     justify-self: start;
   }

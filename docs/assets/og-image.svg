@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <!-- Default link preview image. Tokens from DESIGN.md. Render to
+       public/og-image.png at 1200x630; see docs/articles.md. -->
+  <rect width="1200" height="630" fill="#f1eadc"/>
+  <text x="64" y="74" fill="#20291e" font-family="Arial Black, Arial, Helvetica, sans-serif" font-weight="900" font-size="28" letter-spacing="-0.5">ethangreentree.com</text>
+  <text x="1136" y="74" fill="#20291e" text-anchor="end" font-family="Consolas, 'Courier New', monospace" font-size="22">Articles / Projects</text>
+  <rect x="64" y="104" width="1072" height="6" fill="#20291e"/>
+  <rect x="67" y="145" width="1066" height="418" fill="#c3d39a" stroke="#20291e" stroke-width="6"/>
+  <g fill="#20291e" font-family="Arial Black, Arial, Helvetica, sans-serif" font-weight="900" font-size="140" letter-spacing="-8.5">
+    <text x="112" y="294">Ethan</text>
+    <text x="112" y="418">Greentree</text>
+  </g>
+  <text x="120" y="504" fill="#20291e" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="30">IT by trade. Curious by default.</text>
+</svg>

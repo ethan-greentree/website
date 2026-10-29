@@ -1,13 +1,8 @@
 ---
-import type { MarkdownInstance } from "astro";
-import { articleDate, type ArticleFrontmatter } from "../lib/articles";
+import { articleDate, getArticles } from "../lib/articles";
 import WritingEmpty from "./WritingEmpty.astro";
 
-const articles = Object.values(
-  import.meta.glob<MarkdownInstance<ArticleFrontmatter>>("../pages/blog/*.md", {
-    eager: true,
-  }),
-).sort((a, b) => b.frontmatter.date.localeCompare(a.frontmatter.date));
+const articles = getArticles();
 
 interface Props {
   heading?: "h2" | "h3";
