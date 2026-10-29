@@ -20,6 +20,8 @@ const projects = defineCollection({
           href: z.string().regex(/^(\/(?!\/)|https:\/\/)/),
         })
         .optional(),
+      // Adds a page-specific diagram below the description.
+      diagram: z.literal("deployment").optional(),
     }),
 });
 

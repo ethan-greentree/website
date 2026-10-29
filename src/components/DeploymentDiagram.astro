@@ -1,0 +1,368 @@
+---
+// How a push to main reaches the server. Keep this in step with
+// .github/workflows/build-image.yaml, .github/workflows/deploy.yaml,
+// Dockerfile, and docs/deployment.md. Leave out hostnames, users,
+// secret names, and the Docker Hub image name.
+const steps = [
+  { title: "Push to main", detail: "starts the build" },
+  { title: "Build the image", detail: "Astro site in NGINX" },
+  { title: "Publish the image", detail: "tagged latest" },
+  { title: "Pull the image", detail: "docker compose pull" },
+  { title: "Restart the container", detail: "docker compose up -d" },
+];
+---
+
+<section class="deploy" aria-labelledby="deploy-title">
+  <div class="section-head">
+    <h2 id="deploy-title">How it deploys</h2>
+  </div>
+  <p class="deploy-intro">
+    Two GitHub Actions workflows take a change from <code>main</code> to the server.
+    The first builds and publishes the image. The second runs only after a successful
+    build and tells the server to update.
+  </p>
+  <div class="deploy-layout">
+    <figure class="deploy-figure">
+      <svg
+        viewBox="0 0 360 560"
+        role="img"
+        aria-labelledby="deploy-svg-title deploy-svg-desc"
+      >
+        <title id="deploy-svg-title">Deployment diagram</title>
+        <desc id="deploy-svg-desc">
+          In GitHub Actions, a push to main builds the image. The image is
+          published to Docker Hub. After a successful build, GitHub Actions
+          connects to the VPS over SSH. The VPS pulls the image from Docker Hub
+          and restarts the container. Each step is described in the list that
+          follows.
+        </desc>
+
+        <g class="zone">
+          <rect x="4" y="4" width="272" height="196"></rect>
+          <text x="20" y="27">GitHub Actions</text>
+          <rect x="4" y="236" width="272" height="90"></rect>
+          <text x="20" y="259">Docker Hub</text>
+          <rect x="4" y="362" width="272" height="194"></rect>
+          <text x="20" y="385">VPS</text>
+        </g>
+
+        <g class="flow">
+          <path d="M140 92 V120"></path>
+          <path d="M140 184 V262"></path>
+          <path d="M140 312 V388"></path>
+          <path d="M140 444 V476"></path>
+        </g>
+        <g class="head">
+          <path d="M134 120 L140 128 L146 120 Z"></path>
+          <path d="M134 262 L140 270 L146 262 Z"></path>
+          <path d="M134 388 L140 396 L146 388 Z"></path>
+          <path d="M134 476 L140 484 L146 476 Z"></path>
+        </g>
+        <g class="flow-label">
+          <text x="150" y="226">push</text>
+          <text x="150" y="354">pull</text>
+        </g>
+
+        <path class="ssh" d="M260 156 H322 V420 H270"></path>
+        <path class="ssh-head" d="M270 414 L262 420 L270 426 Z"></path>
+        <text class="ssh-label" x="342" y="292">SSH</text>
+
+        {
+          [
+            { y: 40, h: 52 },
+            { y: 128, h: 56 },
+            { y: 270, h: 42 },
+            { y: 396, h: 48 },
+            { y: 484, h: 56 },
+          ].map((box, index) => {
+            const step = steps[index];
+            const middle = box.y + box.h / 2;
+            return (
+              <g class="step">
+                <rect x="20" y={box.y} width="240" height={box.h} />
+                <rect
+                  class="badge"
+                  x="32"
+                  y={middle - 12}
+                  width="24"
+                  height="24"
+                />
+                <text class="badge-text" x="44" y={middle + 5}>
+                  {index + 1}
+                </text>
+                <text class="step-title" x="68" y={middle - 2}>
+                  {step.title}
+                </text>
+                <text class="step-detail" x="68" y={middle + 15}>
+                  {step.detail}
+                </text>
+              </g>
+            );
+          })
+        }
+      </svg>
+    </figure>
+
+    <ol class="deploy-steps">
+      <li>
+        <h3><span aria-hidden="true">1</span> Push to <code>main</code></h3>
+        <p>
+          Pushing or merging to <code>main</code> starts the build workflow. If a
+          newer push arrives mid-build, the older build is cancelled so it can’t overwrite
+          the newer image.
+        </p>
+      </li>
+      <li>
+        <h3><span aria-hidden="true">2</span> Build the image</h3>
+        <p>
+          GitHub Actions checks out the source and builds the Dockerfile in two
+          stages. Node.js and pnpm install dependencies and run the Astro build,
+          then the generated pages are copied into an NGINX image. Only the
+          NGINX stage is shipped.
+        </p>
+      </li>
+      <li>
+        <h3><span aria-hidden="true">3</span> Publish to Docker Hub</h3>
+        <p>
+          The workflow signs in to Docker Hub with an access token and pushes
+          the image, replacing the <code>latest</code> tag. The image is public, so
+          the server pulls it without registry credentials.
+        </p>
+      </li>
+      <li>
+        <h3><span aria-hidden="true">4</span> Pull on the server</h3>
+        <p>
+          When the build succeeds, a second workflow connects to the VPS over
+          SSH, checking the server’s known host key, and runs <code
+            >docker compose pull</code
+          >. A failed or cancelled build never gets here, and a failed pull
+          stops before anything is replaced.
+        </p>
+      </li>
+      <li>
+        <h3><span aria-hidden="true">5</span> Restart the container</h3>
+        <p>
+          <code>docker compose up -d</code> replaces the running container with one
+          from the new image. A reverse proxy on the server handles HTTPS and keeps
+          running throughout.
+        </p>
+      </li>
+    </ol>
+  </div>
+
+  <aside class="deploy-note" aria-labelledby="deploy-tradeoff-title">
+    <h3 id="deploy-tradeoff-title">The tradeoff</h3>
+    <div>
+      <p>
+        The old container stops before the new one starts, so the site can be
+        unavailable for a moment during each deployment. There are no health
+        checks or automatic rollback; to undo a release, I revert the change and
+        push again. That’s fine for a personal site, and smoother deployments
+        are something I’d like to explore.
+      </p>
+      <p>
+        For the story behind this setup, read <a href="/blog/website/"
+          >Making my website easier to manage</a
+        >.
+      </p>
+    </div>
+  </aside>
+</section>
+
+<style>
+  .deploy {
+    margin-top: 80px;
+  }
+
+  .deploy-intro {
+    max-width: 65ch;
+    margin: 32px 0 0;
+  }
+
+  .deploy-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 360px) minmax(0, 65ch);
+    gap: 48px 64px;
+    align-items: start;
+    margin-top: 40px;
+  }
+
+  .deploy-figure {
+    margin: 0;
+  }
+
+  .deploy-figure svg {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .zone rect {
+    fill: none;
+    stroke: var(--muted);
+    stroke-width: 1.5;
+  }
+
+  .zone text,
+  .ssh-label,
+  .flow-label text {
+    fill: var(--muted);
+    font:
+      12px ui-monospace,
+      monospace;
+  }
+
+  .step rect {
+    fill: var(--paper);
+    stroke: var(--ink);
+    stroke-width: 2;
+  }
+
+  .step .badge {
+    fill: var(--green);
+  }
+
+  .badge-text {
+    fill: var(--ink);
+    font-size: 13px;
+    font-weight: 700;
+    text-anchor: middle;
+  }
+
+  .step-title {
+    fill: var(--ink);
+    font-size: 15px;
+    font-weight: 700;
+  }
+
+  .step-detail {
+    fill: var(--muted);
+    font:
+      12px ui-monospace,
+      monospace;
+  }
+
+  .flow path {
+    fill: none;
+    stroke: var(--ink);
+    stroke-width: 2;
+  }
+
+  .head path {
+    fill: var(--ink);
+  }
+
+  .ssh {
+    fill: none;
+    stroke: var(--green-deep);
+    stroke-width: 2;
+    stroke-dasharray: 6 4;
+  }
+
+  .ssh-head {
+    fill: var(--green-deep);
+  }
+
+  .ssh-label {
+    fill: var(--green-deep);
+    font-weight: 700;
+    text-anchor: middle;
+  }
+
+  .deploy-steps {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border-top: 2px solid var(--ink);
+  }
+
+  .deploy-steps li {
+    padding: 24px 0;
+    border-bottom: 2px solid var(--ink);
+  }
+
+  .deploy-steps h3 {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    max-width: none;
+    margin: 0 0 8px;
+    font-size: 22px;
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+  }
+
+  .deploy-steps h3 span {
+    display: inline-flex;
+    flex: none;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border: 2px solid var(--ink);
+    border-radius: var(--radius);
+    background: var(--green);
+    font-size: 15px;
+    letter-spacing: 0;
+    transform: translateY(-2px);
+  }
+
+  .deploy-steps p {
+    margin: 0;
+  }
+
+  .deploy code {
+    background: var(--green);
+    padding: 2px 4px;
+    font-size: 0.9em;
+    overflow-wrap: anywhere;
+  }
+
+  .deploy-note {
+    display: grid;
+    grid-template-columns: minmax(0, 360px) minmax(0, 65ch);
+    gap: 16px 64px;
+    margin-top: 56px;
+    padding: clamp(24px, 3vw, 40px);
+    border: var(--rule);
+    border-radius: var(--radius);
+  }
+
+  .deploy-note h3 {
+    margin: 0;
+    font-size: clamp(25px, 2.6vw, 36px);
+  }
+
+  .deploy-note p:last-child {
+    margin-bottom: 0;
+  }
+
+  @media (max-width: 900px) {
+    .deploy-layout {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 32px;
+    }
+
+    .deploy-figure {
+      max-width: 360px;
+    }
+
+    .deploy-note {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+
+  @media (max-width: 700px) {
+    .deploy {
+      margin-top: 56px;
+    }
+
+    .deploy-intro {
+      margin-top: 24px;
+    }
+
+    .deploy-note {
+      padding: 20px;
+    }
+  }
+</style>
