@@ -11,7 +11,7 @@ imageAlt: "A Yahtz turn in progress: an empty 5 by 5 board on the left, and five
 order: 1
 featured: true
 link:
-  label: "Play Yahtz ↗"
+  label: "Play Yahtz"
   href: "/games/yahtz/index.html"
 ---
 

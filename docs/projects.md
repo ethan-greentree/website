@@ -15,7 +15,7 @@ imageAlt: "What the screenshot shows, for people who can't see it."
 order: 1
 featured: true
 link:
-  label: "Play Yahtz ↗"
+  label: "Play Yahtz"
   href: "/games/yahtz/index.html"
 ---
 
@@ -31,7 +31,7 @@ A short description of what the project is and why you made it.
 | `image` | Yes | Put the screenshot in `src/assets/projects/` and reference it relative to the Markdown file. It is not resized or converted (the site uses Astro's passthrough image service), so commit it at a web-ready size and format. |
 | `imageAlt` | Yes | Describe what the image shows. |
 | `order` | Yes | Lower numbers appear first on the Projects page. |
-| `link` | No | One primary action, such as playing a game. `href` must be a site-relative path starting with a single `/` (not `//`) or an `https://` URL; anything else fails the build. Links to `/games/` open in a new tab. |
+| `link` | No | One primary action, such as playing a game. `href` must be a site-relative path starting with a single `/` (not `//`) or an `https://` URL; anything else fails the build. Links to `/games/` open in a new tab, announced to screen readers. Don't put arrows in the label. |
 | `diagram` | No | Adds a built-in diagram section after the description. The only value is `deployment`, used by the website project; it renders `src/components/DeploymentDiagram.astro`. |
 | `featured` | No | Set `featured: true` on exactly one project to show it on the homepage with its screenshot, status and summary. To change the featured project, move the line to another file. The build fails if no project or more than one project is featured. |
 

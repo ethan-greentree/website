@@ -18,6 +18,8 @@ Chunkiness comes from broad rectangular regions, aligned edges, strong horizonta
 - Homepage story order: who I am (name), what I make (one featured project), where to go next (latest Articles, short about, contact). See [Homepage composition](#homepage-composition).
 - Spacious article rows: prominent title, summary, quieter date/topic. Images optional. The Articles index separates rows with rules; the homepage separates them with space.
 - Ordinary section headings, **never sticky**. Restrained motion; none on the homepage.
+- Link and button text never uses arrow glyphs (←, →, ↗). Invite the click with words instead; links that open a new tab say so in visually hidden text.
+- The site footer is a full-width green stripe, matching the homepage opening ribbon.
 - Introduction works without decorative imagery. **Little or no dither; none in the first studies.**
 
 ## Research translated into rules
@@ -95,16 +97,16 @@ Inner pages keep Layout A's shape: the shared header and footer, a ruled green p
 
 ## Component contracts
 
-| Component       | Contract                                                                                         |
-| --------------- | ------------------------------------------------------------------------------------------------ |
-| Header          | Name/home, Articles, Projects, About, Contact; real destinations only                            |
-| Opening         | Name and confirmed tagline on paper; most of the first screen; no decorative image or scroll cue |
-| Section heading | In-flow h2; strong rule or space, never sticky                                                   |
-| Article row     | Real title, optional summary, date/topic, native text link; roomy padding and shared separators  |
-| Project feature | One featured Project on the homepage: screenshot, title, status, summary, project page link      |
-| Primary action  | Native anchor/button; outline, compact hard shadow, visible pressed state                        |
-| Reading surface | Open prose; notes and code get distinct treatment when warranted                                 |
-| Footer          | Concise contact/source links; RSS feed link (`/rss.xml`, implemented)                            |
+| Component       | Contract                                                                                        |
+| --------------- | ----------------------------------------------------------------------------------------------- |
+| Header          | Name/home, Articles, Projects, About, Contact; real destinations only                           |
+| Opening         | Name and confirmed tagline on a full-width green ribbon; no decorative image or scroll cue      |
+| Section heading | In-flow h2; strong rule or space, never sticky                                                  |
+| Article row     | Real title, optional summary, date/topic, native text link; roomy padding and shared separators |
+| Project feature | One featured Project on the homepage: screenshot, title, status, summary, project page link     |
+| Primary action  | Native anchor/button; outline, compact hard shadow, visible pressed state                       |
+| Reading surface | Open prose; notes and code get distinct treatment when warranted                                |
+| Footer          | Full-width green stripe, no top rule; concise contact links and RSS feed link (`/rss.xml`)      |
 
 ## Content and imagery
 
