@@ -6,12 +6,24 @@ import ThemeToggle from "../components/ThemeToggle.astro";
 interface Props {
   title?: string;
   description?: string;
+  /** Open Graph type; Articles pass "article". */
+  type?: "website" | "article";
+  /** Article publication date as YYYY-MM-DD. */
+  publishedTime?: string;
 }
 
 const {
   title = "Ethan Greentree — IT & curiosity",
   description = "IT by trade. Curious by default. Ethan Greentree's personal home for technology, investigations, and things learned along the way.",
+  type = "website",
+  publishedTime,
 } = Astro.props;
+
+const site = Astro.site;
+if (!site) throw new Error("Set `site` in astro.config.mjs for link previews.");
+const pageUrl = new URL(Astro.url.pathname, site).href;
+const imageUrl = new URL("/og-image.png", site).href;
+const feedUrl = new URL("/rss.xml", site).href;
 ---
 
 <!doctype html>
@@ -30,6 +42,30 @@ const {
     </script>
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <meta name="description" content={description} />
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title="Ethan Greentree — Articles"
+      href={feedUrl}
+    />
+    <meta property="og:site_name" content="Ethan Greentree" />
+    <meta property="og:type" content={type} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={pageUrl} />
+    <meta property="og:image" content={imageUrl} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content="Ethan Greentree: IT by trade. Curious by default."
+    />
+    {
+      publishedTime && (
+        <meta property="article:published_time" content={publishedTime} />
+      )
+    }
+    <meta name="twitter:card" content="summary_large_image" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
   </head>
@@ -43,7 +79,10 @@ const {
       <footer class="site-footer">
         <p>Ethan Greentree<span>Always something to figure out.</span></p>
         <div class="footer-theme-toggle"><ThemeToggle /></div>
-        <a href="/contact/">Get in touch</a>
+        <div class="footer-links">
+          <a href="/contact/">Get in touch</a>
+          <a href="/rss.xml">RSS feed</a>
+        </div>
       </footer>
     </div>
   </body>

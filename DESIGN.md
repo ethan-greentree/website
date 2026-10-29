@@ -91,13 +91,15 @@ Writing, About, and Contact have dedicated routes using the same header, footer,
 | Project feature | Genuine artifact, problem, contribution, result/limitations, repository/demo when available     |
 | Primary action  | Native anchor/button; outline, compact hard shadow, visible pressed state                       |
 | Reading surface | Open prose; notes and code get distinct treatment when warranted                                |
-| Footer          | Concise contact/source links; RSS only when implemented                                         |
+| Footer          | Concise contact/source links; RSS feed link (`/rss.xml`, implemented)                           |
 
 ## Content and imagery
 
 Confirmed: IT by trade, five years at KES, additional intermittent tinkering, sharing broader technology learning. Do not infer duties, seniority, certifications, outcomes or completed projects.
 
 Writing is the focus. Hide empty project areas. Home and Writing show an honest “Writing coming soon” state until genuine posts exist. Keep the approved introduction and KES biography. Contact offers email, GitHub, and LinkedIn; a résumé link is deferred until Ethan refines the content (GitHub issue #1).
+
+Every page shares one link preview image, `public/og-image.png` (1200×630, source `docs/assets/og-image.svg`): the name in heavy ink type inside a ruled green region on paper, with the domain and the confirmed "IT by trade. Curious by default." line. It is typography only, not evidence of work.
 
 Images are optional and explain their subject: photographs, diagrams, screenshots, actual artifacts. Keep technical evidence readable. No dither in the first studies. Never use generated imagery as evidence of work. Record source, creator, exact license, attribution and modifications for published assets; research screenshots are not reusable portfolio assets.
 
