@@ -26,8 +26,20 @@ const opensGame = data.link?.href.startsWith("/games/");
     <header class="page-heading">
       <p class="eyebrow"><a href="/projects/">← All projects</a></p>
       <h1 id="project-title">{data.title}</h1>
-      <div class="project-heading-status">
+      <div class="project-heading-meta">
         <ProjectStatus status={data.status} />
+        {
+          data.link && (
+            <a
+              class="primary"
+              href={data.link.href}
+              target={opensGame ? "_blank" : undefined}
+              rel={opensGame ? "noopener noreferrer" : undefined}
+            >
+              {data.link.label}
+            </a>
+          )
+        }
       </div>
     </header>
     <Image
@@ -43,26 +55,22 @@ const opensGame = data.link?.href.startsWith("/games/");
         <ul class="project-tech">
           {data.tech.map((item) => <li>{item}</li>)}
         </ul>
-        {
-          data.link && (
-            <a
-              class="primary"
-              href={data.link.href}
-              target={opensGame ? "_blank" : undefined}
-              rel={opensGame ? "noopener noreferrer" : undefined}
-            >
-              {data.link.label}
-            </a>
-          )
-        }
       </aside>
     </div>
   </article>
 </PrimaryLayout>
 
 <style>
-  .project-heading-status {
+  .project-heading-meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 16px 24px;
     margin-top: 28px;
+  }
+
+  .project-heading-meta .primary {
+    margin-top: 0;
   }
 
   .project-image {
@@ -96,7 +104,7 @@ const opensGame = data.link?.href.startsWith("/games/");
 
   .project-tech {
     list-style: none;
-    margin: 0 0 24px;
+    margin: 0;
     padding: 0;
   }
 

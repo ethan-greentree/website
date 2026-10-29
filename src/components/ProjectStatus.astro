@@ -1,6 +1,8 @@
 ---
+import type { CollectionEntry } from "astro:content";
+
 interface Props {
-  status: "Live" | "Prototype" | "Retired";
+  status: CollectionEntry<"projects">["data"]["status"];
 }
 const { status } = Astro.props;
 ---

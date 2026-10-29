@@ -16,7 +16,8 @@ const projects = defineCollection({
       link: z
         .object({
           label: z.string().trim().min(1),
-          href: z.string().trim().min(1),
+          // Site-relative paths or https URLs only.
+          href: z.string().regex(/^(\/(?!\/)|https:\/\/)/),
         })
         .optional(),
     }),
