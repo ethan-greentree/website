@@ -11,6 +11,7 @@ tech:
 image: "../../assets/projects/website.png"
 imageAlt: "The ethangreentree.com homepage: a green introduction block reading Ethan Greentree, IT by trade, curious by default, above the Articles section."
 order: 2
+diagram: "deployment"
 ---
 
 This site is where I share what I'm learning, from small games to the infrastructure that keeps the site running.

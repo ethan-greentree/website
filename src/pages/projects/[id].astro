@@ -2,6 +2,7 @@
 import { Image } from "astro:assets";
 import { getCollection, render } from "astro:content";
 import PrimaryLayout from "../../layouts/PrimaryLayout.astro";
+import DeploymentDiagram from "../../components/DeploymentDiagram.astro";
 import ProjectStatus from "../../components/ProjectStatus.astro";
 
 export async function getStaticPaths() {
@@ -57,6 +58,7 @@ const opensGame = data.link?.href.startsWith("/games/");
         </ul>
       </aside>
     </div>
+    {data.diagram === "deployment" && <DeploymentDiagram />}
   </article>
 </PrimaryLayout>
 

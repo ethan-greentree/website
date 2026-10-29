@@ -31,6 +31,7 @@ A short description of what the project is and why you made it.
 | `imageAlt` | Yes | Describe what the image shows. |
 | `order` | Yes | Lower numbers appear first on the Projects page. |
 | `link` | No | One primary action, such as playing a game. Links to `/games/` open in a new tab. |
+| `diagram` | No | Adds a built-in diagram section after the description. The only value is `deployment`, used by the website project; it renders `src/components/DeploymentDiagram.astro`. |
 
 The body is the project's description. Keep it short; write longer stories as [Articles](articles.md) and link from the article to the project page. Project pages do not list related articles.
 
