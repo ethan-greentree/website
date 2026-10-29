@@ -232,7 +232,7 @@ h3,
   gap: 32px;
   padding: 64px 0;
   /* Paint green to the viewport edges without widening the page. */
-  border-image: conic-gradient(var(--green) 0 0) fill 0 / / 0 100vmax;
+  border-image: conic-gradient(var(--green) 0 0) fill 0 / 0 / 0 100vmax;
 }
 .home-opening h1 {
   font-size: clamp(64px, 8.75vw, 112px);
