@@ -87,7 +87,7 @@ The homepage is a scrolling story of tall, spacious sections, one idea each, in 
 2. **Statement:** one large line, "I enjoy figuring out how things work and sharing what I learn along the way."
 3. **Featured project (what I make):** the page's second green region, a ruled band within the page margins holding the screenshot, a "Featured project" label, the project title (h2), status, summary, a primary link to the project page and a link to all projects. The project is chosen with `featured: true` in its file (see [docs/projects.md](docs/projects.md)); the build fails unless exactly one project is featured.
 4. **Latest writing:** the three newest Articles with title, date and summary, separated by space rather than rules, then a link to all Articles.
-5. **Ending (where to go next):** a short about drawn from the About copy, a link to the About page, and a primary "Say hello" link to Contact.
+5. **Ending (where to go next):** a short about drawn from the About copy and a primary "Say hello" link to Contact (the About link was removed in rework 5; About stays in the navigation).
 
 Sections are separated by space (96px desktop, 64px phone), not rules. The only strong shapes are the header and footer rules, the featured band and its screenshot, the status label and the primary buttons. There is no motion or scroll effect beyond the shared button press. Homepage links invite the click in plain first-person words ("See how Yahtz came together", "Read all my articles", "Get to know me", "Say hello") and do not use arrows.
 
