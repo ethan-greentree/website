@@ -6,7 +6,7 @@ The version-controlled blank template is [templates/article.md](templates/articl
 2. Create a note and insert the template. Obsidian fills in `{{date:YYYY-MM-DD}}` with today's date. Edit the title and publication date as needed. Keep both values quoted and leave `layout` unchanged. `summary` is optional; see [Summaries, link previews and RSS](#summaries-link-previews-and-rss).
 3. Write in standard Markdown. The layout supplies the title as the page's heading, so begin body sections with `##`.
 4. Copy the finished note directly into `src/pages/blog/`, for example `src/pages/blog/learning-about-dns.md`. Use lowercase filenames with hyphens. Do not use `index.md`, which would collide with the Articles index. Keep files directly in this folder so the template's layout path stays correct.
-5. Run `npm run dev` to preview `/blog/learning-about-dns/` and the Articles listing. Run `npm run build` before committing. The next deployment publishes the article.
+5. Run `pnpm dev` to preview `/blog/learning-about-dns/` and the Articles listing. Run `pnpm build` before committing. The next deployment publishes the article.
 
 Every `.md` file in `src/pages/blog/` is a published article and appears on both the homepage and Articles index, newest date first. Keep drafts and the blank template outside that directory. Dates are publication labels; future dates do not schedule publication. Renaming a file changes its URL and requires updating links to it.
 
