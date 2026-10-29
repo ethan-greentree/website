@@ -233,7 +233,7 @@ h3,
   padding: 64px 0;
 }
 .home-opening h1 {
-  font-size: clamp(64px, 9vw, 120px);
+  font-size: clamp(64px, 8.75vw, 112px);
 }
 .home-opening .lead {
   margin: 0;
