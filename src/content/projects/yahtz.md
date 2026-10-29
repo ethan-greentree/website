@@ -9,6 +9,7 @@ tech:
 image: "../../assets/projects/yahtz.png"
 imageAlt: "A Yahtz turn in progress: an empty 5 by 5 board on the left, and five rolled dice with Roll, Place dice, and Confirm turn buttons on the right."
 order: 1
+featured: true
 link:
   label: "Play Yahtz ↗"
   href: "/games/yahtz/index.html"

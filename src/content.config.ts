@@ -22,6 +22,8 @@ const projects = defineCollection({
         .optional(),
       // Adds a page-specific diagram below the description.
       diagram: z.literal("deployment").optional(),
+      // Shows the project on the homepage; exactly one project sets this.
+      featured: z.boolean().optional(),
     }),
 });
 
