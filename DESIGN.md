@@ -60,7 +60,7 @@ These are defined in `src/styles/global.css`. Light is the default theme; a head
 
 Use a 4px spacing foundation: 8, 12, 16, 24, 32, 48, 64, 96px. Give major sections 64–96px desktop breathing room and 40–64px on mobile. Article rows use 28–40px vertical padding. Borders organize large forms; shadows identify selected controls. Do not enclose every paragraph or decorate every label.
 
-Paper is the reading field, ink carries information, green occupies one substantial region. No legacy red accent or alternating rainbow sections. Verify contrast in actual states before production.
+Paper is the reading field, ink carries information, green occupies a few substantial regions (page headings, and on the homepage the opening ribbon and featured project band). No legacy red accent or alternating rainbow sections. Verify contrast in actual states before production.
 
 ## Typography
 
@@ -83,9 +83,9 @@ Decided in the interview of 2026-10-28 (issue #20), replacing Layout A's green i
 
 The homepage is a scrolling story of tall, spacious sections, one idea each, in this order:
 
-1. **Opening (who I am):** the h1 name at its largest size and the "IT by trade. Curious by default." line on paper. No green, button or scroll cue. Its minimum height is set so the opening fills most of the first screen and the top of the statement peeks in at 1280×800 and 390×844; re-check both if the header height or opening type changes.
+1. **Opening (who I am):** the h1 name at its largest size and the "IT by trade. Curious by default." line on an unbordered green ribbon directly under the header that spans the full browser width (added in rework 1, 2026-10-28), while the text stays aligned with the page content. No button or scroll cue. Its minimum height is set so the opening fills most of the first screen and the top of the statement peeks in at 1280×800 and 390×844; re-check both if the header height or opening type changes.
 2. **Statement:** one large line, "I enjoy figuring out how things work and sharing what I learn along the way."
-3. **Featured project (what I make):** the page's only green region, a ruled band holding the screenshot, a "Featured project" label, the project title (h2), status, summary, a primary link to the project page and a link to all projects. The project is chosen with `featured: true` in its file (see [docs/projects.md](docs/projects.md)); the build fails unless exactly one project is featured.
+3. **Featured project (what I make):** the page's second green region, a ruled band within the page margins holding the screenshot, a "Featured project" label, the project title (h2), status, summary, a primary link to the project page and a link to all projects. The project is chosen with `featured: true` in its file (see [docs/projects.md](docs/projects.md)); the build fails unless exactly one project is featured.
 4. **Latest writing:** the three newest Articles with title, date and summary, separated by space rather than rules, then a link to all Articles.
 5. **Ending (where to go next):** a short about drawn from the About copy, a link to the About page, and a primary "Say hello" link to Contact.
 

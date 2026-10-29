@@ -223,7 +223,7 @@ h3,
 .prose p:last-child {
   margin-bottom: 0;
 }
-/* Homepage: tall sections separated by space, one green band. */
+/* Homepage: tall sections separated by space; green opening ribbon and featured band. */
 .home-opening {
   min-height: calc(87svh - 112px);
   display: flex;
@@ -231,6 +231,8 @@ h3,
   justify-content: center;
   gap: 32px;
   padding: 64px 0;
+  /* Paint green to the viewport edges without widening the page. */
+  border-image: conic-gradient(var(--green) 0 0) fill 0 / / 0 100vmax;
 }
 .home-opening h1 {
   font-size: clamp(64px, 8.75vw, 112px);
@@ -239,7 +241,7 @@ h3,
   margin: 0;
 }
 .home-statement {
-  padding: 32px 0 96px;
+  padding: 64px 0 96px;
 }
 .home-statement p {
   max-width: 24ch;
@@ -552,7 +554,7 @@ h3,
     font-size: clamp(48px, 16vw, 88px);
   }
   .home-statement {
-    padding: 16px 0 64px;
+    padding: 40px 0 64px;
   }
   .home-featured {
     grid-template-columns: 1fr;
