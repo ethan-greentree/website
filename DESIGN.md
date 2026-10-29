@@ -34,20 +34,27 @@ These are design inferences, not copied brand specifications or claims about hir
 
 ## Current tokens
 
+These are defined in `src/styles/global.css`. Light is the default theme; a header toggle switches to the dark theme, which overrides only the colours.
+
 ```css
 :root {
+  color-scheme: light;
   --paper: #f1eadc;
-  --paper-inset: #e2dacb;
   --ink: #20291e;
   --muted: #545c4e;
   --green: #c3d39a;
   --green-deep: #344b31;
   --rule: 3px solid var(--ink);
   --radius: 3px;
-  --shadow-control: 4px 4px 0 var(--ink);
-  --page-max: 80rem;
-  --measure: 65ch;
-  --gutter: clamp(1.25rem, 4vw, 4rem);
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --paper: #232720;
+  --ink: #eee8da;
+  --muted: #b7bcae;
+  --green: #364632;
+  --green-deep: #c3d39a;
 }
 ```
 
@@ -102,6 +109,8 @@ Writing is the focus. Hide empty project areas. Home and Writing show an honest 
 Every page shares one link preview image, `public/og-image.png` (1200×630, source `docs/assets/og-image.svg`): the name in heavy ink type inside a ruled green region on paper, with the domain and the confirmed "IT by trade. Curious by default." line. It is typography only, not evidence of work.
 
 Images are optional and explain their subject: photographs, diagrams, screenshots, actual artifacts. Keep technical evidence readable. No dither in the first studies. Never use generated imagery as evidence of work. Record source, creator, exact license, attribution and modifications for published assets; research screenshots are not reusable portfolio assets.
+
+Images are not resized or converted at build time, so commit every image at a web-ready size and format. Images imported through `astro:assets`, such as project screenshots in `src/assets/`, use the passthrough image service (`astro.config.mjs`): they get hashed URLs and width/height attributes, nothing more. Article images in `public/` are served as-is. This avoids the native `sharp` dependency, which would also have to work in the Docker build. If resizing is needed later, add `sharp`, allow its build script in `pnpm-workspace.yaml` (currently `sharp: false`), and verify it in the Docker build.
 
 ## Reading and maintenance
 
