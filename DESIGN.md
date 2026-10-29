@@ -1,6 +1,6 @@
 # Ethan Greentree — design system
 
-Status: layout A approved as the real site in the interview, 2026-10-11. Keep the current palette and system typography for this first version. This supersedes the earlier red/dither proposal and development-only composition studies.
+Status: layout A approved as the real site in the interview, 2026-10-11; the homepage was redesigned as a scrolling story in the interview of 2026-10-28 (issue #20). Keep the current palette and system typography for this first version. This supersedes the earlier red/dither proposal and development-only composition studies.
 
 See the [30-site reference study](docs/research/neobrutalist-websites.md). These interview decisions take precedence over earlier research proposals. Superseded briefs are available in Git history.
 
@@ -15,9 +15,9 @@ Chunkiness comes from broad rectangular regions, aligned edges, strong horizonta
 - Sandy paper, near-black, and substantial green areas. Exact shades remain candidates.
 - Mostly square shapes with small corner rounding.
 - Heavy sans headings and comfortable body text. Keep the current system stack for now; a custom heading face can be explored later.
-- Short introduction, prominent writing section, about, contact. Projects are optional for now.
-- Spacious ruled article rows: prominent title, summary, quieter date/topic. Images optional.
-- Ordinary section headings, **never sticky**. Restrained motion.
+- Homepage story order: who I am (name), what I make (one featured project), where to go next (latest Articles, short about, contact). See [Homepage composition](#homepage-composition).
+- Spacious article rows: prominent title, summary, quieter date/topic. Images optional. The Articles index separates rows with rules; the homepage separates them with space.
+- Ordinary section headings, **never sticky**. Restrained motion; none on the homepage.
 - Introduction works without decorative imagery. **Little or no dither; none in the first studies.**
 
 ## Research translated into rules
@@ -77,28 +77,34 @@ Heavy sans headings paired with quiet body text. The site uses Arial/Helvetica w
 
 The name is the identity. Avoid giant generic persona slogans. Let long article titles wrap naturally.
 
-## Selected composition
+## Homepage composition
 
-Layout A is rendered in both development and production. Run `pnpm design` to open the real homepage. The layout switcher, query-parameter variants, and sample article titles have been removed.
+Decided in the interview of 2026-10-28 (issue #20), replacing Layout A's green introduction, ruled Articles region and about block on the homepage. Run `pnpm design` to open it.
 
-**A — Broad foundation:** a horizontal header, wide green introduction, then a full-width paper writing region. About and contact below.
+The homepage is a scrolling story of tall, spacious sections, one idea each, in this order:
 
-The former B side-column alternative remains in Git history.
+1. **Opening (who I am):** the h1 name at its largest size and the "IT by trade. Curious by default." line on paper. No green, button or scroll cue. Its minimum height is set so the opening fills most of the first screen and the top of the statement peeks in at 1280×800 and 390×844; re-check both if the header height or opening type changes.
+2. **Statement:** one large line, "I enjoy figuring out how things work and sharing what I learn along the way."
+3. **Featured project (what I make):** the page's only green region, a ruled band holding the screenshot, a "Featured project" label, the project title (h2), status, summary, a primary link to the project page and a link to all projects. The project is chosen with `featured: true` in its file (see [docs/projects.md](docs/projects.md)); the build fails unless exactly one project is featured.
+4. **Latest writing:** the three newest Articles with title, date and summary, separated by space rather than rules, then a link to all Articles.
+5. **Ending (where to go next):** a short about drawn from the About copy, a link to the About page, and a primary "Say hello" link to Contact.
 
-Writing, About, and Contact have dedicated routes using the same header, footer, palette, controls, and responsive rules. Navigation uses real page destinations and marks the current page.
+Sections are separated by space (96px desktop, 64px phone), not rules. The only strong shapes are the header and footer rules, the featured band and its screenshot, the status label and the primary buttons. There is no motion or scroll effect beyond the shared button press. Homepage links invite the click in plain first-person words ("See how Yahtz came together", "Read all my articles", "Get to know me", "Say hello") and do not use arrows.
+
+Inner pages keep Layout A's shape: the shared header and footer, a ruled green page heading, then paper. Articles, Projects, About and Contact have dedicated routes using the same palette, controls and responsive rules. Navigation uses real page destinations and marks the current page. The former B side-column alternative remains in Git history.
 
 ## Component contracts
 
-| Component       | Contract                                                                                        |
-| --------------- | ----------------------------------------------------------------------------------------------- |
-| Header          | Name/home, Writing, About, Contact; real destinations only                                      |
-| Introduction    | Name, concise confirmed context, optional writing anchor; no required decorative image          |
-| Section heading | In-flow h2; strong rule or space, never sticky                                                  |
-| Article row     | Real title, optional summary, date/topic, native text link; roomy padding and shared separators |
-| Project feature | Genuine artifact, problem, contribution, result/limitations, repository/demo when available     |
-| Primary action  | Native anchor/button; outline, compact hard shadow, visible pressed state                       |
-| Reading surface | Open prose; notes and code get distinct treatment when warranted                                |
-| Footer          | Concise contact/source links; RSS feed link (`/rss.xml`, implemented)                           |
+| Component       | Contract                                                                                         |
+| --------------- | ------------------------------------------------------------------------------------------------ |
+| Header          | Name/home, Articles, Projects, About, Contact; real destinations only                            |
+| Opening         | Name and confirmed tagline on paper; most of the first screen; no decorative image or scroll cue |
+| Section heading | In-flow h2; strong rule or space, never sticky                                                   |
+| Article row     | Real title, optional summary, date/topic, native text link; roomy padding and shared separators  |
+| Project feature | One featured Project on the homepage: screenshot, title, status, summary, project page link      |
+| Primary action  | Native anchor/button; outline, compact hard shadow, visible pressed state                        |
+| Reading surface | Open prose; notes and code get distinct treatment when warranted                                 |
+| Footer          | Concise contact/source links; RSS feed link (`/rss.xml`, implemented)                            |
 
 ## Content and imagery
 
@@ -114,7 +120,7 @@ Images are not resized or converted at build time, so commit every image at a we
 
 ## Reading and maintenance
 
-Article pages use a back link and the shared green banner for the title and publication date, followed by a readable Markdown body. Headings, lists, images, blockquotes, tables and code are supported; wide code and tables scroll locally. The Articles index and homepage list titles and dates newest first. The section is called Articles and retains `/blog/` URLs. The minimal title/date presentation supersedes the earlier summary/topic row proposal for this version. See [the authoring guide](docs/articles.md) and [blank Obsidian template](docs/templates/article.md).
+Article pages use a back link and the shared green banner for the title and publication date, followed by a readable Markdown body. Headings, lists, images, blockquotes, tables and code are supported; wide code and tables scroll locally. The Articles index lists titles and dates newest first; the homepage shows the three newest with their summaries. The section is called Articles and retains `/blog/` URLs. The minimal title/date presentation supersedes the earlier summary/topic row proposal for this version. See [the authoring guide](docs/articles.md) and [blank Obsidian template](docs/templates/article.md).
 
 ## Interaction and verification
 
@@ -122,20 +128,12 @@ Mostly still. Controls can press through a small translation and hard-shadow cha
 
 Use native landmarks, one h1, logical headings, skip link, visible keyboard focus and comfortable targets. Before production verify contrast, keyboard access, 200% zoom, 320/390/768/1440px widths, long titles and code/table overflow. These are acceptance criteria, not accessibility certification.
 
+## Dark mode (issue #5)
+
+A header toggle (in the footer on phones) switches between the default light theme and a dark theme. Dark mode uses warm charcoal (`#232720`), cream text (`#eee8da`), muted sage text (`#b7bcae`) and forest green (`#364632`); see [Current tokens](#current-tokens). The same layout, typography and shared color tokens apply on every page.
+
+The selection persists in browser storage and is applied before the page paints. If storage is unavailable, toggling still works on the current page. The button has a visible action label and exposes the dark-mode state to assistive technology; without JavaScript, the site stays light and the toggle stays hidden.
+
 ## Next decisions
-
-### Dark-mode exploration (issue #5)
-
-Branch `explore/dark-mode` adds an optional header toggle. Light mode remains the
-default. Dark mode uses warm charcoal (`#232720`), cream text (`#eee8da`), muted
-sage text (`#b7bcae`), and a forest-green introduction (`#364632`). The same
-layout, typography, and shared color tokens apply across all five routes.
-
-The selection persists in browser storage and is applied before the page paints.
-If storage is unavailable, toggling still works on the current page. The button
-has a visible action label and exposes the dark-mode state to assistive technology;
-without JavaScript, the site remains light and the inactive button stays hidden.
-This is a color exploration for review, superseding the light-only direction on
-this branch without changing the approved composition.
 
 Add genuine articles using the Markdown publishing workflow, refine the résumé, then revisit typography and color if needed. Obsidian wikilink support is deferred; use standard Markdown links. Change one major axis per iteration. Explain decisions in terms of spaciousness, identity and access to writing.

@@ -134,27 +134,11 @@ nav a[aria-current="page"] {
 [data-theme="dark"] .theme-sun {
   display: block;
 }
-.composition {
-  padding-top: 40px;
-}
-.home-intro {
-  background: var(--green);
-  border: var(--rule);
-  border-radius: var(--radius);
-  padding: clamp(32px, 4.5vw, 64px);
-  display: grid;
-  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
-  gap: 28px 64px;
-}
 .eyebrow {
   font:
     12px/1.5 ui-monospace,
     monospace;
   letter-spacing: 0.025em;
-}
-.home-intro > .eyebrow {
-  grid-column: 1/-1;
-  margin: 0;
 }
 h1 {
   font-size: clamp(64px, 7.5vw, 108px);
@@ -163,10 +147,6 @@ h1 {
   font-weight: 900;
   margin: 0;
   overflow-wrap: anywhere;
-}
-.intro-copy {
-  align-self: end;
-  max-width: 40ch;
 }
 p {
   font-size: 18px;
@@ -202,10 +182,6 @@ p {
   transform: translate(4px, 4px);
   box-shadow: none;
 }
-.writing {
-  margin-top: 80px;
-  scroll-margin-top: 24px;
-}
 .section-head {
   display: flex;
   align-items: baseline;
@@ -239,13 +215,6 @@ h3,
   margin: 0;
   color: var(--muted);
 }
-.about-section {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr);
-  gap: 64px;
-  padding: 80px 0;
-  scroll-margin-top: 32px;
-}
 .prose {
   max-width: 65ch;
   min-width: 0;
@@ -253,6 +222,93 @@ h3,
 }
 .prose p:last-child {
   margin-bottom: 0;
+}
+/* Homepage: tall sections separated by space, one green band. */
+.home-opening {
+  min-height: calc(87svh - 112px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 32px;
+  padding: 64px 0;
+}
+.home-opening h1 {
+  font-size: clamp(64px, 9vw, 120px);
+}
+.home-opening .lead {
+  margin: 0;
+}
+.home-statement {
+  padding: 32px 0 96px;
+}
+.home-statement p {
+  max-width: 24ch;
+  margin: 0;
+  font-size: clamp(30px, 3.6vw, 48px);
+  line-height: 1.2;
+  letter-spacing: -0.035em;
+  font-weight: 700;
+}
+.home-featured {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+  align-items: center;
+  gap: 32px 64px;
+  padding: clamp(32px, 4.5vw, 64px);
+  background: var(--green);
+  border: var(--rule);
+  border-radius: var(--radius);
+}
+.home-featured-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: var(--rule);
+  border-radius: var(--radius);
+}
+.home-featured .eyebrow {
+  margin: 0 0 16px;
+}
+.home-featured h2 {
+  margin-bottom: 20px;
+  overflow-wrap: anywhere;
+}
+.home-featured-summary {
+  max-width: 40ch;
+  margin: 24px 0 28px;
+}
+.home-writing {
+  padding: 96px 0 32px;
+}
+.home-writing .article-list li {
+  padding: 32px 0;
+  border-bottom: 0;
+}
+.article-summary {
+  max-width: 60ch;
+  margin: 12px 0 0;
+}
+.home-more {
+  margin: 0;
+  font-weight: 700;
+}
+.home-featured .home-more {
+  margin-top: 28px;
+}
+.home-ending {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 32px 64px;
+  padding: 96px 0;
+}
+.home-ending h2 {
+  max-width: 14ch;
+}
+.home-ending .prose p {
+  margin-bottom: 24px;
+}
+.home-ending .primary {
+  margin-top: 16px;
 }
 .inner-page {
   padding: 40px 0 80px;
@@ -484,27 +540,34 @@ h3,
   nav {
     gap: 12px 24px;
   }
-  .composition {
-    padding-top: 24px;
-  }
-  .home-intro {
-    display: flex;
-    flex-direction: column;
-    gap: 32px;
-    padding: 32px 24px;
-  }
   h1 {
     font-size: clamp(42px, 11.4vw, 72px);
   }
-  .intro-copy {
-    align-self: auto;
+  .home-opening {
+    min-height: calc(92svh - 150px);
+    gap: 24px;
+    padding: 48px 0;
+  }
+  .home-opening h1 {
+    font-size: clamp(48px, 16vw, 88px);
+  }
+  .home-statement {
+    padding: 16px 0 64px;
+  }
+  .home-featured {
+    grid-template-columns: 1fr;
+    padding: 24px;
+  }
+  .home-writing {
+    padding: 64px 0 24px;
+  }
+  .home-ending {
+    grid-template-columns: 1fr;
+    padding: 64px 0;
   }
   .primary {
     padding: 14px 12px;
     font-size: 14px;
-  }
-  .writing {
-    margin-top: 56px;
   }
   .section-head {
     flex-direction: column;
@@ -513,11 +576,6 @@ h3,
   }
   .writing-empty {
     padding: 32px 0;
-  }
-  .about-section {
-    grid-template-columns: 1fr;
-    gap: 32px;
-    padding: 56px 0;
   }
   .header-actions > .theme-toggle {
     display: none;

@@ -1,0 +1,33 @@
+---
+import { Image } from "astro:assets";
+import { getCollection } from "astro:content";
+import ProjectStatus from "./ProjectStatus.astro";
+
+const featured = await getCollection("projects", ({ data }) => data.featured);
+if (featured.length !== 1) {
+  throw new Error(
+    featured.length === 0
+      ? "No project is featured. Add `featured: true` to exactly one file in src/content/projects/."
+      : `Only one project can be featured, but ${featured.length} are: ${featured
+          .map(({ id }) => `src/content/projects/${id}.md`)
+          .join(", ")}. Remove \`featured: true\` from all but one.`,
+  );
+}
+const [{ id, data }] = featured;
+---
+
+<section class="home-featured" aria-labelledby="featured-title">
+  <Image class="home-featured-image" src={data.image} alt={data.imageAlt} />
+  <div class="home-featured-copy">
+    <p class="eyebrow">Featured project</p>
+    <h2 id="featured-title">{data.title}</h2>
+    <ProjectStatus status={data.status} />
+    <p class="home-featured-summary">{data.summary}</p>
+    <a class="primary" href={`/projects/${id}/`}
+      >See how {data.title} came together</a
+    >
+    <p class="home-more">
+      <a href="/projects/">See all my projects</a>
+    </p>
+  </div>
+</section>

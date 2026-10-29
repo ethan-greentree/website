@@ -1,33 +1,45 @@
 ---
 import PrimaryLayout from "../layouts/PrimaryLayout.astro";
-import AboutCopy from "../components/AboutCopy.astro";
 import ArticleList from "../components/ArticleList.astro";
+import FeaturedProject from "../components/FeaturedProject.astro";
+import { getArticles } from "../lib/articles";
+
+const hasArticles = getArticles().length > 0;
 ---
 
 <PrimaryLayout>
-  <div class="composition">
-    <section class="home-intro" aria-labelledby="name">
-      <p class="eyebrow">A personal site / Technology & curiosity</p>
-      <h1 id="name">Ethan<br />Greentree</h1>
-      <div class="intro-copy">
-        <p class="lead">IT by trade.<br />Curious by default.</p>
-        <p>
-          I enjoy figuring out how things work and sharing what I learn along
-          the way.
-        </p>
-        <a class="primary" href="#writing">Explore the articles</a>
-      </div>
-    </section>
-    <section class="writing" id="writing" aria-labelledby="writing-title">
-      <div class="section-head">
-        <h2 id="writing-title">Articles</h2>
-        <span class="eyebrow">Ideas, investigations & notes</span>
-      </div>
-      <ArticleList heading="h3" />
-    </section>
+  <section class="home-opening" aria-labelledby="name">
+    <h1 id="name">Ethan<br />Greentree</h1>
+    <p class="lead">IT by trade.<br />Curious by default.</p>
+  </section>
+  <div class="home-statement">
+    <p>
+      I enjoy figuring out how things work and sharing what I learn along the
+      way.
+    </p>
   </div>
-  <section class="about-section" id="about" aria-labelledby="about-title">
-    <h2 id="about-title">A little<br />about me.</h2>
-    <div class="prose"><AboutCopy /></div>
+  <FeaturedProject />
+  <section class="home-writing" aria-labelledby="writing-title">
+    <h2 id="writing-title">Latest articles</h2>
+    <ArticleList heading="h3" limit={3} summaries />
+    {
+      hasArticles && (
+        <p class="home-more">
+          <a href="/blog/">Read all my articles</a>
+        </p>
+      )
+    }
+  </section>
+  <section class="home-ending" aria-labelledby="ending-title">
+    <h2 id="ending-title">Happiest when something finally clicks.</h2>
+    <div class="prose">
+      <p>
+        I've worked at KES for five years, with a few more years of tinkering on
+        and off. I'm taking that learning more seriously now. I believe in
+        teaching as practice.
+      </p>
+      <p class="home-more"><a href="/about/">Get to know me</a></p>
+      <a class="primary" href="/contact/">Say hello</a>
+    </div>
   </section>
 </PrimaryLayout>

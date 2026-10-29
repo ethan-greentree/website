@@ -1,19 +1,32 @@
 ---
-import { articleDate, getArticles } from "../lib/articles";
+import { articleDate, articleSummary, getArticles } from "../lib/articles";
 import WritingEmpty from "./WritingEmpty.astro";
-
-const articles = getArticles();
 
 interface Props {
   heading?: "h2" | "h3";
+  /** Show only the newest few Articles. */
+  limit?: number;
+  /** Add each Article's summary below its date. */
+  summaries?: boolean;
 }
-const { heading: Heading = "h2" } = Astro.props;
+const { heading: Heading = "h2", limit, summaries = false } = Astro.props;
+
+const articles = await Promise.all(
+  getArticles()
+    .slice(0, limit)
+    .map(async (article) => ({
+      ...article,
+      summary: summaries
+        ? articleSummary(article.frontmatter, await article.compiledContent())
+        : undefined,
+    })),
+);
 ---
 
 {
   articles.length ? (
     <ul class="article-list">
-      {articles.map(({ frontmatter, url }) => (
+      {articles.map(({ frontmatter, url, summary }) => (
         <li>
           <Heading>
             <a href={url}>{frontmatter.title}</a>
@@ -21,6 +34,7 @@ const { heading: Heading = "h2" } = Astro.props;
           <time datetime={frontmatter.date}>
             {articleDate(frontmatter.date)}
           </time>
+          {summary && <p class="article-summary">{summary}</p>}
         </li>
       ))}
     </ul>
