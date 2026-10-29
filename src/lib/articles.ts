@@ -75,14 +75,17 @@ export function articleSummary(
   if (typeof frontmatter.summary === "string" && frontmatter.summary.trim()) {
     return frontmatter.summary.trim();
   }
-  const paragraph = html
+  const paragraphs = html
     .replace(/<!--[\s\S]*?-->/g, "")
-    .match(/<p(?:\s[^>]*)?>([\s\S]*?)<\/p>/i)?.[1];
-  const text = paragraph
-    ? decodeEntities(paragraph.replace(/<[^>]*>/g, ""))
-        .replace(/\s+/g, " ")
-        .trim()
-    : "";
+    .matchAll(/<p(?:\s[^>]*)?>([\s\S]*?)<\/p>/gi);
+  let text = "";
+  for (const [, paragraph] of paragraphs) {
+    // Skip paragraphs without text, such as a lone image.
+    text = decodeEntities(paragraph.replace(/<[^>]*>/g, ""))
+      .replace(/\s+/g, " ")
+      .trim();
+    if (text) break;
+  }
   if (!text) return frontmatter.title;
   if (text.length <= SUMMARY_LENGTH) return text;
   const cut = text.slice(0, SUMMARY_LENGTH + 1);

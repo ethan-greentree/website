@@ -12,7 +12,7 @@ Every `.md` file in `src/pages/blog/` is a published article and appears on both
 
 ## Summaries, link previews and RSS
 
-Each article's summary is used as its page description, its link preview text (for example on LinkedIn), and its entry in the RSS feed at `/rss.xml`. By default the summary is the article's first published paragraph, shortened to about 200 characters. HTML comments, such as a working outline, are skipped. To write a summary yourself, fill in the quoted `summary` field; leave it as `""` or remove it to use the first paragraph.
+Each article's summary is used as its page description, its link preview text (for example on LinkedIn), and its entry in the RSS feed at `/rss.xml`. By default the summary is the article's first paragraph of text, shortened to about 200 characters. HTML comments, such as a working outline, and image-only paragraphs are skipped. To write a summary yourself, fill in the quoted `summary` field; leave it as `""` or remove it to use the first paragraph.
 
 Every published article appears in `/rss.xml`, newest first. All pages share one preview image, `public/og-image.png` (1200×630). Its source is [assets/og-image.svg](assets/og-image.svg). To change it, edit the SVG, open it in Chrome at a 1200×630 window size, and save a screenshot over the PNG.
 
