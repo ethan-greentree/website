@@ -28,12 +28,12 @@ A short description of what the project is and why you made it.
 | `summary` | Yes | One sentence. |
 | `status` | Yes | `Live` (running and usable), `Prototype` (works but rough), or `Retired` (no longer maintained, kept for the record). |
 | `tech` | Yes | At least one item. |
-| `image` | Yes | Put the screenshot in `src/assets/projects/` and reference it relative to the Markdown file. It is not resized or converted (the site uses Astro's passthrough image service), so commit it at a web-ready size and format. |
-| `imageAlt` | Yes | Describe what the image shows. |
+| `image` | Yes, unless `diagram: "homelab"` | Put the screenshot in `src/assets/projects/` and reference it relative to the Markdown file. It is not resized or converted (the site uses Astro's passthrough image service), so commit it at a web-ready size and format. |
+| `imageAlt` | With `image` | Describe what the image shows. |
 | `order` | Yes | Lower numbers appear first on the Projects page. |
 | `link` | No | One primary action, such as playing a game. `href` must be a site-relative path starting with a single `/` (not `//`) or an `https://` URL; anything else fails the build. Links to `/games/` open in a new tab, announced to screen readers. Don't put arrows in the label. |
-| `diagram` | No | Adds a built-in diagram section after the description. The only value is `deployment`, used by the website project; it renders `src/components/DeploymentDiagram.astro`. |
-| `featured` | No | Set `featured: true` on exactly one project to show it on the homepage with its screenshot, status and summary. To change the featured project, move the line to another file. The build fails if no project or more than one project is featured. |
+| `diagram` | No | Adds a built-in diagram section after the description. `deployment` (the website project) renders `src/components/DeploymentDiagram.astro`. `homelab` renders `src/components/HomelabDiagram.astro`; because it has no photo, its diagram is also the visual: the page has no screenshot and the Projects page shows the drawing (`HomelabSvg.astro`) cropped to the host. Every other project needs an `image`. |
+| `featured` | No | Set `featured: true` on exactly one project to show it on the homepage with its screenshot, status and summary. The featured project must have an `image`. To change the featured project, move the line to another file. The build fails if no project or more than one project is featured. |
 
 The body is the project's description. Keep it short; write longer stories as [Articles](articles.md) and link from the article to the project page. Project pages do not list related articles.
 

@@ -14,10 +14,16 @@ if (featured.length !== 1) {
   );
 }
 const [{ id, data }] = featured;
+const { image, imageAlt = "" } = data;
+if (!image) {
+  throw new Error(
+    `The featured project needs an \`image\` for the homepage: src/content/projects/${id}.md.`,
+  );
+}
 ---
 
 <section class="home-featured" aria-labelledby="featured-title">
-  <Image class="home-featured-image" src={data.image} alt={data.imageAlt} />
+  <Image class="home-featured-image" src={image} alt={imageAlt} />
   <div class="home-featured-copy">
     <p class="eyebrow">Featured project</p>
     <h2 id="featured-title">{data.title}</h2>

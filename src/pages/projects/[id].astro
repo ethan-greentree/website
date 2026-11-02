@@ -3,6 +3,7 @@ import { Image } from "astro:assets";
 import { getCollection, render } from "astro:content";
 import PrimaryLayout from "../../layouts/PrimaryLayout.astro";
 import DeploymentDiagram from "../../components/DeploymentDiagram.astro";
+import HomelabDiagram from "../../components/HomelabDiagram.astro";
 import ProjectStatus from "../../components/ProjectStatus.astro";
 
 export async function getStaticPaths() {
@@ -44,12 +45,16 @@ const opensGame = data.link?.href.startsWith("/games/");
         )
       }
     </header>
-    <Image
-      class="project-image"
-      src={data.image}
-      alt={data.imageAlt}
-      loading="eager"
-    />
+    {
+      data.image && (
+        <Image
+          class="project-image"
+          src={data.image}
+          alt={data.imageAlt ?? ""}
+          loading="eager"
+        />
+      )
+    }
     <div class="project-body page-copy">
       <div class="article-body prose"><Content /></div>
       <aside aria-labelledby="tech-title">
@@ -60,6 +65,7 @@ const opensGame = data.link?.href.startsWith("/games/");
       </aside>
     </div>
     {data.diagram === "deployment" && <DeploymentDiagram />}
+    {data.diagram === "homelab" && <HomelabDiagram />}
   </article>
 </PrimaryLayout>
 

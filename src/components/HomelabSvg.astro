@@ -1,0 +1,196 @@
+---
+// The homelab drawing, shared by the project page (full, with a text
+// alternative) and the Projects list (just the host, decorative).
+// Keep it in step with the list in HomelabDiagram.astro. Leave out IPs,
+// hostnames, domains, ports, versions and serials, and don't show whether
+// the Minecraft server is reachable from the internet.
+interface Props {
+  /** Show only the Proxmox host, hidden from assistive tech. */
+  thumbnail?: boolean;
+}
+const { thumbnail = false } = Astro.props;
+
+const services = [
+  {
+    y: 224,
+    title: "More projects (planned)",
+    detail: "hosted over time",
+    planned: true,
+  },
+  { y: 280, title: "Minecraft server", detail: "for my wife and me" },
+  { y: 336, title: "Pi-hole", detail: "blocks ads and trackers" },
+];
+---
+
+<svg
+  class="homelab-svg"
+  viewBox={thumbnail ? "4 152 352 268" : "0 0 360 520"}
+  role={thumbnail ? undefined : "img"}
+  aria-hidden={thumbnail ? "true" : undefined}
+  aria-labelledby={thumbnail ? undefined : "homelab-svg-title homelab-svg-desc"}
+  focusable="false"
+>
+  {
+    !thumbnail && (
+      <>
+        <title id="homelab-svg-title">Homelab diagram</title>
+        <desc id="homelab-svg-desc">
+          At home, an old Lenovo desktop runs Proxmox. It hosts Pi-hole and a
+          Minecraft server, with more projects planned. Home devices look up
+          sites through Pi-hole. Two more PCs are planned to join the host in a
+          cluster. Tailscale is planned, for private access to the host from
+          anywhere. Planned parts are drawn with dashed lines. Each part is
+          described in the list that follows.
+        </desc>
+
+        <g class="zone">
+          <rect x="4" y="4" width="352" height="92" />
+          <text x="20" y="27">
+            Away from home
+          </text>
+          <rect x="4" y="132" width="352" height="384" />
+          <text x="20" y="155">
+            Home network
+          </text>
+        </g>
+
+        <g class="box planned">
+          <rect x="20" y="40" width="320" height="44" />
+          <text class="box-title" x="36" y="59">
+            Tailscale (planned)
+          </text>
+          <text class="box-detail" x="36" y="75">
+            private access from anywhere
+          </text>
+        </g>
+        <path class="link planned-link" d="M180 84 V160" />
+        <path class="head" d="M174 160 L180 168 L186 160 Z" />
+        <text class="link-label" x="190" y="118">
+          planned
+        </text>
+      </>
+    )
+  }
+
+  <g class="host">
+    <rect x="20" y="168" width="320" height="236"></rect>
+    <text class="host-title" x="36" y="192">Proxmox host</text>
+    <text class="host-detail" x="36" y="209">an old Lenovo desktop</text>
+  </g>
+
+  {
+    services.map((service) => (
+      <g class:list={["box", { planned: service.planned }]}>
+        <rect x="36" y={service.y} width="288" height="44" />
+        <text class="box-title" x="52" y={service.y + 19}>
+          {service.title}
+        </text>
+        <text class="box-detail" x="52" y={service.y + 35}>
+          {service.detail}
+        </text>
+      </g>
+    ))
+  }
+
+  {
+    !thumbnail && (
+      <>
+        <path class="link planned-link" d="M96 404 V440" />
+        <g class="box planned">
+          <rect x="20" y="440" width="152" height="56" />
+          <text class="box-title" x="32" y="463">
+            Two more PCs
+          </text>
+          <text class="box-detail" x="32" y="481">
+            cluster (planned)
+          </text>
+        </g>
+
+        <path class="link" d="M264 440 V388" />
+        <path class="head" d="M258 388 L264 380 L270 388 Z" />
+        <text class="link-label" x="274" y="426">
+          DNS
+        </text>
+        <g class="box">
+          <rect x="188" y="440" width="152" height="56" />
+          <text class="box-title" x="200" y="463">
+            Home devices
+          </text>
+          <text class="box-detail" x="200" y="481">
+            DNS via Pi-hole
+          </text>
+        </g>
+      </>
+    )
+  }
+</svg>
+
+<style>
+  .homelab-svg {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .zone rect {
+    fill: none;
+    stroke: var(--muted);
+    stroke-width: 1.5;
+  }
+
+  .zone text,
+  .link-label {
+    fill: var(--muted);
+    font:
+      12px ui-monospace,
+      monospace;
+  }
+
+  .host rect {
+    fill: var(--green);
+    stroke: var(--ink);
+    stroke-width: 2;
+  }
+
+  .host-title,
+  .box-title {
+    fill: var(--ink);
+    font-size: 15px;
+    font-weight: 700;
+  }
+
+  .host-detail {
+    fill: var(--ink);
+    font:
+      12px ui-monospace,
+      monospace;
+  }
+
+  .box rect {
+    fill: var(--paper);
+    stroke: var(--ink);
+    stroke-width: 2;
+  }
+
+  .box-detail {
+    fill: var(--muted);
+    font:
+      12px ui-monospace,
+      monospace;
+  }
+
+  .planned rect,
+  .planned-link {
+    stroke-dasharray: 6 4;
+  }
+
+  .link {
+    fill: none;
+    stroke: var(--ink);
+    stroke-width: 2;
+  }
+
+  .head {
+    fill: var(--ink);
+  }
+</style>
