@@ -1,0 +1,134 @@
+---
+// What the homelab runs. The list is the diagram's text alternative, so keep
+// it in step with HomelabSvg.astro. Same layout as DeploymentDiagram.astro.
+import HomelabSvg from "./HomelabSvg.astro";
+---
+
+<section class="homelab" aria-labelledby="homelab-title">
+  <div class="section-head">
+    <h2 id="homelab-title">How it fits together</h2>
+  </div>
+  <p class="homelab-intro">
+    Everything runs on one machine at home. The dashed parts of the diagram are
+    planned and not set up yet.
+  </p>
+  <div class="homelab-layout">
+    <figure class="homelab-figure">
+      <HomelabSvg />
+    </figure>
+
+    <ul class="homelab-parts">
+      <li>
+        <h3>Proxmox host</h3>
+        <p>
+          An old Lenovo desktop with an older Intel Core i5, 8 GB of RAM and a
+          512 GB SSD. Proxmox turns it into a host for self-hosted services.
+        </p>
+      </li>
+      <li>
+        <h3>Pi-hole</h3>
+        <p>
+          A DNS sinkhole for the home network. Devices at home look up sites
+          through it, and it blocks ads and trackers before they load.
+        </p>
+      </li>
+      <li>
+        <h3>Minecraft server</h3>
+        <p>A server for my wife and me to play on together.</p>
+      </li>
+      <li>
+        <h3>Tailscale <span class="planned-tag">Planned</span></h3>
+        <p>
+          Private access to the services from anywhere, without opening ports.
+        </p>
+      </li>
+      <li>
+        <h3>More projects <span class="planned-tag">Planned</span></h3>
+        <p>Other projects I'd like to host on it over time.</p>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<style>
+  .homelab {
+    margin-top: 80px;
+  }
+
+  .homelab-intro {
+    max-width: 65ch;
+    margin: 32px 0 0;
+  }
+
+  .homelab-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 360px) minmax(0, 65ch);
+    gap: 48px 64px;
+    align-items: start;
+    margin-top: 40px;
+  }
+
+  .homelab-figure {
+    margin: 0;
+  }
+
+  .homelab-parts {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border-top: 2px solid var(--ink);
+  }
+
+  .homelab-parts li {
+    padding: 24px 0;
+    border-bottom: 2px solid var(--ink);
+  }
+
+  .homelab-parts h3 {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 8px 12px;
+    max-width: none;
+    margin: 0 0 8px;
+    font-size: 22px;
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+  }
+
+  .planned-tag {
+    padding: 2px 8px;
+    border: 2px dashed var(--ink);
+    border-radius: var(--radius);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.025em;
+    text-transform: uppercase;
+    transform: translateY(-2px);
+  }
+
+  .homelab-parts p {
+    margin: 0;
+  }
+
+  @media (max-width: 900px) {
+    .homelab-layout {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 32px;
+    }
+
+    .homelab-figure {
+      max-width: 360px;
+    }
+  }
+
+  @media (max-width: 700px) {
+    .homelab {
+      margin-top: 56px;
+    }
+
+    .homelab-intro {
+      margin-top: 24px;
+    }
+  }
+</style>
