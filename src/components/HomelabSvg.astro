@@ -37,9 +37,10 @@ const services = [
         <desc id="homelab-svg-desc">
           At home, an old Lenovo desktop runs Proxmox. It hosts Pi-hole and a
           Minecraft server, with more projects planned. Home devices look up
-          sites through Pi-hole. Tailscale is planned, for private access to the
-          host from anywhere. Planned parts are drawn with dashed lines. Each
-          part is described in the list that follows.
+          sites through Pi-hole. Two more PCs are planned to join the host in a
+          cluster. Tailscale is planned, for private access to the host from
+          anywhere. Planned parts are drawn with dashed lines. Each part is
+          described in the list that follows.
         </desc>
 
         <g class="zone">
@@ -94,19 +95,29 @@ const services = [
   {
     !thumbnail && (
       <>
-        <path class="link" d="M180 440 V388" />
-        <path class="head" d="M174 388 L180 380 L186 388 Z" />
-        <text class="link-label" x="190" y="426">
+        <path class="link planned-link" d="M96 404 V440" />
+        <g class="box planned">
+          <rect x="20" y="440" width="152" height="56" />
+          <text class="box-title" x="32" y="463">
+            Two more PCs
+          </text>
+          <text class="box-detail" x="32" y="481">
+            cluster (planned)
+          </text>
+        </g>
+
+        <path class="link" d="M264 440 V388" />
+        <path class="head" d="M258 388 L264 380 L270 388 Z" />
+        <text class="link-label" x="274" y="426">
           DNS
         </text>
-
         <g class="box">
-          <rect x="20" y="440" width="320" height="52" />
-          <text class="box-title" x="36" y="462">
+          <rect x="188" y="440" width="152" height="56" />
+          <text class="box-title" x="200" y="463">
             Home devices
           </text>
-          <text class="box-detail" x="36" y="479">
-            look up sites through Pi-hole
+          <text class="box-detail" x="200" y="481">
+            DNS via Pi-hole
           </text>
         </g>
       </>
