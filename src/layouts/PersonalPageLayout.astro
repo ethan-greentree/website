@@ -1,0 +1,97 @@
+---
+import type { MarkdownLayoutProps } from "astro";
+import PrimaryLayout from "./PrimaryLayout.astro";
+import { articleDate, parseArticleDate } from "../lib/articles";
+
+/** Frontmatter for small personal pages such as /now and /uses. */
+interface Frontmatter {
+  /** Short page name for the browser tab, e.g. "Now". */
+  title: string;
+  /** Large heading in the green banner. */
+  heading: string;
+  eyebrow: string;
+  description: string;
+  /** Last updated, as a quoted YYYY-MM-DD date. */
+  updated: string;
+  /** Show an out-of-date note once `updated` is older than this many months. */
+  staleAfterMonths?: number;
+}
+
+type Props = MarkdownLayoutProps<Frontmatter>;
+const { frontmatter } = Astro.props;
+for (const key of ["title", "heading", "eyebrow", "description"] as const) {
+  if (typeof frontmatter[key] !== "string" || !frontmatter[key].trim()) {
+    throw new Error(
+      `Personal pages require a non-empty ${key} in frontmatter.`,
+    );
+  }
+}
+const updated = parseArticleDate(frontmatter.updated);
+
+/** First UTC day the page counts as stale: `months` calendar months after `date`, plus one day. */
+function staleFrom(date: Date, months: number): Date {
+  const day = date.getUTCDate();
+  const target = new Date(
+    Date.UTC(date.getUTCFullYear(), date.getUTCMonth() + months, 1),
+  );
+  const lastDay = new Date(
+    Date.UTC(target.getUTCFullYear(), target.getUTCMonth() + 1, 0),
+  ).getUTCDate();
+  target.setUTCDate(Math.min(day, lastDay) + 1);
+  return target;
+}
+
+const months = frontmatter.staleAfterMonths;
+if (months !== undefined && !(Number.isInteger(months) && months > 0)) {
+  throw new Error("staleAfterMonths must be a positive whole number.");
+}
+const staleDate = months ? staleFrom(updated, months) : undefined;
+---
+
+<PrimaryLayout
+  title={`${frontmatter.title} — Ethan Greentree`}
+  description={frontmatter.description}
+>
+  <article class="inner-page" aria-labelledby="personal-title">
+    <header class="page-heading">
+      <p class="eyebrow">{frontmatter.eyebrow}</p>
+      <h1 id="personal-title">{frontmatter.heading}</h1>
+      <p class="article-date">
+        Last updated <time datetime={frontmatter.updated}
+          >{articleDate(frontmatter.updated)}</time
+        >
+      </p>
+      {
+        staleDate && (
+          <p
+            class="stale-note"
+            data-stale-from={staleDate.toISOString()}
+            hidden={Date.now() < staleDate.getTime()}
+          >
+            This page might be out of date.
+          </p>
+        )
+      }
+    </header>
+    <div class="article-body prose page-copy"><slot /></div>
+  </article>
+</PrimaryLayout>
+
+<script>
+  // The site is static, so check staleness again against the visitor's date.
+  for (const note of document.querySelectorAll<HTMLElement>(
+    "[data-stale-from]",
+  )) {
+    const from = Date.parse(note.dataset.staleFrom ?? "");
+    if (Date.now() >= from) note.hidden = false;
+  }
+</script>
+
+<style>
+  .stale-note {
+    margin: 8px 0 0;
+    font:
+      italic 14px/1.5 ui-monospace,
+      monospace;
+  }
+</style>

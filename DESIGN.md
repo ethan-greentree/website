@@ -106,7 +106,7 @@ Inner pages keep Layout A's shape: the shared header and footer, a ruled green p
 | Project feature | One featured Project on the homepage: screenshot, title, status, summary, project page link   |
 | Primary action  | Native anchor/button; outline, compact hard shadow, visible pressed state                     |
 | Reading surface | Open prose; notes and code get distinct treatment when warranted                              |
-| Footer          | Full-width green stripe, no top rule; concise contact links and RSS feed link (`/rss.xml`)    |
+| Footer          | Full-width green stripe, no top rule; contact, Now (`/now/`), Uses (`/uses/`) and RSS links   |
 
 ## Content and imagery
 
@@ -123,6 +123,12 @@ Images are not resized or converted at build time, so commit every image at a we
 ## Reading and maintenance
 
 Article pages use a back link and the shared green banner for the title and publication date, followed by a readable Markdown body. Headings, lists, images, blockquotes, tables and code are supported; wide code and tables scroll locally. The Articles index lists titles and dates newest first; the homepage shows the three newest with their summaries. The section is called Articles and retains `/blog/` URLs. The minimal title/date presentation supersedes the earlier summary/topic row proposal for this version. See [the authoring guide](docs/articles.md) and [blank Obsidian template](docs/templates/article.md).
+
+## Now and Uses pages (issue #14)
+
+`/now` (what I'm working on and learning) and `/uses` (desk, software and homelab gear) are Markdown files, `src/pages/now.md` and `src/pages/uses.md`, using `src/layouts/PersonalPageLayout.astro`. They are not Articles: they stay out of the Articles list and RSS feed, and are linked from the footer rather than the main navigation. Each has the shared green page heading with an eyebrow, h1 and "Last updated" date, then a readable Markdown body (the Article body styles). Each item gets one short, plain sentence on why.
+
+To update a page, edit its Markdown and set `updated` to the day's date as a quoted `YYYY-MM-DD`; an invalid date fails the build. `/now` sets `staleAfterMonths: 3`, so once the date is more than three months old it shows "This page might be out of date." under the date. The site is static, so a small script also checks against the visitor's date; without JavaScript the note depends on the build date. Leave out the job search, anything outside tech, and serial numbers, IPs or hostnames.
 
 ## Interaction and verification
 
