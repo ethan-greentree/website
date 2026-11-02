@@ -126,7 +126,7 @@ Article pages use a back link and the shared green banner for the title and publ
 
 ## Now and Uses pages (issue #14)
 
-`/now` (what I'm working on and learning) and `/uses` (desk, software and homelab gear) are Markdown files, `src/pages/now.md` and `src/pages/uses.md`, using `src/layouts/PersonalPageLayout.astro`. They are not Articles: they stay out of the Articles list and RSS feed, and are linked from the footer rather than the main navigation. Each has the shared green page heading with an eyebrow, h1 and "Last updated" date, then a readable Markdown body (the Article body styles). Each item gets one short, plain sentence on why.
+`/now` (what I'm working on and learning) and `/uses` (desk, AI tools, development, homelab and learning) are Markdown files, `src/pages/now.md` and `src/pages/uses.md`, using `src/layouts/PersonalPageLayout.astro`. They are not Articles: they stay out of the Articles list and RSS feed, and are linked from the footer rather than the main navigation. Each has the shared green page heading with an eyebrow, h1 and "Last updated" date, then a readable Markdown body (the Article body styles). Each item gets one short, plain sentence on why.
 
 To update a page, edit its Markdown and set `updated` to the day's date as a quoted `YYYY-MM-DD`; an invalid date fails the build. `/now` sets `staleAfterMonths: 3`, so once the date is more than three months old it shows "This page might be out of date." under the date. The site is static, so a small script also checks against the visitor's date; without JavaScript the note depends on the build date. Leave out the job search, anything outside tech, and serial numbers, IPs or hostnames.
 
