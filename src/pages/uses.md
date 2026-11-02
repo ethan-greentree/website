@@ -30,7 +30,7 @@ The hardware, software and homelab gear I use day to day. Nothing fancy.
 - **Windows Terminal** with PowerShell, Git Bash and WSL. One window for whichever shell the job needs.
 - **Git and GitHub.** So I can see what changed and undo my mistakes.
 - **Docker.** This site runs in it, and it keeps a setup the same from one machine to the next.
-- **Languages.** TypeScript is what I reach for first, PHP comes up sometimes, and Python is a close second for small automations.
+- **Languages.** Whatever suits the problem: PowerShell for Windows automation, Python for small apps on Raspberry Pis, and PHP or TypeScript for web apps.
 
 ## Homelab
 
