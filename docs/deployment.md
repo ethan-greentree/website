@@ -18,6 +18,15 @@ Nginx serves generated pages directly and returns Astro's custom page with HTTP
 404 for missing paths. HTML uses `Cache-Control: no-cache`; hashed `/_astro/`
 assets use one-year immutable caching.
 
+Every response also carries the security headers in
+`docker/security-headers.conf`. Each `location` block includes that file,
+because Nginx drops server-level `add_header` lines in a location that sets
+its own. Script and style rules come from the CSP `<meta>` tag Astro writes
+into each page (`security.csp` in `astro.config.mjs`), using hashes rather
+than `'unsafe-inline'`. Astro's Shiki highlighting is off because it relies on
+inline styles the CSP blocks. The runtime stage runs `apk upgrade` to pick up
+Alpine security fixes released after the base image.
+
 ## Stage 1: build and publish
 
 `.github/workflows/build-image.yaml` runs when changes reach `main`, including
@@ -27,9 +36,13 @@ direct pushes. It builds a Linux AMD64 image and publishes it to:
 docker.io/<namespace>/<repository>:latest
 ```
 
-If the Docker build fails, publication stops. There is no separate image-check
-script. The workflow checks out the source, signs in with a Docker Hub access
-token, then builds and pushes the image. It refreshes the base images.
+If the Docker build fails, publication stops. The workflow checks out the
+source, builds the image locally (refreshing the base images), and scans it
+with Trivy. All findings are uploaded to the repository's **Security** tab
+under code scanning. A **critical** finding with a fix available stops the
+workflow before it signs in to Docker Hub, so nothing is published or
+deployed. Lower severities, and critical findings with no fix yet, are
+reported without blocking. The image is then pushed from the same build cache.
 After publication succeeds, the deployment workflow updates the VPS.
 
 Create a **public** Docker Hub repository before the first publish. Configure the
@@ -37,7 +50,10 @@ repository secrets listed below. Confirm an unauthenticated pull
 works before deploying; the VPS will not need registry credentials. GitHub
 Actions still runs the workflows; Docker Hub stores the published image.
 
-Actions use major version tags. Node tracks its 24 release line and
+Actions are pinned to full commit SHAs, with the release tag in a comment.
+Dependabot (`.github/dependabot.yml`) opens grouped weekly PRs for npm
+packages, actions and Docker base images; they are merged by hand, since a
+merge to `main` deploys. Node tracks its 24 release line and
 Nginx tracks `stable-alpine`. Each successful build replaces the `latest` tag.
 Older builds are cancelled when main changes. No commit-specific release tags
 are published.
@@ -108,6 +124,37 @@ for this image. No host port needs publishing when the proxy shares the network.
 Verify public
 HTTPS separately after cutover.
 
+## Link checks
+
+`.github/workflows/check-links.yaml` builds the site and runs lychee over
+`dist/` on pull requests, every Monday, and on manual dispatch. It reports
+broken internal and external links without affecting deploys. LinkedIn is
+excluded because it rejects automated requests.
+
+## HTTPS settings in Nginx Proxy Manager
+
+TLS ends at Nginx Proxy Manager, so HSTS and the TLS protocol settings are
+configured there, not in this repository. On the `ethangreentree.com` proxy
+host's **SSL** tab, turn on **Force SSL** and **HTTP/2 Support**, and leave
+**HSTS Enabled** off: its fixed duration is long, and the rollout below starts
+short.
+
+1. On the proxy host's **Advanced** tab, add:
+
+   ```nginx
+   add_header Strict-Transport-Security "max-age=86400" always;
+   ```
+
+2. Confirm it is live with `curl -sI https://ethangreentree.com`, and that
+   the headers from `docker/security-headers.conf` also appear.
+3. After a day or more with HTTPS working normally, change `86400` to
+   `31536000` (one year).
+
+Do not add `preload`: it is hard to undo. Then run the site through
+[Mozilla Observatory](https://developer.mozilla.org/en-US/observatory) and
+[SSL Labs](https://www.ssllabs.com/ssltest/) and record the dated grades on
+the website project page.
+
 ## GitHub settings
 
 Set these at the **repository** level for the build workflow:
@@ -157,4 +204,7 @@ completion events. Track that work in
 - [GitHub deployment environments and concurrency](https://docs.github.com/en/actions/how-tos/deploy/configure-and-manage-deployments/control-deployments)
 - [Compose replacement and waiting for health](https://docs.docker.com/reference/cli/docker/compose/up/)
 - [Docker daemon access and security](https://docs.docker.com/engine/security/)
+- [Trivy action](https://github.com/aquasecurity/trivy-action)
+- [Dependabot options](https://docs.github.com/en/code-security/dependabot/working-with-dependabot/dependabot-options-reference)
+- [Astro content security policy](https://docs.astro.build/en/reference/configuration-reference/#securitycsp)
 - [Trigger a workflow after another completes](https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows#workflow_run)
