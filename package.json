@@ -18,7 +18,7 @@
     "tailwindcss": "^4.3.3"
   },
   "devDependencies": {
-    "vite-plus": "1.5.0"
+    "vite-plus": "catalog:"
   },
   "engines": {
     "node": "^22.18.0 || >=24.11.0"
