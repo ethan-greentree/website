@@ -146,8 +146,13 @@ short.
 1. On the proxy host's **Advanced** tab, add:
 
    ```nginx
-   add_header Strict-Transport-Security "max-age=86400" always;
+   more_set_headers "Strict-Transport-Security: max-age=86400";
    ```
+
+   Use `more_set_headers`, not `add_header`. NPM's generated `location`
+   block sets its own `add_header X-Served-By`, and Nginx then drops every
+   `add_header` from the server level, so an `add_header` line here never
+   reaches visitors. NPM runs on OpenResty, which includes `more_set_headers`.
 
 2. Confirm it is live with `curl -sI https://ethangreentree.com`, and that
    the headers from `docker/security-headers.conf` also appear.
