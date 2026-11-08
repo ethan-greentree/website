@@ -18,11 +18,11 @@ I retrieved the three reference sites' first-party page text. I did **not** capt
 
 ## Design references translated into a brief
 
-| Reference | Ethan's observation | Verified page content | Useful direction for this site |
-| --- | --- | --- | --- |
-| [Personlig Arkitektur](https://personligarkitektur.no/) | Likes chunkiness; text layout feels clunky | Repeated practice/project sections combine descriptions and substantial image material | Give sections strong boundaries, but use a simpler text hierarchy and predictable reading column |
-| [Josh Puckett](https://joshpuckett.me/) | Feels good, a little too simple | Short introduction followed by Projects and Writing | Keep navigation and content scanning straightforward; add personality through type, color, and structure |
-| [Simon Austerberry](https://www.simonausterberry.co.uk/) | Strongest reference; especially sticky section headers | Separate services, work, biography, and contact sections | Explore persistent section labels and a clear introduction → evidence → person → contact sequence |
+| Reference                                                | Ethan's observation                                    | Verified page content                                                                  | Useful direction for this site                                                                           |
+| -------------------------------------------------------- | ------------------------------------------------------ | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
+| [Personlig Arkitektur](https://personligarkitektur.no/)  | Likes chunkiness; text layout feels clunky             | Repeated practice/project sections combine descriptions and substantial image material | Give sections strong boundaries, but use a simpler text hierarchy and predictable reading column         |
+| [Josh Puckett](https://joshpuckett.me/)                  | Feels good, a little too simple                        | Short introduction followed by Projects and Writing                                    | Keep navigation and content scanning straightforward; add personality through type, color, and structure |
+| [Simon Austerberry](https://www.simonausterberry.co.uk/) | Strongest reference; especially sticky section headers | Separate services, work, biography, and contact sections                               | Explore persistent section labels and a clear introduction → evidence → person → contact sequence        |
 
 These references support a useful synthesis: **bold structure, earthy colors, comfortable reading**. That phrase is a design proposal derived from Ethan's feedback, not a factual property of all three sites. Borrow patterns, not their copy, branding, or assets.
 
@@ -54,13 +54,13 @@ The existing stylesheet already defines light, sand, muted green, and dark green
 
 The following are assistant-generated candidates. Ratios were calculated with the standard sRGB relative-luminance method; this is a palette check, not an accessibility audit.
 
-| Pair | Contrast | Candidate use |
-| --- | ---: | --- |
-| Forest `#243D30` / cream `#F4F0E6` | 10.34:1 | Main text and background |
-| Forest / sand `#D5C9BB` | 7.23:1 | Text on panels |
-| Forest / chartreuse `#D1E85B` | 8.63:1 | Accent button text |
-| Forest / moss `#63764D` | 2.37:1 | Avoid this text pairing |
-| Forest / orange `#C4512B` | 2.55:1 | Avoid this text pairing |
+| Pair                               | Contrast | Candidate use            |
+| ---------------------------------- | -------: | ------------------------ |
+| Forest `#243D30` / cream `#F4F0E6` |  10.34:1 | Main text and background |
+| Forest / sand `#D5C9BB`            |   7.23:1 | Text on panels           |
+| Forest / chartreuse `#D1E85B`      |   8.63:1 | Accent button text       |
+| Forest / moss `#63764D`            |   2.37:1 | Avoid this text pairing  |
+| Forest / orange `#C4512B`          |   2.55:1 | Avoid this text pairing  |
 
 WCAG AA requires at least 4.5:1 for normal text and 3:1 for large text. Borders, focus indicators, and other UI need their own checks; passing one text pairing does not establish compliance. [W3C contrast requirements and calculation](https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html)
 
@@ -79,11 +79,11 @@ Avoid selecting a font by its specimen alone. Compare a long project title, navi
 
 The hard part is the boundary between note names and website URLs. A `slug` is only stable if the route generator and every link resolver use it. Setting a frontmatter property alone does not configure either side.
 
-| Approach | Advantages | Costs and limits | Recommendation |
-| --- | --- | --- | --- |
-| Standard Markdown links | No conversion dependency; predictable output | Site-relative routes may not navigate like local note links inside Obsidian | Baseline for the first complete publishing path |
-| Astro Composer | Convenient post creation and property templates; converts internal links before publishing | Modifies source; route rules and complex Obsidian syntax need verification | Try in a small publishing vault before adopting |
-| Build-time `remark-wiki-link` | Keeps wikilinks in source; configurable URL mapping | Needs resolver work and Astro 7 Markdown pipeline configuration | Optional experiment if source conversion is uncomfortable |
+| Approach                      | Advantages                                                                                 | Costs and limits                                                            | Recommendation                                            |
+| ----------------------------- | ------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------- | --------------------------------------------------------- |
+| Standard Markdown links       | No conversion dependency; predictable output                                               | Site-relative routes may not navigate like local note links inside Obsidian | Baseline for the first complete publishing path           |
+| Astro Composer                | Convenient post creation and property templates; converts internal links before publishing | Modifies source; route rules and complex Obsidian syntax need verification  | Try in a small publishing vault before adopting           |
+| Build-time `remark-wiki-link` | Keeps wikilinks in source; configurable URL mapping                                        | Needs resolver work and Astro 7 Markdown pipeline configuration             | Optional experiment if source conversion is uncomfortable |
 
 Astro Composer is MIT-licensed. Its documented features include configurable folders/link prefixes, file or folder posts, property templates including `{{slug}}`, and a conversion command. It is an authoring helper, not a deployment system. Its README's underscore draft convention must not substitute for explicit collection filtering. [Author's repository](https://github.com/davidvkimball/obsidian-astro-composer), [Obsidian plugin listing](https://community.obsidian.md/plugins/astro-composer)
 

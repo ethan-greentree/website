@@ -119,7 +119,12 @@ transition. Write role outputs fully before recording their verdicts. Example:
   "round": 0,
   "rebuilds": 0,
   "reviewedCommit": null,
-  "reviews": { "security": "pending", "ux": "pending", "ui": "pending", "code": "pending" }
+  "reviews": {
+    "security": "pending",
+    "ux": "pending",
+    "ui": "pending",
+    "code": "pending"
+  }
 }
 ```
 

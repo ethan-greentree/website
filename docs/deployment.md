@@ -1,7 +1,7 @@
 # Docker builds and deployments
 
-The Dockerfile builds Astro with Node.js 24 and pnpm 12.4.1, then copies `dist/`
-into Nginx. Only the Nginx stage is shipped. Dependencies are installed using the
+The Dockerfile builds Astro with Node.js 24 and pnpm 12.18.0 by running
+`vp run build`, then copies `dist/` into Nginx. Only the Nginx stage is shipped. Dependencies are installed using the
 pnpm lockfile; changes to site content can reuse the dependency layer.
 
 ## Run locally
@@ -124,7 +124,11 @@ for this image. No host port needs publishing when the proxy shares the network.
 Verify public
 HTTPS separately after cutover.
 
-## Link checks
+## Checks and link checks
+
+`.github/workflows/check.yaml` runs `vp check` (formatting, lint and types),
+`vp test` and `vp run build` on pull requests and pushes to `main`. Like the
+link check, it reports problems without affecting deploys.
 
 `.github/workflows/check-links.yaml` builds the site and runs lychee over
 `dist/` on pull requests, every Monday, and on manual dispatch. It reports
@@ -159,11 +163,11 @@ the website project page.
 
 Set these at the **repository** level for the build workflow:
 
-| Kind | Name | Value |
-| --- | --- | --- |
-| Secret | `DOCKERHUB_IMAGE` | Docker Hub namespace/repository, such as `atomeus/portfolio-website` |
-| Secret | `DOCKERHUB_USERNAME` | Docker Hub account allowed to push to that repository |
-| Secret | `DOCKERHUB_TOKEN` | Docker Hub personal access token with Read & Write access |
+| Kind   | Name                 | Value                                                                |
+| ------ | -------------------- | -------------------------------------------------------------------- |
+| Secret | `DOCKERHUB_IMAGE`    | Docker Hub namespace/repository, such as `atomeus/portfolio-website` |
+| Secret | `DOCKERHUB_USERNAME` | Docker Hub account allowed to push to that repository                |
+| Secret | `DOCKERHUB_TOKEN`    | Docker Hub personal access token with Read & Write access            |
 
 Use an access token rather than your account password. Do not grant Delete
 access for publishing. The token is used by the registry login action and is
@@ -175,13 +179,13 @@ secrets remain available to that job.
 
 Leave required reviewers disabled if deployments should run without approval.
 
-| Kind | Name | Value |
-| --- | --- | --- |
-| Secret | `DEPLOY_HOST` | VPS hostname or IPv4 address |
-| Secret | `DEPLOY_USER` | Dedicated SSH account |
-| Secret | `DEPLOY_PORT` | Optional SSH port, defaults to `22` when absent |
-| Secret | `DEPLOY_SSH_KEY` | Private key for that account |
-| Secret | `DEPLOY_KNOWN_HOSTS` | Verified host-key entries for the VPS |
+| Kind   | Name                 | Value                                           |
+| ------ | -------------------- | ----------------------------------------------- |
+| Secret | `DEPLOY_HOST`        | VPS hostname or IPv4 address                    |
+| Secret | `DEPLOY_USER`        | Dedicated SSH account                           |
+| Secret | `DEPLOY_PORT`        | Optional SSH port, defaults to `22` when absent |
+| Secret | `DEPLOY_SSH_KEY`     | Private key for that account                    |
+| Secret | `DEPLOY_KNOWN_HOSTS` | Verified host-key entries for the VPS           |
 
 Obtain and verify the SSH host key through a trusted channel. Nonstandard ports
 use `[hostname]:port` entries. The workflow checks the server identity strictly

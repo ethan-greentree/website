@@ -42,4 +42,3 @@ jobs:
             -o ConnectTimeout=15 \
             "$DEPLOY_USER@$DEPLOY_HOST" \
             'cd /opt/ethan-website && docker compose pull && docker compose up -d'
-

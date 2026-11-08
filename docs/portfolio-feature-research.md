@@ -26,19 +26,19 @@ Do not fill empty cards with inflated claims. If a real incident cannot be publi
 
 Effort bands are rough planning judgments: **S** is a bounded article or small enhancement; **M** includes several components and meaningful verification; **L** needs ongoing data, infrastructure, or substantial domain testing. They are not duration estimates. Evidence scores indicate potential relevance to IT work if executed honestly, from 1 (weak connection) to 5 (strong direct evidence). They are not predictions of hiring outcomes. “No new service” excludes existing VPS/domain charges and assumes static hosting.
 
-| Idea | Effort | Added service cost | Operations | Evidence /5 | What a visitor inspects |
-| --- | --- | --- | --- | ---: | --- |
-| Site deployment and rollback case study | M | No new service | Low after setup | 5 | Workflow, release diagram, failed-build behavior, tested rollback |
-| Tested automation script showcase | M | No new service | Low | 5 | Source, help, fixtures, failure tests, before/after workflow |
-| Backup/restore drill report | M | Depends on lab storage | Low/periodic | 5 | Restore procedure, measured run, integrity checks, limitations |
-| Incident investigation/postmortem | S–M | No new service | Low | 5 | Timeline, hypotheses, evidence, corrective actions |
-| Interactive architecture/runbook | M | No new service | Low | 4 | Components, failure paths, recovery steps, diagram text alternative |
-| Browser log explorer/redaction preview | M–L | No new service | Low server load; parser maintenance | 4 | Synthetic logs, filters, malformed-record behavior, redaction limits |
-| IPv4 subnet/CIDR explainer | M | No new service | Low | 3 | Calculations, bit view, edge-case tests, readable explanations |
-| Scoped permissions explorer | M–L | No new service | Medium correctness burden | 4 | One documented permission model and explicit unsupported cases |
-| Curated learning lab/notebook | S initially | No new service | Editorial maintenance | 3 | Reproductions, mistakes, source links, next experiments |
-| Site quality/release evidence page | S–M | No new service in baseline | Low | 4 | Dated checks, revision links, accessibility/performance limitations |
-| Actual service status/history | L | May require monitoring service | Continuous | 3 | Defined checks, timestamps, outage history, freshness |
+| Idea                                    | Effort      | Added service cost             | Operations                          | Evidence /5 | What a visitor inspects                                              |
+| --------------------------------------- | ----------- | ------------------------------ | ----------------------------------- | ----------: | -------------------------------------------------------------------- |
+| Site deployment and rollback case study | M           | No new service                 | Low after setup                     |           5 | Workflow, release diagram, failed-build behavior, tested rollback    |
+| Tested automation script showcase       | M           | No new service                 | Low                                 |           5 | Source, help, fixtures, failure tests, before/after workflow         |
+| Backup/restore drill report             | M           | Depends on lab storage         | Low/periodic                        |           5 | Restore procedure, measured run, integrity checks, limitations       |
+| Incident investigation/postmortem       | S–M         | No new service                 | Low                                 |           5 | Timeline, hypotheses, evidence, corrective actions                   |
+| Interactive architecture/runbook        | M           | No new service                 | Low                                 |           4 | Components, failure paths, recovery steps, diagram text alternative  |
+| Browser log explorer/redaction preview  | M–L         | No new service                 | Low server load; parser maintenance |           4 | Synthetic logs, filters, malformed-record behavior, redaction limits |
+| IPv4 subnet/CIDR explainer              | M           | No new service                 | Low                                 |           3 | Calculations, bit view, edge-case tests, readable explanations       |
+| Scoped permissions explorer             | M–L         | No new service                 | Medium correctness burden           |           4 | One documented permission model and explicit unsupported cases       |
+| Curated learning lab/notebook           | S initially | No new service                 | Editorial maintenance               |           3 | Reproductions, mistakes, source links, next experiments              |
+| Site quality/release evidence page      | S–M         | No new service in baseline     | Low                                 |           4 | Dated checks, revision links, accessibility/performance limitations  |
+| Actual service status/history           | L           | May require monitoring service | Continuous                          |           3 | Defined checks, timestamps, outage history, freshness                |
 
 ### 1. Deployment as the first real case study
 

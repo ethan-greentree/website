@@ -2,12 +2,12 @@
 FROM node:24-bookworm-slim AS build
 
 WORKDIR /app
-RUN npm install --global pnpm@12.4.1
+RUN npm install --global pnpm@12.18.0
 
 COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
 RUN pnpm install --frozen-lockfile
 COPY . .
-RUN pnpm build
+RUN pnpm exec vp run build
 
 FROM nginx:stable-alpine AS runtime
 
