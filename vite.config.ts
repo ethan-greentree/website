@@ -10,7 +10,6 @@ import { defineConfig } from "vite-plus";
 const ignored = [
   "dist/**",
   "public/games/**",
-  "factory/**",
   "docs/research/evidence/**",
   "pnpm-lock.yaml",
 ];

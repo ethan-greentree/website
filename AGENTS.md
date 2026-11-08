@@ -1,10 +1,10 @@
 ## Agent skills
 
-### Software factory
+### Workflow
 
-For factory requests (start, next, resume, approve, or rework), read
-docs/agents/factory/README.md and follow docs/agents/factory/workflow.md.
-Codex entry point: .agents/skills/factory/SKILL.md (invoke with `$factory`).
+Work on a branch named for the issue, such as `31-remove-factory`. Before
+merging, run `vp check`, `vp test` and `vp run build`. Merging to `main`
+deploys the site, so merge only when Ethan approves.
 
 ### Issue tracker
 
