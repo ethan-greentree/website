@@ -43,7 +43,9 @@ with `pnpm exec`. Run `vp install`, then:
 
 Use `vp run dev`, not `vp dev`: `vp dev` starts a plain Vite server rather
 than Astro. Both development commands replace an existing Astro server for
-this project. Settings for checks and tests live in `vite.config.ts`.
+this project. Settings for checks and tests live in `vite.config.ts`. On a
+fresh clone, run `vp exec astro sync` (or any build) before `vp check`: the
+type check needs Astro's generated types.
 
 `vp fmt` doesn't format `.astro` files yet, so format them in your editor
 (the Astro extension handles it). `vp lint` does check the scripts inside

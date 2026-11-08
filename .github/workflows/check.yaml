@@ -24,6 +24,10 @@ jobs:
           node-version: "24"
           cache: true
 
+      # The type check needs Astro's generated types, which aren't committed.
+      - name: Generate Astro types
+        run: vp exec astro sync
+
       - name: Check formatting, lint and types
         run: vp check
 
