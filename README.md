@@ -21,11 +21,6 @@ My wife and I enjoy games, particularly board games. So when I'm not on a comput
 
 ## Running this website
 
-Development can follow the [agent-neutral software factory](docs/agents/factory/README.md):
-specification, implementation, four review passes, and an approval decision.
-In Codex, use `$factory start issue #123` or `$factory next` to invoke the
-repository skill. See the factory docs for resume, approval, and rework commands.
-
 Everything runs through [Vite+](https://viteplus.dev/) and its `vp` command.
 Requires Node.js 22.18, or 24.11 or newer. Install the `vp` command once
 ([instructions](https://viteplus.dev/guide/)), or prefix each command below
