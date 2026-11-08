@@ -24,3 +24,8 @@ updates:
     groups:
       docker:
         patterns: ["*"]
+    # Move Node to the next LTS release deliberately; odd-numbered majors
+    # like 25 are short-lived and outside what the tooling supports.
+    ignore:
+      - dependency-name: node
+        update-types: ["version-update:semver-major"]
