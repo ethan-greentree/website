@@ -4,7 +4,7 @@ title: "Uses"
 heading: "What I use."
 eyebrow: "Hardware and software"
 description: "The hardware, software and homelab gear Ethan Greentree uses day to day."
-updated: "2026-11-01"
+updated: "2026-11-08"
 ---
 
 The hardware, software and homelab gear I use day to day. Nothing fancy.
@@ -30,6 +30,7 @@ The hardware, software and homelab gear I use day to day. Nothing fancy.
 - **Windows Terminal** with PowerShell, Git Bash and WSL. One window for whichever shell the job needs.
 - **Git and GitHub.** So I can see what changed and undo my mistakes.
 - **Docker.** This site runs in it, and it keeps a setup the same from one machine to the next.
+- **Tailscale.** It keeps the admin page for this site's web server off the public internet, so only my own devices can reach it.
 - **Languages.** Whatever suits the problem: PowerShell for Windows automation, Python for small apps on Raspberry Pis, and PHP or TypeScript for web apps.
 
 ## Homelab
