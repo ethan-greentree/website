@@ -12,10 +12,10 @@
   "dependencies": {
     "@astrojs/rss": "^4.0.19",
     "@astrojs/sitemap": "^3.7.4",
-    "@tailwindcss/vite": "^4.3.3",
-    "astro": "^7.3.8",
-    "gsap": "^3.15.0",
-    "tailwindcss": "^4.3.3"
+    "@tailwindcss/vite": "^4.3.4",
+    "astro": "^7.4.5",
+    "gsap": "^3.15.1",
+    "tailwindcss": "^4.3.4"
   },
   "devDependencies": {
     "vite-plus": "catalog:"
