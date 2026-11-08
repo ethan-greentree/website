@@ -59,7 +59,7 @@ The article was [Making my website easier to manage](/blog/website/), and the pr
 
 - **A real screen reader.** I inspected the accessibility tree that screen readers use, but I haven't yet listened to the site with NVDA or VoiceOver.
 - **Real devices.** Phone results come from emulation, not a physical phone.
-- **Yahtz.** The game is drawn on a canvas and wasn't part of this audit, so I can't yet say how well it works with a keyboard or screen reader.
+- **Yahtz.** The game is drawn on a canvas and isn't accessible: it doesn't work with a screen reader. It wasn't part of this audit.
 - **Small diagram text on phones.** At 320px, the diagram labels are about 10px tall. They pass contrast, and each diagram has a full text description, but they're small to read.
 
 ## How to repeat it
