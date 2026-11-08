@@ -418,6 +418,8 @@ h3,
   border: 1px solid var(--ink);
   padding: 12px;
   text-align: left;
+  /* Keep words whole so narrow screens scroll the table instead. */
+  overflow-wrap: normal;
 }
 .article-body img {
   display: block;
