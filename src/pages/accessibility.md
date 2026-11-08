@@ -36,12 +36,12 @@ axe couldn't decide the contrast of the labels inside the two diagrams (deployme
 
 Every run scored 100 for performance, accessibility, best practices and SEO. The table shows how long the largest piece of content took to appear.
 
-| Page | Mobile | Desktop |
-| --- | --- | --- |
-| Homepage | 1.1 s | 0.3 s |
-| Article | 1.1 s | 0.3 s |
-| Project page | 1.4 s | 0.3 s |
-| Projects list | 1.1 s | 0.3 s |
+| Page          | Mobile | Desktop |
+| ------------- | ------ | ------- |
+| Homepage      | 1.1 s  | 0.3 s   |
+| Article       | 1.1 s  | 0.3 s   |
+| Project page  | 1.4 s  | 0.3 s   |
+| Projects list | 1.1 s  | 0.3 s   |
 
 The article was [Making my website easier to manage](/blog/website/), and the project page was [This website](/projects/website/). Layout shift was 0.002 or less on every run. These are lab scores from single runs, so real visits on real devices and networks will vary.
 
