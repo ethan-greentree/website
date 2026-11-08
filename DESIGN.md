@@ -81,7 +81,7 @@ The name is the identity. Avoid giant generic persona slogans. Let long article 
 
 ## Homepage composition
 
-Decided in the interview of 2026-10-28 (issue #20), replacing Layout A's green introduction, ruled Articles region and about block on the homepage. Run `pnpm design` to open it.
+Decided in the interview of 2026-10-28 (issue #20), replacing Layout A's green introduction, ruled Articles region and about block on the homepage. Run `vp run design` to open it.
 
 The homepage is a scrolling story of tall, spacious sections, one idea each, in this order:
 

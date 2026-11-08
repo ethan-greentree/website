@@ -30,3 +30,4 @@ pnpm-debug.log*
 /factory/jobs/*
 !/factory/jobs/.gitkeep
 /factory/worktrees/
+.vitest/

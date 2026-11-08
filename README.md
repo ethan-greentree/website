@@ -26,12 +26,26 @@ specification, implementation, four review passes, and an approval decision.
 In Codex, use `$factory start issue #123` or `$factory next` to invoke the
 repository skill. See the factory docs for resume, approval, and rework commands.
 
-Requires Node.js 22.12 or newer and pnpm. Run `pnpm install`, then:
+Everything runs through [Vite+](https://viteplus.dev/) and its `vp` command.
+Requires Node.js 22.18, or 24.11 or newer. Install the `vp` command once
+([instructions](https://viteplus.dev/guide/)), or prefix each command below
+with `pnpm exec`. Run `vp install`, then:
 
-| Command        | Purpose                                                 |
-| -------------- | ------------------------------------------------------- |
-| `pnpm dev`     | Start the development server at `http://localhost:4321` |
-| `pnpm build`   | Build the production site into `dist/`                  |
-| `pnpm preview` | Preview the production build locally                    |
+| Command          | Purpose                                                 |
+| ---------------- | ------------------------------------------------------- |
+| `vp run dev`     | Start the development server at `http://localhost:4321` |
+| `vp run design`  | Start the development server and open the homepage      |
+| `vp run build`   | Build the production site into `dist/`                  |
+| `vp run preview` | Preview the production build locally                    |
+| `vp check`       | Check formatting, lint and types                        |
+| `vp check --fix` | Fix formatting and the lint issues that can be fixed    |
+| `vp test`        | Run the tests in `tests/`                               |
 
-Both development commands replace an existing Astro server for this project.
+Use `vp run dev`, not `vp dev`: `vp dev` starts a plain Vite server rather
+than Astro. Both development commands replace an existing Astro server for
+this project. Settings for checks and tests live in `vite.config.ts`.
+
+`vp fmt` doesn't format `.astro` files yet, so format them in your editor
+(the Astro extension handles it). `vp lint` does check the scripts inside
+them, and the GitHub Actions **Check** workflow runs `vp check`, `vp test` and
+a build on every pull request and push to `main`.

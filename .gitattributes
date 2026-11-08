@@ -1,2 +1,6 @@
+# Check out text files with LF everywhere, matching `vp fmt`, so a Windows
+# checkout doesn't show every file as needing formatting.
+* text=auto eol=lf
+
 # Linux workflows and server scripts must keep Unix line endings on Windows checkouts.
 *.sh text eol=lf

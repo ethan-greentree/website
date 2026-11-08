@@ -1,10 +1,7 @@
 {
   "name": "",
-  "type": "module",
   "version": "0.0.1",
-  "engines": {
-    "node": ">=22.12.0"
-  },
+  "type": "module",
   "scripts": {
     "design": "astro dev --force --open /",
     "dev": "astro dev --force",
@@ -21,7 +18,10 @@
     "tailwindcss": "^4.3.3"
   },
   "devDependencies": {
-    "prettier": "^3.9.6",
-    "prettier-plugin-astro": "^0.14.1"
-  }
+    "vite-plus": "catalog:"
+  },
+  "engines": {
+    "node": "^22.18.0 || >=24.11.0"
+  },
+  "packageManager": "pnpm@12.18.0"
 }
