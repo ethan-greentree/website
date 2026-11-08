@@ -1,5 +1,5 @@
 # syntax=docker/dockerfile:1
-FROM node:24-bookworm-slim AS build
+FROM node:25-bookworm-slim AS build
 
 WORKDIR /app
 RUN npm install --global pnpm@12.18.0
